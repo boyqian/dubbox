@@ -1,0 +1,22 @@
+# default JDBC Config
+jdbc.default.poolSize=1
+jdbc.default.minPoolSize=1
+jdbc.default.maxPoolSize=5
+jdbc.default.borrowConnectionTimeout=360
+jdbc.default.reapTimeout=320
+jdbc.default.maxIdleTime=1
+jdbc.default.maintenanceInterval=60
+jdbc.default.loginTimeout=60
+jdbc.default.logWriter=60
+jdbc.default.maxLifetime=60
+
+#sls Mysql JDBC Config
+jdbc.sls.driverClassName=com.mysql.jdbc.Driver
+jdbc.sls.url=jdbc:mysql://172.16.20.118:3306/sls_event?useUnicode=true&&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.username=root
+jdbc.sls.password=123456
+
+jdbc.sls.grid.driverClassName=com.mysql.jdbc.Driver
+jdbc.sls.grid.url=jdbc:mysql://172.16.20.118:3306/sls_grid?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.grid.username=root
+jdbc.sls.grid.password=123456

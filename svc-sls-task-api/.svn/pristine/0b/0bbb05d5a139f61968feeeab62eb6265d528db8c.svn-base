@@ -1,0 +1,295 @@
+package com.upsoft.sep.sls.task.entity;
+
+import java.util.Date;
+
+public class SlsDetailTask {
+    private String id;
+
+    private String taskId;
+
+    private String taskTitle;
+
+    private String dailyEnterpriseId;
+
+    private String dailyEnterpriseName;
+
+    private String dailyGridId;
+
+    private String dailyGridName;
+
+    private String dailyEnterpriseAddress;
+
+    private String dailyConstructionId;
+
+    private String dailyConstructionAddress;
+
+    private String dailyConstructionUnit;
+
+    private String dailyConstructionName;
+
+    private String dailyConstructionImplement;
+
+    private String dailyInspectionContent;
+
+    private String dailyNote;
+
+    private String specialInitiateUnit;
+
+    private Date specialStartTime;
+
+    private String specialNote;
+
+    private String specialEnterpriseId;
+
+    private String specialEnterpriseName;
+
+    private String specialConstructionId;
+
+    private String specialConstructionName;
+
+    private Date specialEndTime;
+
+    private String specialActionContent;
+
+    private String specialActionName;
+
+    private String temporaryTaskContent;
+
+    private String standby1;
+
+    private String standby2;
+
+    private String standby3;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId == null ? null : taskId.trim();
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle == null ? null : taskTitle.trim();
+    }
+
+    public String getDailyEnterpriseId() {
+        return dailyEnterpriseId;
+    }
+
+    public void setDailyEnterpriseId(String dailyEnterpriseId) {
+        this.dailyEnterpriseId = dailyEnterpriseId == null ? null : dailyEnterpriseId.trim();
+    }
+
+    public String getDailyEnterpriseName() {
+        return dailyEnterpriseName;
+    }
+
+    public void setDailyEnterpriseName(String dailyEnterpriseName) {
+        this.dailyEnterpriseName = dailyEnterpriseName == null ? null : dailyEnterpriseName.trim();
+    }
+
+    public String getDailyGridId() {
+        return dailyGridId;
+    }
+
+    public void setDailyGridId(String dailyGridId) {
+        this.dailyGridId = dailyGridId == null ? null : dailyGridId.trim();
+    }
+
+    public String getDailyGridName() {
+        return dailyGridName;
+    }
+
+    public void setDailyGridName(String dailyGridName) {
+        this.dailyGridName = dailyGridName == null ? null : dailyGridName.trim();
+    }
+
+    public String getDailyEnterpriseAddress() {
+        return dailyEnterpriseAddress;
+    }
+
+    public void setDailyEnterpriseAddress(String dailyEnterpriseAddress) {
+        this.dailyEnterpriseAddress = dailyEnterpriseAddress == null ? null : dailyEnterpriseAddress.trim();
+    }
+
+    public String getDailyConstructionId() {
+        return dailyConstructionId;
+    }
+
+    public void setDailyConstructionId(String dailyConstructionId) {
+        this.dailyConstructionId = dailyConstructionId == null ? null : dailyConstructionId.trim();
+    }
+
+    public String getDailyConstructionAddress() {
+        return dailyConstructionAddress;
+    }
+
+    public void setDailyConstructionAddress(String dailyConstructionAddress) {
+        this.dailyConstructionAddress = dailyConstructionAddress == null ? null : dailyConstructionAddress.trim();
+    }
+
+    public String getDailyConstructionUnit() {
+        return dailyConstructionUnit;
+    }
+
+    public void setDailyConstructionUnit(String dailyConstructionUnit) {
+        this.dailyConstructionUnit = dailyConstructionUnit == null ? null : dailyConstructionUnit.trim();
+    }
+
+    public String getDailyConstructionName() {
+        return dailyConstructionName;
+    }
+
+    public void setDailyConstructionName(String dailyConstructionName) {
+        this.dailyConstructionName = dailyConstructionName == null ? null : dailyConstructionName.trim();
+    }
+
+    public String getDailyConstructionImplement() {
+        return dailyConstructionImplement;
+    }
+
+    public void setDailyConstructionImplement(String dailyConstructionImplement) {
+        this.dailyConstructionImplement = dailyConstructionImplement == null ? null : dailyConstructionImplement.trim();
+    }
+
+    public String getDailyInspectionContent() {
+        return dailyInspectionContent;
+    }
+
+    public void setDailyInspectionContent(String dailyInspectionContent) {
+        this.dailyInspectionContent = dailyInspectionContent == null ? null : dailyInspectionContent.trim();
+    }
+
+    public String getDailyNote() {
+        return dailyNote;
+    }
+
+    public void setDailyNote(String dailyNote) {
+        this.dailyNote = dailyNote == null ? null : dailyNote.trim();
+    }
+
+    public String getSpecialInitiateUnit() {
+        return specialInitiateUnit;
+    }
+
+    public void setSpecialInitiateUnit(String specialInitiateUnit) {
+        this.specialInitiateUnit = specialInitiateUnit == null ? null : specialInitiateUnit.trim();
+    }
+
+    public Date getSpecialStartTime() {
+        return specialStartTime;
+    }
+
+    public void setSpecialStartTime(Date specialStartTime) {
+        this.specialStartTime = specialStartTime;
+    }
+
+    public String getSpecialNote() {
+        return specialNote;
+    }
+
+    public void setSpecialNote(String specialNote) {
+        this.specialNote = specialNote == null ? null : specialNote.trim();
+    }
+
+    public String getSpecialEnterpriseId() {
+        return specialEnterpriseId;
+    }
+
+    public void setSpecialEnterpriseId(String specialEnterpriseId) {
+        this.specialEnterpriseId = specialEnterpriseId == null ? null : specialEnterpriseId.trim();
+    }
+
+    public String getSpecialEnterpriseName() {
+        return specialEnterpriseName;
+    }
+
+    public void setSpecialEnterpriseName(String specialEnterpriseName) {
+        this.specialEnterpriseName = specialEnterpriseName == null ? null : specialEnterpriseName.trim();
+    }
+
+    public String getSpecialConstructionId() {
+        return specialConstructionId;
+    }
+
+    public void setSpecialConstructionId(String specialConstructionId) {
+        this.specialConstructionId = specialConstructionId == null ? null : specialConstructionId.trim();
+    }
+
+    public String getSpecialConstructionName() {
+        return specialConstructionName;
+    }
+
+    public void setSpecialConstructionName(String specialConstructionName) {
+        this.specialConstructionName = specialConstructionName == null ? null : specialConstructionName.trim();
+    }
+
+    public Date getSpecialEndTime() {
+        return specialEndTime;
+    }
+
+    public void setSpecialEndTime(Date specialEndTime) {
+        this.specialEndTime = specialEndTime;
+    }
+
+    public String getSpecialActionContent() {
+        return specialActionContent;
+    }
+
+    public void setSpecialActionContent(String specialActionContent) {
+        this.specialActionContent = specialActionContent == null ? null : specialActionContent.trim();
+    }
+
+    public String getSpecialActionName() {
+        return specialActionName;
+    }
+
+    public void setSpecialActionName(String specialActionName) {
+        this.specialActionName = specialActionName == null ? null : specialActionName.trim();
+    }
+
+    public String getTemporaryTaskContent() {
+        return temporaryTaskContent;
+    }
+
+    public void setTemporaryTaskContent(String temporaryTaskContent) {
+        this.temporaryTaskContent = temporaryTaskContent == null ? null : temporaryTaskContent.trim();
+    }
+
+    public String getStandby1() {
+        return standby1;
+    }
+
+    public void setStandby1(String standby1) {
+        this.standby1 = standby1 == null ? null : standby1.trim();
+    }
+
+    public String getStandby2() {
+        return standby2;
+    }
+
+    public void setStandby2(String standby2) {
+        this.standby2 = standby2 == null ? null : standby2.trim();
+    }
+
+    public String getStandby3() {
+        return standby3;
+    }
+
+    public void setStandby3(String standby3) {
+        this.standby3 = standby3 == null ? null : standby3.trim();
+    }
+}

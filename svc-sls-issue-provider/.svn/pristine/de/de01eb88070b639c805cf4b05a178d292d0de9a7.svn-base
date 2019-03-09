@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.issue.dao.ProblemBaseDao">
+<resultMap type="com.upsoft.sep.sls.issue.entity.ProblemBaseInfo" id="probelmBaseInfoMap">
+<result column="parent_source_code" property="parentSourceCode"  jdbcType="VARCHAR"/>
+<result column="parent_source_value" property="parentSourceValue"  jdbcType="VARCHAR"/>
+<result column="source_code" property="sourceCode"  jdbcType="VARCHAR"/>
+<result column="source_value" property="sourceValue"  jdbcType="VARCHAR"/>
+<result column="title" property="title"  jdbcType="VARCHAR"/>
+<result column="type_code" property="typeCode"  jdbcType="VARCHAR"/>
+<result column="type_value" property="typeValue"  jdbcType="VARCHAR"/>
+<result column="level_code" property="levelCode"  jdbcType="VARCHAR"/>
+<result column="level_value" property="levelValue"  jdbcType="VARCHAR"/>
+<result column="address" property="address" jdbcType="VARCHAR"/>
+<result column="detail" property="detail" jdbcType="VARCHAR"/>
+<result column="discovery_time" property="discoveryTime"  jdbcType="TIMESTAMP"/>
+</resultMap>
+<select id="getProBaseById" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultMap="probelmBaseInfoMap">
+select parent_source_code,parent_source_value,source_code,source_value,title,type_code,type_value,level_code,level_value,address,detail,discovery_time
+from sls_issue
+where id=#{id}
+</select>
+<select id="getProPollInfo" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemPollInfo">
+<!-- 从企业外部接口获取 -->
+</select>
+<select id="getProComplaintInfo" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemComplaintInfo">
+<if test="id!=null and id!=''">
+<!-- 从投诉管理系统获取 -->
+</if>
+<if test="id==null and id==''">
+<!-- 查询半径1KM的其他投诉信息 -->
+</if>
+</select>
+<select id="getProParentSource" parameterType="com.upsoft.sep.sls.issue.param.EnterpriseIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemParentSource">
+select parent_source_code as parentSourceCode,parent_source_value as parentSourceValue,count(id) as parentProCount
+from sls_issue
+where discovery_time>= DATE_SUB(CURDATE(), INTERVAL 365 DAY) 
+and enterprise_id=#{enterpriseId}
+group by parentSourceCode,parentSourceValue;
+</select>
+<select id="getProSource" parameterType="com.upsoft.sep.sls.issue.param.ProbelmSourceParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemSource">
+select source_code as sourceCode,source_value as sourceValue,count(id) as proCount
+from sls_issue
+where discovery_time>= DATE_SUB(CURDATE(), INTERVAL 365 DAY) 
+and enterprise_id=#{enterpriseId}
+and parent_source_code=#{parentSourceCode}
+or parent_source_value=#{parentSourceValue} 
+group by sourceCode,sourceValue
+</select>
+</mapper>

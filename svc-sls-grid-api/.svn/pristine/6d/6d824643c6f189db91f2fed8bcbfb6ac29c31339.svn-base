@@ -1,0 +1,225 @@
+package com.upsoft.sep.sls.grid.param.slsgrid;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Id;
+
+
+/**
+ * 添加slsgrid参数类
+ *
+ * @author autoCoder
+ */
+public class SlsGridAddParam {
+
+    @Id
+    @ApiModelProperty(value = "id", hidden = true)
+    private String id;
+
+    @ApiModelProperty(value = "name", required = false)
+    private String name;
+
+    @ApiModelProperty(value = "levelCode", required = false)
+    private String levelCode;
+
+    @ApiModelProperty(value = "levelName", required = false)
+    private String levelName;
+
+    @ApiModelProperty(value = "parentId", required = false)
+    private String parentId;
+
+    @ApiModelProperty(value = "gridLayer", required = false)
+    private String gridLayer;
+
+    @ApiModelProperty(value = "dutyUnitId", required = false)
+    private String dutyUnitId;
+
+    @ApiModelProperty(value = "dutyUnitName", required = false)
+    private String dutyUnitName;
+
+    @ApiModelProperty(value = "divisionLeaderId", required = false)
+    private String divisionLeaderId;
+
+    @ApiModelProperty(value = "divisionLeaderName", required = false)
+    private String divisionLeaderName;
+
+    @ApiModelProperty(value = "gridManagerId", required = false)
+    private String gridManagerId;
+
+    @ApiModelProperty(value = "gridManagerName", required = false)
+    private String gridManagerName;
+
+    @ApiModelProperty(value = "gridManagerPhone", required = false)
+    private String gridManagerPhone;
+
+    @ApiModelProperty(value = "standby1", required = false)
+    private String standby1;
+
+    @ApiModelProperty(value = "standby2", required = false)
+    private String standby2;
+
+    @ApiModelProperty(value = "standby3", required = false)
+    private String standby3;
+
+
+    public String getName() {
+        return name;
+
+    }
+
+    public String getId() {
+        return id;
+
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public String getLevelName() {
+        return levelName;
+
+    }
+
+    public String getDutyUnitName() {
+        return dutyUnitName;
+
+    }
+
+    public void setDutyUnitName(String dutyUnitName) {
+
+        this.dutyUnitName = dutyUnitName;
+    }
+
+    public String getDivisionLeaderId() {
+        return divisionLeaderId;
+
+    }
+
+    public void setDivisionLeaderId(String divisionLeaderId) {
+
+        this.divisionLeaderId = divisionLeaderId;
+    }
+
+    public String getDivisionLeaderName() {
+        return divisionLeaderName;
+
+    }
+
+    public void setDivisionLeaderName(String divisionLeaderName) {
+
+        this.divisionLeaderName = divisionLeaderName;
+    }
+
+    public String getGridManagerId() {
+        return gridManagerId;
+
+    }
+
+    public void setGridManagerId(String gridManagerId) {
+
+        this.gridManagerId = gridManagerId;
+    }
+
+    public String getGridManagerName() {
+        return gridManagerName;
+
+    }
+
+    public void setGridManagerName(String gridManagerName) {
+
+        this.gridManagerName = gridManagerName;
+    }
+
+    public String getGridManagerPhone() {
+        return gridManagerPhone;
+
+    }
+
+    public void setGridManagerPhone(String gridManagerPhone) {
+
+        this.gridManagerPhone = gridManagerPhone;
+    }
+
+    public void setId(String id) {
+
+        this.id = id;
+    }
+
+    public String getStandby1() {
+        return standby1;
+
+    }
+
+    public void setStandby1(String standby1) {
+
+        this.standby1 = standby1;
+    }
+
+    public String getStandby2() {
+        return standby2;
+
+    }
+
+    public void setStandby2(String standby2) {
+
+        this.standby2 = standby2;
+    }
+
+    public String getStandby3() {
+        return standby3;
+
+    }
+
+    public void setStandby3(String standby3) {
+
+        this.standby3 = standby3;
+    }
+
+    public String getLevelCode() {
+        return levelCode;
+
+    }
+
+    public void setLevelCode(String levelCode) {
+
+        this.levelCode = levelCode;
+    }
+
+    public void setLevelName(String levelName) {
+
+        this.levelName = levelName;
+    }
+
+    public String getParentId() {
+        return parentId;
+
+    }
+
+    public void setParentId(String parentId) {
+
+        this.parentId = parentId;
+    }
+
+    public String getGridLayer() {
+        return gridLayer;
+
+    }
+
+    public void setGridLayer(String gridLayer) {
+
+        this.gridLayer = gridLayer;
+    }
+
+    public String getDutyUnitId() {
+        return dutyUnitId;
+
+    }
+
+    public void setDutyUnitId(String dutyUnitId) {
+
+        this.dutyUnitId = dutyUnitId;
+    }
+
+}

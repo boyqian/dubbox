@@ -1,0 +1,19 @@
+package com.upsoft.sep.sls.task.dao;
+
+import com.upsoft.sep.bp.common.entity.RequestPage;
+import com.upsoft.sep.sls.task.IDCTaskMarker;
+import com.upsoft.sep.sls.task.entity.SlsRunTask;
+import com.upsoft.sep.sls.task.param.slsruntask.SlsRunTaskPageQueryParam;
+import java.util.List;
+
+public interface SlsRunTaskDao extends IDCTaskMarker {
+    int insert(SlsRunTask slsruntask);
+
+    int delete(String id);
+
+    int update(SlsRunTask slsruntask);
+
+    SlsRunTask getSlsRunTask(String id);
+
+    List<SlsRunTask> getPageSlsRunTask(RequestPage<SlsRunTaskPageQueryParam> pageQuery);
+}

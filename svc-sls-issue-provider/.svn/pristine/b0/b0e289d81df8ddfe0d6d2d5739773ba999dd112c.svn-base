@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.upsoft.sep</groupId>
+	<artifactId>svc-sls-issue-provider</artifactId>
+	<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+	<name>svc-sls-issue-provider</name>
+
+	<dependencies>
+		<!-- depend dubbox -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-depend-dubbox</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- sls-issue-api -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-sls-issue-api</artifactId>
+			<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+		</dependency>
+
+		<!-- fileupload -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-fileupload-api</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-workflow-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- bp-message -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-msg-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!--quartz start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<!--quartz end -->
+
+		
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-common-util</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+
+		<!-- sso -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-sso-client</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- 基础平台user引入 -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-user-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.41</version>
+		</dependency>
+
+		<!-- pushlet -->
+		<dependency>
+			<groupId>nl.justobjects</groupId>
+			<artifactId>pushlet</artifactId>
+			<version>2.0.4.1</version>
+		</dependency>
+		
+		<!-- 数据采集 -->
+		<dependency>
+ 			<groupId>com.upsoft.sep</groupId>
+ 			<artifactId>svc-eda-api</artifactId>
+ 			<version>3.1.0-SC.CD.WJ-SNAPSHOT</version>
+ 		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-fileupload-api</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-sls-common</artifactId>
+			<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+		</dependency>
+
+		<!--excle导出依赖包  -->
+		<dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.14</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<url>http://maven.apache.org</url>
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://172.16.18.3:8081/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://172.16.18.3:8081/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+</project>

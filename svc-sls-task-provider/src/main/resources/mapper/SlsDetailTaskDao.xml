@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsDetailTaskDao">
+  <resultMap id="SlsDetailTaskResult" type="com.upsoft.sep.sls.task.entity.SlsDetailTask">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="daily_enterprise_id" jdbcType="VARCHAR" property="dailyEnterpriseId" />
+    <result column="daily_enterprise_name" jdbcType="VARCHAR" property="dailyEnterpriseName" />
+    <result column="daily_grid_id" jdbcType="VARCHAR" property="dailyGridId" />
+    <result column="daily_grid_name" jdbcType="VARCHAR" property="dailyGridName" />
+    <result column="daily_enterprise_address" jdbcType="VARCHAR" property="dailyEnterpriseAddress" />
+    <result column="daily_construction_id" jdbcType="VARCHAR" property="dailyConstructionId" />
+    <result column="daily_construction_address" jdbcType="VARCHAR" property="dailyConstructionAddress" />
+    <result column="daily_construction_unit" jdbcType="VARCHAR" property="dailyConstructionUnit" />
+    <result column="daily_construction_name" jdbcType="VARCHAR" property="dailyConstructionName" />
+    <result column="daily_construction_implement" jdbcType="VARCHAR" property="dailyConstructionImplement" />
+    <result column="daily_inspection_content" jdbcType="VARCHAR" property="dailyInspectionContent" />
+    <result column="daily_note" jdbcType="VARCHAR" property="dailyNote" />
+    <result column="special_initiate_unit" jdbcType="VARCHAR" property="specialInitiateUnit" />
+    <result column="special_start_time" jdbcType="TIMESTAMP" property="specialStartTime" />
+    <result column="special_note" jdbcType="VARCHAR" property="specialNote" />
+    <result column="special_enterprise_id" jdbcType="VARCHAR" property="specialEnterpriseId" />
+    <result column="special_enterprise_name" jdbcType="VARCHAR" property="specialEnterpriseName" />
+    <result column="special_construction_id" jdbcType="VARCHAR" property="specialConstructionId" />
+    <result column="special_construction_name" jdbcType="VARCHAR" property="specialConstructionName" />
+    <result column="special_end_time" jdbcType="TIMESTAMP" property="specialEndTime" />
+    <result column="special_action_content" jdbcType="VARCHAR" property="specialActionContent" />
+    <result column="special_action_name" jdbcType="VARCHAR" property="specialActionName" />
+    <result column="temporary_task_content" jdbcType="VARCHAR" property="temporaryTaskContent" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="standby1" jdbcType="VARCHAR" property="standby1" />
+    <result column="standby2" jdbcType="VARCHAR" property="standby2" />
+    <result column="standby3" jdbcType="VARCHAR" property="standby3" />
+  </resultMap>
+  <sql id="Table_Name">
+    <![CDATA[
+    sls_detail_task
+    ]]>
+  </sql>
+  <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+    id, task_id, task_title, daily_enterprise_id, daily_enterprise_name, daily_grid_id, 
+    daily_grid_name, daily_enterprise_address, daily_construction_id, daily_construction_address, 
+    daily_construction_unit, daily_construction_name, daily_construction_implement, daily_inspection_content, 
+    daily_note, special_initiate_unit, special_start_time, special_note, special_enterprise_id, 
+    special_enterprise_name, special_construction_id, special_construction_name, special_end_time, 
+    special_action_content, special_action_name, temporary_task_content, create_time, 
+    update_time, standby1, standby2, standby3
+    ]]>
+  </sql>
+  <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, 
+    #{dailyEnterpriseId,jdbcType=VARCHAR}, #{dailyEnterpriseName,jdbcType=VARCHAR}, #{dailyGridId,jdbcType=VARCHAR}, 
+    #{dailyGridName,jdbcType=VARCHAR}, #{dailyEnterpriseAddress,jdbcType=VARCHAR}, #{dailyConstructionId,jdbcType=VARCHAR}, 
+    #{dailyConstructionAddress,jdbcType=VARCHAR}, #{dailyConstructionUnit,jdbcType=VARCHAR}, 
+    #{dailyConstructionName,jdbcType=VARCHAR}, #{dailyConstructionImplement,jdbcType=VARCHAR}, 
+    #{dailyInspectionContent,jdbcType=VARCHAR}, #{dailyNote,jdbcType=VARCHAR}, #{specialInitiateUnit,jdbcType=VARCHAR}, 
+    #{specialStartTime,jdbcType=TIMESTAMP}, #{specialNote,jdbcType=VARCHAR}, #{specialEnterpriseId,jdbcType=VARCHAR}, 
+    #{specialEnterpriseName,jdbcType=VARCHAR}, #{specialConstructionId,jdbcType=VARCHAR}, 
+    #{specialConstructionName,jdbcType=VARCHAR}, #{specialEndTime,jdbcType=TIMESTAMP}, 
+    #{specialActionContent,jdbcType=VARCHAR}, #{specialActionName,jdbcType=VARCHAR}, 
+    #{temporaryTaskContent,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+    #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR}
+  </sql>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask">
+    insert into
+    <include refid="Table_Name" />
+    (
+    <include refid="Select_or_Insert_Columns" />
+     )
+     VALUES
+     ( 
+    <include refid="Insert_Column_Value" />
+     )
+  </insert>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <update id="update" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask">
+    update 
+    <include refid="Table_Name" />
+    set 
+    task_id = #{taskId,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=VARCHAR},
+      daily_enterprise_id = #{dailyEnterpriseId,jdbcType=VARCHAR},
+      daily_enterprise_name = #{dailyEnterpriseName,jdbcType=VARCHAR},
+      daily_grid_id = #{dailyGridId,jdbcType=VARCHAR},
+      daily_grid_name = #{dailyGridName,jdbcType=VARCHAR},
+      daily_enterprise_address = #{dailyEnterpriseAddress,jdbcType=VARCHAR},
+      daily_construction_id = #{dailyConstructionId,jdbcType=VARCHAR},
+      daily_construction_address = #{dailyConstructionAddress,jdbcType=VARCHAR},
+      daily_construction_unit = #{dailyConstructionUnit,jdbcType=VARCHAR},
+      daily_construction_name = #{dailyConstructionName,jdbcType=VARCHAR},
+      daily_construction_implement = #{dailyConstructionImplement,jdbcType=VARCHAR},
+      daily_inspection_content = #{dailyInspectionContent,jdbcType=VARCHAR},
+      daily_note = #{dailyNote,jdbcType=VARCHAR},
+      special_initiate_unit = #{specialInitiateUnit,jdbcType=VARCHAR},
+      special_start_time = #{specialStartTime,jdbcType=TIMESTAMP},
+      special_note = #{specialNote,jdbcType=VARCHAR},
+      special_enterprise_id = #{specialEnterpriseId,jdbcType=VARCHAR},
+      special_enterprise_name = #{specialEnterpriseName,jdbcType=VARCHAR},
+      special_construction_id = #{specialConstructionId,jdbcType=VARCHAR},
+      special_construction_name = #{specialConstructionName,jdbcType=VARCHAR},
+      special_end_time = #{specialEndTime,jdbcType=TIMESTAMP},
+      special_action_content = #{specialActionContent,jdbcType=VARCHAR},
+      special_action_name = #{specialActionName,jdbcType=VARCHAR},
+      temporary_task_content = #{temporaryTaskContent,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getSlsDetailTask" parameterType="java.lang.String" resultMap="SlsDetailTaskResult">
+    select 
+    
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getPageSlsDetailTask" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="SlsDetailTaskResult">
+    select 
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where 1=1
+    <if test="param!=null and param.taskId != null and param.taskId !='' ">
+      and task_id like CONCAT(CONCAT('%',#{param.taskId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskId != null and param.taskId !='' ">
+      and task_id = #{taskId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.taskTitle != null and param.taskTitle !='' ">
+      and task_title like CONCAT(CONCAT('%',#{param.taskTitle}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskTitle != null and param.taskTitle !='' ">
+      and task_title = #{taskTitle,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyEnterpriseId != null and param.dailyEnterpriseId !='' ">
+      and daily_enterprise_id like CONCAT(CONCAT('%',#{param.dailyEnterpriseId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyEnterpriseId != null and param.dailyEnterpriseId !='' ">
+      and daily_enterprise_id = #{dailyEnterpriseId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyEnterpriseName != null and param.dailyEnterpriseName !='' ">
+      and daily_enterprise_name like CONCAT(CONCAT('%',#{param.dailyEnterpriseName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyEnterpriseName != null and param.dailyEnterpriseName !='' ">
+      and daily_enterprise_name = #{dailyEnterpriseName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyGridId != null and param.dailyGridId !='' ">
+      and daily_grid_id like CONCAT(CONCAT('%',#{param.dailyGridId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyGridId != null and param.dailyGridId !='' ">
+      and daily_grid_id = #{dailyGridId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyGridName != null and param.dailyGridName !='' ">
+      and daily_grid_name like CONCAT(CONCAT('%',#{param.dailyGridName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyGridName != null and param.dailyGridName !='' ">
+      and daily_grid_name = #{dailyGridName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyEnterpriseAddress != null and param.dailyEnterpriseAddress !='' ">
+      and daily_enterprise_address like CONCAT(CONCAT('%',#{param.dailyEnterpriseAddress}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyEnterpriseAddress != null and param.dailyEnterpriseAddress !='' ">
+      and daily_enterprise_address = #{dailyEnterpriseAddress,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyConstructionId != null and param.dailyConstructionId !='' ">
+      and daily_construction_id like CONCAT(CONCAT('%',#{param.dailyConstructionId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyConstructionId != null and param.dailyConstructionId !='' ">
+      and daily_construction_id = #{dailyConstructionId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyConstructionAddress != null and param.dailyConstructionAddress !='' ">
+      and daily_construction_address like CONCAT(CONCAT('%',#{param.dailyConstructionAddress}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyConstructionAddress != null and param.dailyConstructionAddress !='' ">
+      and daily_construction_address = #{dailyConstructionAddress,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyConstructionUnit != null and param.dailyConstructionUnit !='' ">
+      and daily_construction_unit like CONCAT(CONCAT('%',#{param.dailyConstructionUnit}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyConstructionUnit != null and param.dailyConstructionUnit !='' ">
+      and daily_construction_unit = #{dailyConstructionUnit,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyConstructionName != null and param.dailyConstructionName !='' ">
+      and daily_construction_name like CONCAT(CONCAT('%',#{param.dailyConstructionName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyConstructionName != null and param.dailyConstructionName !='' ">
+      and daily_construction_name = #{dailyConstructionName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyConstructionImplement != null and param.dailyConstructionImplement !='' ">
+      and daily_construction_implement like CONCAT(CONCAT('%',#{param.dailyConstructionImplement}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyConstructionImplement != null and param.dailyConstructionImplement !='' ">
+      and daily_construction_implement = #{dailyConstructionImplement,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyInspectionContent != null and param.dailyInspectionContent !='' ">
+      and daily_inspection_content like CONCAT(CONCAT('%',#{param.dailyInspectionContent}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyInspectionContent != null and param.dailyInspectionContent !='' ">
+      and daily_inspection_content = #{dailyInspectionContent,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dailyNote != null and param.dailyNote !='' ">
+      and daily_note like CONCAT(CONCAT('%',#{param.dailyNote}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dailyNote != null and param.dailyNote !='' ">
+      and daily_note = #{dailyNote,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialInitiateUnit != null and param.specialInitiateUnit !='' ">
+      and special_initiate_unit like CONCAT(CONCAT('%',#{param.specialInitiateUnit}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialInitiateUnit != null and param.specialInitiateUnit !='' ">
+      and special_initiate_unit = #{specialInitiateUnit,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialStartTime != null and param.specialStartTime !='' ">
+      and special_start_time like CONCAT(CONCAT('%',#{param.specialStartTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialStartTime != null and param.specialStartTime !='' ">
+      and special_start_time = #{specialStartTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialNote != null and param.specialNote !='' ">
+      and special_note like CONCAT(CONCAT('%',#{param.specialNote}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialNote != null and param.specialNote !='' ">
+      and special_note = #{specialNote,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialEnterpriseId != null and param.specialEnterpriseId !='' ">
+      and special_enterprise_id like CONCAT(CONCAT('%',#{param.specialEnterpriseId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialEnterpriseId != null and param.specialEnterpriseId !='' ">
+      and special_enterprise_id = #{specialEnterpriseId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialEnterpriseName != null and param.specialEnterpriseName !='' ">
+      and special_enterprise_name like CONCAT(CONCAT('%',#{param.specialEnterpriseName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialEnterpriseName != null and param.specialEnterpriseName !='' ">
+      and special_enterprise_name = #{specialEnterpriseName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialConstructionId != null and param.specialConstructionId !='' ">
+      and special_construction_id like CONCAT(CONCAT('%',#{param.specialConstructionId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialConstructionId != null and param.specialConstructionId !='' ">
+      and special_construction_id = #{specialConstructionId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialConstructionName != null and param.specialConstructionName !='' ">
+      and special_construction_name like CONCAT(CONCAT('%',#{param.specialConstructionName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialConstructionName != null and param.specialConstructionName !='' ">
+      and special_construction_name = #{specialConstructionName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialEndTime != null and param.specialEndTime !='' ">
+      and special_end_time like CONCAT(CONCAT('%',#{param.specialEndTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialEndTime != null and param.specialEndTime !='' ">
+      and special_end_time = #{specialEndTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialActionContent != null and param.specialActionContent !='' ">
+      and special_action_content like CONCAT(CONCAT('%',#{param.specialActionContent}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialActionContent != null and param.specialActionContent !='' ">
+      and special_action_content = #{specialActionContent,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.specialActionName != null and param.specialActionName !='' ">
+      and special_action_name like CONCAT(CONCAT('%',#{param.specialActionName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.specialActionName != null and param.specialActionName !='' ">
+      and special_action_name = #{specialActionName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.temporaryTaskContent != null and param.temporaryTaskContent !='' ">
+      and temporary_task_content like CONCAT(CONCAT('%',#{param.temporaryTaskContent}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.temporaryTaskContent != null and param.temporaryTaskContent !='' ">
+      and temporary_task_content = #{temporaryTaskContent,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.createTime != null and param.createTime !='' ">
+      and create_time like CONCAT(CONCAT('%',#{param.createTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.createTime != null and param.createTime !='' ">
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.updateTime != null and param.updateTime !='' ">
+      and update_time like CONCAT(CONCAT('%',#{param.updateTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.updateTime != null and param.updateTime !='' ">
+      and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 = #{standby1,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 = #{standby2,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 like CONCAT(CONCAT('%',#{param.standby3}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 = #{standby3,jdbcType=VARCHAR}
+    </if>
+     -->
+  </select>
+</mapper>

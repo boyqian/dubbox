@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.config.schedule.dao.ConfigScheduleTimeDao">
+  <resultMap id="ConfigScheduleTimeResult" type="com.upsoft.sep.sls.config.schedule.entity.ConfigScheduleTime">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="source_code" jdbcType="VARCHAR" property="sourceCode" />
+    <result column="source_value" jdbcType="VARCHAR" property="sourceValue" />
+    <result column="urgency_degree_code" jdbcType="VARCHAR" property="urgencyDegreeCode" />
+    <result column="urgency_degree_name" jdbcType="VARCHAR" property="urgencyDegreeName" />
+    <result column="day_type_code" jdbcType="TINYINT" property="dayTypeCode" />
+    <result column="day_type_name" jdbcType="VARCHAR" property="dayTypeName" />
+    <result column="days" jdbcType="TINYINT" property="days" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="standby1" jdbcType="VARCHAR" property="standby1" />
+    <result column="standby2" jdbcType="VARCHAR" property="standby2" />
+  </resultMap>
+  <sql id="Table_Name">
+    <![CDATA[
+    sls_config_schedule_time
+    ]]>
+  </sql>
+  <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+    id, source_code, source_value, urgency_degree_code, urgency_degree_name, day_type_code, 
+    day_type_name, `days`, update_time, create_time, standby1, standby2
+    ]]>
+  </sql>
+  <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{sourceCode,jdbcType=VARCHAR}, #{sourceValue,jdbcType=VARCHAR}, 
+    #{urgencyDegreeCode,jdbcType=VARCHAR}, #{urgencyDegreeName,jdbcType=VARCHAR}, #{dayTypeCode,jdbcType=TINYINT}, 
+    #{dayTypeName,jdbcType=VARCHAR}, #{days,jdbcType=TINYINT}, #{updateTime,jdbcType=TIMESTAMP}, 
+    #{createTime,jdbcType=TIMESTAMP}, #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}
+  </sql>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.config.schedule.entity.ConfigScheduleTime">
+    insert into
+    <include refid="Table_Name" />
+    (
+    <include refid="Select_or_Insert_Columns" />
+     )
+     VALUES
+     ( 
+    <include refid="Insert_Column_Value" />
+     )
+  </insert>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <update id="update" parameterType="com.upsoft.sep.sls.config.schedule.entity.ConfigScheduleTime">
+    update 
+    <include refid="Table_Name" />
+    set 
+    source_code = #{sourceCode,jdbcType=VARCHAR},
+      source_value = #{sourceValue,jdbcType=VARCHAR},
+      urgency_degree_code = #{urgencyDegreeCode,jdbcType=VARCHAR},
+      urgency_degree_name = #{urgencyDegreeName,jdbcType=VARCHAR},
+      day_type_code = #{dayTypeCode,jdbcType=TINYINT},
+      day_type_name = #{dayTypeName,jdbcType=VARCHAR},
+      `days` = #{days,jdbcType=TINYINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getConfigScheduleTime" parameterType="java.lang.String" resultMap="ConfigScheduleTimeResult">
+    select 
+    
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getPageConfigScheduleTime" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="ConfigScheduleTimeResult">
+    select 
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where 1=1
+    <if test="param!=null and param.sourceCode != null and param.sourceCode !='' ">
+      and source_code = #{param.sourceCode,jdbcType=VARCHAR}
+    </if>
+    <!-- 
+    <if test="param!=null and param.sourceCode != null and param.sourceCode !='' ">
+      and source_code = #{sourceCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.sourceValue != null and param.sourceValue !='' ">
+      and source_value = #{param.sourceValue,jdbcType=VARCHAR}
+    </if>
+    <!-- 
+    <if test="param!=null and param.sourceValue != null and param.sourceValue !='' ">
+      and source_value = #{sourceValue,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.urgencyDegreeCode != null and param.urgencyDegreeCode !='' ">
+      and urgency_degree_code = #{param.urgencyDegreeCode,jdbcType=VARCHAR}
+    </if>
+    <!-- 
+    <if test="param!=null and param.urgencyDegreeCode != null and param.urgencyDegreeCode !='' ">
+      and urgency_degree_code = #{urgencyDegreeCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.urgencyDegreeName != null and param.urgencyDegreeName !='' ">
+      and urgency_degree_name = #{param.urgencyDegreeName,jdbcType=VARCHAR}
+    </if>
+    <!-- 
+    <if test="param!=null and param.urgencyDegreeName != null and param.urgencyDegreeName !='' ">
+      and urgency_degree_name = #{urgencyDegreeName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dayTypeCode != null and param.dayTypeCode !='' ">
+      and day_type_code = #{param.dayTypeCode,jdbcType=TINYINT}
+    </if>
+    <!-- 
+    <if test="param!=null and param.dayTypeCode != null and param.dayTypeCode !='' ">
+      and day_type_code = #{dayTypeCode,jdbcType=TINYINT}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dayTypeName != null and param.dayTypeName !='' ">
+      and day_type_name = #{param.dayTypeName,jdbcType=VARCHAR}
+    </if>
+    <!-- 
+    <if test="param!=null and param.dayTypeName != null and param.dayTypeName !='' ">
+      and day_type_name = #{dayTypeName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.days != null and param.days !='' ">
+      and `days` = #{param.days,jdbcType=TINYINT}
+    </if>
+    <!-- 
+    <if test="param!=null and param.days != null and param.days !='' ">
+      and `days` = #{days,jdbcType=TINYINT}
+    </if>
+     -->
+
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 = #{standby1,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 = #{standby2,jdbcType=VARCHAR}
+    </if>
+     -->
+  </select>
+</mapper>

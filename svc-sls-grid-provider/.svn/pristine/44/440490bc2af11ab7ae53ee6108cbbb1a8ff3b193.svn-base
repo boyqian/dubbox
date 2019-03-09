@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.grid.dao.GridEnterpriseDao">
+    <resultMap id="GridEnterpriseResult" type="com.upsoft.sep.sls.grid.entity.GridEnterprise">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="enterprise_id" jdbcType="VARCHAR" property="enterpriseId"/>
+        <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName"/>
+        <result column="enterprise_address" jdbcType="VARCHAR" property="enterpriseAddress"/>
+        <result column="supervision_type_code" jdbcType="VARCHAR" property="supervisionTypeCode"/>
+        <result column="supervision_type_name" jdbcType="VARCHAR" property="supervisionTypeName"/>
+        <result column="enterprise_type_code" jdbcType="VARCHAR" property="enterpriseTypeCode"/>
+        <result column="enterprise_type_name" jdbcType="VARCHAR" property="enterpriseTypeName"/>
+        <result column="inspection_staff_id" jdbcType="VARCHAR" property="inspectionStaffId"/>
+        <result column="inspection_staff_name" jdbcType="VARCHAR" property="inspectionStaffName"/>
+        <result column="grid_id" jdbcType="VARCHAR" property="gridId"/>
+        <result column="grid_name" jdbcType="VARCHAR" property="gridName"/>
+        <result column="standby1" jdbcType="VARCHAR" property="standby1"/>
+        <result column="standby2" jdbcType="VARCHAR" property="standby2"/>
+        <result column="standby3" jdbcType="VARCHAR" property="standby3"/>
+    </resultMap>
+    <sql id="Table_Name">
+    <![CDATA[
+
+    sls_grid_enterprise
+
+        ]]>
+  </sql>
+    <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+
+    id, enterprise_id, enterprise_name, enterprise_address, supervision_type_code, supervision_type_name, 
+    enterprise_type_code, enterprise_type_name, inspection_staff_id, inspection_staff_name, 
+    grid_id, grid_name, standby1, standby2, standby3
+
+        ]]>
+  </sql>
+    <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=VARCHAR}, #{enterpriseName,jdbcType=VARCHAR}, 
+    #{enterpriseAddress,jdbcType=VARCHAR}, #{supervisionTypeCode,jdbcType=VARCHAR}, #{supervisionTypeName,jdbcType=VARCHAR}, 
+    #{enterpriseTypeCode,jdbcType=VARCHAR}, #{enterpriseTypeName,jdbcType=VARCHAR}, #{inspectionStaffId,jdbcType=VARCHAR}, 
+    #{inspectionStaffName,jdbcType=VARCHAR}, #{gridId,jdbcType=VARCHAR}, #{gridName,jdbcType=VARCHAR}, 
+    #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR}
+  </sql>
+    <insert id="insert" parameterType="com.upsoft.sep.sls.grid.entity.GridEnterprise">
+        insert into
+        <include refid="Table_Name"/>
+        (
+        <include refid="Select_or_Insert_Columns"/>
+        )
+        VALUES
+        (
+        <include refid="Insert_Column_Value"/>
+        )
+    </insert>
+
+    <!--批量新增-->
+    <insert id="insertCodeBatch" parameterType="java.util.List" >
+        insert into
+        <include refid="Table_Name"/>
+        (
+        <include refid="Select_or_Insert_Columns"/>
+        )
+        values
+        <foreach collection ="list" item="gridEnterprise" index= "index" separator =",">
+        (
+            #{gridEnterprise.id,jdbcType=VARCHAR}, #{gridEnterprise.enterpriseId,jdbcType=VARCHAR}, #{gridEnterprise.enterpriseName,jdbcType=VARCHAR},
+            #{gridEnterprise.enterpriseAddress,jdbcType=VARCHAR}, #{gridEnterprise.supervisionTypeCode,jdbcType=VARCHAR}, #{gridEnterprise.supervisionTypeName,jdbcType=VARCHAR},
+            #{gridEnterprise.enterpriseTypeCode,jdbcType=VARCHAR}, #{gridEnterprise.enterpriseTypeName,jdbcType=VARCHAR}, #{gridEnterprise.inspectionStaffId,jdbcType=VARCHAR},
+            #{gridEnterprise.inspectionStaffName,jdbcType=VARCHAR}, #{gridEnterprise.gridId,jdbcType=VARCHAR}, #{gridEnterprise.gridName,jdbcType=VARCHAR},
+            #{gridEnterprise.standby1,jdbcType=VARCHAR}, #{gridEnterprise.standby2,jdbcType=VARCHAR}, #{gridEnterprise.standby3,jdbcType=VARCHAR}
+        )
+        </foreach >
+    </insert>
+
+    <delete id="deleteByGridId" parameterType="java.lang.String">
+        delete from
+        <include refid="Table_Name"/>
+        where grid_id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <update id="update" parameterType="com.upsoft.sep.sls.grid.entity.GridEnterprise">
+        update
+        <include refid="Table_Name"/>
+        set
+        enterprise_id = #{enterpriseId,jdbcType=VARCHAR},
+        enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+        enterprise_address = #{enterpriseAddress,jdbcType=VARCHAR},
+        supervision_type_code = #{supervisionTypeCode,jdbcType=VARCHAR},
+        supervision_type_name = #{supervisionTypeName,jdbcType=VARCHAR},
+        enterprise_type_code = #{enterpriseTypeCode,jdbcType=VARCHAR},
+        enterprise_type_name = #{enterpriseTypeName,jdbcType=VARCHAR},
+        inspection_staff_id = #{inspectionStaffId,jdbcType=VARCHAR},
+        inspection_staff_name = #{inspectionStaffName,jdbcType=VARCHAR},
+        grid_id = #{gridId,jdbcType=VARCHAR},
+        grid_name = #{gridName,jdbcType=VARCHAR},
+        standby1 = #{standby1,jdbcType=VARCHAR},
+        standby2 = #{standby2,jdbcType=VARCHAR},
+        standby3 = #{standby3,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="getGridEnterprise" parameterType="java.lang.String" resultMap="GridEnterpriseResult">
+        select
+
+        <include refid="Select_or_Insert_Columns"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="getPageGridEnterprise" parameterType="com.upsoft.sep.bp.common.entity.RequestPage"
+            resultMap="GridEnterpriseResult">
+        select
+        <include refid="Select_or_Insert_Columns"/>
+        from
+        <include refid="Table_Name"/>
+        where 1=1
+        <if test="param!=null and param.enterpriseId != null and param.enterpriseId !='' ">
+            and enterprise_id like CONCAT(CONCAT('%',#{param.enterpriseId}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.enterpriseId != null and param.enterpriseId !='' ">
+          and enterprise_id = #{enterpriseId,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.enterpriseName != null and param.enterpriseName !='' ">
+            and enterprise_name like CONCAT(CONCAT('%',#{param.enterpriseName}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.enterpriseName != null and param.enterpriseName !='' ">
+          and enterprise_name = #{enterpriseName,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.enterpriseAddress != null and param.enterpriseAddress !='' ">
+            and enterprise_address like CONCAT(CONCAT('%',#{param.enterpriseAddress}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.enterpriseAddress != null and param.enterpriseAddress !='' ">
+          and enterprise_address = #{enterpriseAddress,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.supervisionTypeCode != null and param.supervisionTypeCode !='' ">
+            and supervision_type_code like CONCAT(CONCAT('%',#{param.supervisionTypeCode}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.supervisionTypeCode != null and param.supervisionTypeCode !='' ">
+          and supervision_type_code = #{supervisionTypeCode,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.supervisionTypeName != null and param.supervisionTypeName !='' ">
+            and supervision_type_name like CONCAT(CONCAT('%',#{param.supervisionTypeName}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.supervisionTypeName != null and param.supervisionTypeName !='' ">
+          and supervision_type_name = #{supervisionTypeName,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.enterpriseTypeCode != null and param.enterpriseTypeCode !='' ">
+            and enterprise_type_code like CONCAT(CONCAT('%',#{param.enterpriseTypeCode}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.enterpriseTypeCode != null and param.enterpriseTypeCode !='' ">
+          and enterprise_type_code = #{enterpriseTypeCode,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.enterpriseTypeName != null and param.enterpriseTypeName !='' ">
+            and enterprise_type_name like CONCAT(CONCAT('%',#{param.enterpriseTypeName}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.enterpriseTypeName != null and param.enterpriseTypeName !='' ">
+          and enterprise_type_name = #{enterpriseTypeName,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.inspectionStaffId != null and param.inspectionStaffId !='' ">
+            and inspection_staff_id like CONCAT(CONCAT('%',#{param.inspectionStaffId}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.inspectionStaffId != null and param.inspectionStaffId !='' ">
+          and inspection_staff_id = #{inspectionStaffId,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.inspectionStaffName != null and param.inspectionStaffName !='' ">
+            and inspection_staff_name like CONCAT(CONCAT('%',#{param.inspectionStaffName}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.inspectionStaffName != null and param.inspectionStaffName !='' ">
+          and inspection_staff_name = #{inspectionStaffName,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.gridId != null and param.gridId !='' ">
+            and grid_id like CONCAT(CONCAT('%',#{param.gridId}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.gridId != null and param.gridId !='' ">
+          and grid_id = #{gridId,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.gridName != null and param.gridName !='' ">
+            and grid_name like CONCAT(CONCAT('%',#{param.gridName}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.gridName != null and param.gridName !='' ">
+          and grid_name = #{gridName,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+            and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+          and standby1 = #{standby1,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+            and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+          and standby2 = #{standby2,jdbcType=VARCHAR}
+        </if>
+         -->
+
+        <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+            and standby3 like CONCAT(CONCAT('%',#{param.standby3}),'%')
+        </if>
+        <!--
+        <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+          and standby3 = #{standby3,jdbcType=VARCHAR}
+        </if>
+         -->
+    </select>
+</mapper>

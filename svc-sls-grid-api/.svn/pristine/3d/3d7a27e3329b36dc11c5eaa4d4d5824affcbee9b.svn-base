@@ -1,0 +1,25 @@
+package com.upsoft.sep.sls.grid.param.gridenterprise;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Id;
+
+
+/**
+ * 删除gridenterprise的参数类
+ *
+ * @author autoCoder
+ */
+public class GridEnterpriseDelParam {
+
+    @ApiModelProperty(value = "gridId", required = true)
+    private String gridId;
+
+    public String getGridId() {
+        return gridId;
+    }
+
+    public void setGridId(String gridId) {
+        this.gridId = gridId;
+    }
+}

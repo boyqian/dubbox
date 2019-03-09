@@ -1,0 +1,19 @@
+package com.upsoft.sep.sls.grid.dao;
+
+import com.upsoft.sep.bp.common.entity.RequestPage;
+import com.upsoft.sep.sls.grid.IDCGridMarker;
+import com.upsoft.sep.sls.grid.entity.SlsGrid;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridPageQueryParam;
+import java.util.List;
+
+public interface SlsGridDao extends IDCGridMarker {
+    int insert(SlsGrid slsgrid);
+
+    int delete(String id);
+
+    int update(SlsGrid slsgrid);
+
+    SlsGrid getSlsGrid(String id);
+
+    List<SlsGrid> getPageSlsGrid(RequestPage<SlsGridPageQueryParam> pageQuery);
+}

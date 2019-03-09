@@ -1,0 +1,191 @@
+package com.upsoft.sep.sls.grid.service;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+import com.upsoft.sep.bp.common.entity.RequestPage;
+import com.upsoft.sep.bp.common.entity.ResponsePage;
+import com.upsoft.sep.bp.common.entity.Result;
+import com.upsoft.sep.bp.common.log.LogHandler;
+import com.upsoft.sep.bp.common.util.StringUtil;
+import org.apache.commons.beanutils.BeanUtils;
+
+import com.upsoft.sep.sls.grid.dao.SlsGridDao;
+import com.upsoft.sep.sls.grid.entity.SlsGrid;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridAddParam;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridDelParam;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridGetParam;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridModParam;
+import com.upsoft.sep.sls.grid.param.slsgrid.SlsGridPageQueryParam;
+
+
+import java.util.List;
+
+import com.upsoft.sep.sls.grid.entity.SlsGrid;
+
+public class SlsGridServiceImpl implements SlsGridService {
+
+    private static final LogHandler LOG = LogHandler.getLogHandler(SlsGridServiceImpl.class);
+
+    @Autowired
+    private SlsGridDao slsGridDao;
+
+    /**
+     * 修改SlsGrid信息
+     */
+    @Override
+    public Result<String> updateSlsGrid(SlsGridModParam slsGridModParam) {
+        //参数校验
+        modParamValidate(slsGridModParam);
+
+        //修改数据
+        try {
+            SlsGrid slsGrid = new SlsGrid();
+            BeanUtils.copyProperties(slsGrid, slsGridModParam);
+            slsGridDao.update(slsGrid);
+            return new Result<String>(Result.STATUS_SUCCES, null, "修改slsGrid成功！", null);
+        } catch (Exception e) {
+            LOG.error("修改SlsGrid失败", e);
+            return new Result<String>(Result.STATUS_ERROR, null, "修改SlsGrid失败！", null);
+        }
+    }
+
+    /**
+     * 修改SlsGrid参数校验
+     *
+     * @param slsGridModParam
+     */
+    public void modParamValidate(SlsGridModParam slsGridModParam) {
+        Assert.notNull(slsGridModParam, "参数错误");
+        Assert.notNull(slsGridModParam.getId(), "参数错误");
+
+    }
+
+
+    /**
+     * 根据主键删除SlsGrid
+     */
+    @Override
+    public Result<String> delSlsGrid(SlsGridDelParam slsGridDelParam) {
+        //参数校验
+        delParamValidate(slsGridDelParam);
+
+        try {
+            //删除SlsGrid
+            slsGridDao.delete(slsGridDelParam.getId());
+            return new Result<String>(Result.STATUS_SUCCES, null, "删除SlsGrid成功！", null);
+        } catch (Exception e) {
+            LOG.error("删除SlsGrid失败", e);
+            return new Result<String>(Result.STATUS_ERROR, null, "删除SlsGrid失败！", null);
+        }
+    }
+
+
+    /**
+     * 删除SlsGrid参数校验
+     *
+     * @param slsGridDelParam
+     */
+    public void delParamValidate(SlsGridDelParam slsGridDelParam) {
+        Assert.notNull(slsGridDelParam, "参数错误");
+        Assert.notNull(slsGridDelParam.getId(), "参数错误");
+    }
+
+    /**
+     * 新增SlsGrid
+     */
+    @Override
+    public Result<String> saveSlsGrid(SlsGridAddParam slsGridAddParam) {
+        //参数校验
+        addParamValidate(slsGridAddParam);
+
+        //保存数据
+        try {
+            SlsGrid slsGrid = new SlsGrid();
+            BeanUtils.copyProperties(slsGrid, slsGridAddParam);
+            slsGrid.setId(StringUtil.uuid());
+            slsGridDao.insert(slsGrid);
+            return new Result<String>(Result.STATUS_SUCCES, null, "新增slsGrid成功！", null);
+        } catch (Exception e) {
+            LOG.error("新增slsGrid失败", e);
+            return new Result<String>(Result.STATUS_ERROR, null, "新增slsGrid失败！", null);
+        }
+    }
+
+
+    /**
+     * 新增SlsGrid参数校验
+     *
+     * @param slsGridAddParam
+     */
+    public void addParamValidate(SlsGridAddParam slsGridAddParam) {
+        Assert.notNull(slsGridAddParam, "参数错误");
+    }
+
+    /**
+     * SlsGrid分页查询
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public Result<ResponsePage<List<SlsGrid>>> getPageQuery(RequestPage<SlsGridPageQueryParam> requestPage) {
+
+        Result<ResponsePage<List<SlsGrid>>> result = new Result<>();
+        try {
+            List<SlsGrid> slsGridList = slsGridDao.getPageSlsGrid(requestPage);
+            ResponsePage<List<SlsGrid>> responsePage = requestPage.toResponsePage();
+            responsePage.setData(slsGridList);
+            result.setStatus(Result.STATUS_SUCCES);
+            result.setData(responsePage);
+            result.setMsg("查询SlsGrid列表成功！");
+        } catch (Exception e) {
+            LOG.error("查询SlsGrid列表失败！", e);
+            result.setStatus(Result.STATUS_ERROR);
+            result.setMsg("查询SlsGrid列表失败！");
+        }
+        return result;
+    }
+
+    /**
+     * SlsGrid分页查询参数校验
+     *
+     * @param requestPage
+     */
+    public void pageQueryParamValidate(RequestPage<SlsGridPageQueryParam> requestPage) {
+        Assert.notNull(requestPage, "参数错误");
+    }
+
+    /**
+     * 查询SlsGrid信息
+     */
+    @Override
+    public Result<SlsGrid> getSlsGrid(SlsGridGetParam slsGridGetParam) {
+
+
+        Result<SlsGrid> result = new Result<SlsGrid>();
+        try {
+            SlsGrid slsGrid = slsGridDao.getSlsGrid(slsGridGetParam.getId());
+            result.setStatus(Result.STATUS_SUCCES);
+            result.setData(slsGrid);
+            result.setMsg("查询slsGrid成功");
+        } catch (Exception e) {
+            LOG.error("查询slsGrid失败", e);
+            result.setStatus(Result.STATUS_ERROR);
+            result.setMsg("查询slsGrid失败");
+        }
+        return result;
+    }
+
+    /**
+     * 查询SlsGrid参数校验
+     *
+     * @param slsGridGetParam
+     */
+    public void getParamValidate(SlsGridGetParam slsGridGetParam) {
+        Assert.notNull(slsGridGetParam, "参数错误");
+        Assert.notNull(slsGridGetParam.getId(), "参数错误");
+
+    }
+
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans          
+    http://www.springframework.org/schema/beans/spring-beans.xsd          
+    http://code.alibabatech.com/schema/dubbo          
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 接口暴露写法参考，已注释，各开发人员根据自己定义按照此格式暴露接口 -->
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.upsoft.sep.sls.config.check.service.CheckItemService" ref="checkItemServiceImpl" timeout="30000" register="true" />
+	<bean id="checkItemServiceImpl" class="com.upsoft.sep.sls.config.check.service.CheckItemServiceImpl" />
+
+	<dubbo:service interface="com.upsoft.sep.sls.config.check.service.CheckItemOptService" ref="checkItemOptServiceImpl" timeout="30000" register="true" />
+	<bean id="checkItemOptServiceImpl" class="com.upsoft.sep.sls.config.check.service.CheckItemOptServiceImpl" />
+
+	<dubbo:service interface="com.upsoft.sep.sls.config.check.service.CheckTemplateService" ref="checkTemplateServiceImpl" timeout="30000" register="true" />
+	<bean id="checkTemplateServiceImpl" class="com.upsoft.sep.sls.config.check.service.CheckTemplateServiceImpl" />
+
+	<dubbo:service interface="com.upsoft.sep.sls.config.check.service.TemplateItemRelService" ref="templateItemRelServiceImpl" timeout="30000" register="true" />
+	<bean id="templateItemRelServiceImpl" class="com.upsoft.sep.sls.config.check.service.TemplateItemRelServiceImpl" />
+
+	<!-- 调度时间配置 -->
+	<dubbo:service interface="com.upsoft.sep.sls.config.schedule.service.ConfigScheduleTimeService" ref="configScheduleTimeService" timeout="30000" register="true" />
+	<bean id="configScheduleTimeService" class="com.upsoft.sep.sls.config.schedule.service.ConfigScheduleTimeServiceImpl" />
+</beans>  

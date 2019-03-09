@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans          
+    http://www.springframework.org/schema/beans/spring-beans.xsd          
+    http://code.alibabatech.com/schema/dubbo          
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 接口暴露写法参考，已注释，各开发人员根据自己定义按照此格式暴露接口 -->
+	<!-- 声明需要暴露的服务接口 -->
+	<!-- 问题管理服务注册 -->
+	<dubbo:service interface="com.upsoft.sep.sls.issue.service.ProblemService" ref="problemServiceImpl" timeout="30000" register="true"/>
+	<bean id="problemServiceImpl" class="com.upsoft.sep.sls.issue.service.ProblemServiceImpl"/>
+	<!-- 问题详情服务注册 -->
+	<dubbo:service interface="com.upsoft.sep.sls.issue.service.ProblemBaseService" ref="problemBaseServiceImpl" timeout="30000" register="true"/>
+	<bean id="problemBaseServiceImpl" class="com.upsoft.sep.sls.issue.service.ProblemBaseServiceImpl"/>
+	<!-- 问题导出服务注册 -->
+	<dubbo:service interface="com.upsoft.sep.sls.issue.service.ProblemExportService" ref="problemExportServiceImpl" timeout="30000" register="true">
+		<dubbo:method name="doExportProblem" timeout="300000"/>
+	</dubbo:service>
+	<bean id="problemExportServiceImpl" class="com.upsoft.sep.sls.issue.service.ProblemExportServiceImpl"/>
+</beans>  

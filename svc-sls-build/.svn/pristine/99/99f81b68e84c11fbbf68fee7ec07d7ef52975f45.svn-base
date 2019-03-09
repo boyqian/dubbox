@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:task="http://www.springframework.org/schema/task" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	   http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-4.0.xsd
+
+
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<bean class="com.upsoft.sep.bp.common.util.SpringContextUtil"></bean>
+
+	<import resource="classpath*:dubboprovider*.xml" />
+	<import resource="classpath*:dubboconsumer*.xml" />
+
+	<beans profile="dev">
+		<context:property-placeholder location="classpath:/**/*-holder.properties" ignore-unresolvable="true"/>
+		<util:properties id="properties" location="classpath:/**/*-holder.properties" />
+		<bean class="com.upsoft.sep.bp.common.support.logback.LogbackConfigLoader" p:location="classpath:/logback.xml" />
+	</beans>
+	<beans profile="pro">
+		<context:property-placeholder location="file:#{'${confPath}'?:'/upsoft/conf/'}/sls/*-holder.properties" ignore-unresolvable="true"/>
+		<util:properties id="properties" location="file:#{'${confPath}'?:'/upsoft/conf/'}/sls/*-holder.properties" />
+		<bean class="com.upsoft.sep.bp.common.support.logback.LogbackConfigLoader" p:location="file:#{'${confPath}'?:'/upsoft/conf/'}/sls/logback.xml" />
+	</beans>
+
+	<beans>
+		<task:annotation-driven />
+		<context:annotation-config />
+		<context:component-scan base-package="com.upsoft.sep" />
+
+		<bean id="abstractXADataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" init-method="init" destroy-method="close" abstract="true">
+			<property name="poolSize" value="${jdbc.default.poolSize}" />
+			<property name="minPoolSize" value="${jdbc.default.minPoolSize}" />
+			<property name="maxPoolSize" value="${jdbc.default.maxPoolSize}" />
+			<property name="borrowConnectionTimeout" value="${jdbc.default.borrowConnectionTimeout}" />
+			<property name="reapTimeout" value="${jdbc.default.reapTimeout}" />
+			<property name="maxIdleTime" value="${jdbc.default.maxIdleTime}" />
+			<property name="maintenanceInterval" value="${jdbc.default.maintenanceInterval}" />
+			<property name="loginTimeout" value="${jdbc.default.loginTimeout}" />
+			<property name="logWriter" value="${jdbc.default.logWriter}" />
+			<property name="maxLifetime" value="${jdbc.default.maxLifetime}" />
+		</bean>
+		
+		<!-- sls-数据源配置 -->
+		<bean id="em-sls-db" parent="abstractXADataSource">
+			<property name="uniqueResourceName" value="mysql/em-sls-db" />
+			<property name="driverClassName">
+				<value>${jdbc.sls.driverClassName}</value>
+			</property>
+			<property name="url">
+				<value>${jdbc.sls.url}</value>
+			</property>
+			<property name="user">
+				<value>${jdbc.sls.username}</value>
+			</property>
+			<property name="password">
+				<value>${jdbc.sls.password}</value>
+			</property>
+		</bean>
+		
+		<!-- sls-grid-数据源配置 -->
+		<bean id="em-sls-grid-db" parent="abstractXADataSource">
+			<property name="uniqueResourceName" value="mysql/em-sls-grid-db" />
+			<property name="driverClassName">
+				<value>${jdbc.sls.grid.driverClassName}</value>
+			</property>
+			<property name="url">
+				<value>${jdbc.sls.grid.url}</value>
+			</property>
+			<property name="user">
+				<value>${jdbc.sls.grid.username}</value>
+			</property>
+			<property name="password">
+				<value>${jdbc.sls.grid.password}</value>
+			</property>
+		</bean>
+
+	</beans>
+
+</beans>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.config.check.dao.CheckItemOptRelDao">
+	<resultMap id="BaseResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemOptRelEntity">
+		<id column="PC_ITEM_ID" jdbcType="VARCHAR" property="pcItemId" />
+		<result column="CHECK_OPT_ID" jdbcType="VARCHAR" property="checkOptId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="VERSION_TIME" jdbcType="TIMESTAMP" property="versionTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		PC_ITEM_ID, CHECK_OPT_ID, CHECK_ITEM_ID, VERSION_TIME
+	</sql>
+	<insert id="insertItemOptRel" parameterType="com.upsoft.sep.sls.config.check.param.AddItemOptRelParam">
+		insert into
+		sls_option_check_item_relate (PC_ITEM_ID, CHECK_OPT_ID,
+		CHECK_ITEM_ID,
+		VERSION_TIME)
+		values
+		(#{pcItemId,jdbcType=VARCHAR},
+		#{checkOptId,jdbcType=VARCHAR},
+		#{checkItemId,jdbcType=VARCHAR},
+		#{versionTime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<select id="selectItemOptRelByOptId" parameterType="java.lang.String" resultType="com.upsoft.sep.sls.config.check.entity.CheckItemRelEntity">
+		select t.check_item_id childId, t.check_item_name childName
+		from sls_option_check_item_relate rel
+		left join sls_check_item t
+		on
+		rel.check_item_id = t.check_item_id
+		where t.status!='-1' and
+		rel.check_opt_id =
+		#{optId}
+	</select>
+
+	<select id="selectItemOptRelByOptIds" resultType="com.upsoft.sep.sls.config.check.entity.CheckItemRelEntity">
+		select t.check_item_id childId, t.check_item_name childName,rel.check_opt_id optId
+		from sls_option_check_item_relate rel
+		left join sls_check_item t
+		on
+		rel.check_item_id = t.check_item_id
+		where t.status!='-1' and
+		rel.check_opt_id in
+		<foreach collection="optIdlist" item="optId" index="index" open="(" close=")" separator=",">
+			#{optId}
+		</foreach>
+	</select>
+
+	<delete id="deleteRelbyCheckOptId" parameterType="java.lang.String">
+		delete from sls_option_check_item_relate
+		where check_opt_id =
+		#{optId}
+	</delete>
+
+	<update id="deleteRelbyCheckOptIdList" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckItemOptParam">
+		delete from sls_option_check_item_relate
+		where CHECK_OPT_ID in
+		<foreach collection="optIdList" item="checkOptId" index="index" open="(" close=")" separator=",">
+			#{checkOptId}
+		</foreach>
+	</update>
+
+	<select id="queryCheckItemOptRels" resultMap="BaseResultMap" parameterType="com.upsoft.sep.bp.common.entity.RequestPage">
+		select * from sls_option_check_item_relate t where 1=1
+		<if test="param.versionTimeDate != null and param.versionTimeDate != ''">
+			and t.version_time <![CDATA[ >= #{param.versionTimeDate}  ]]>
+		</if>
+		order by t.version_time desc
+	</select>
+
+	<select id="selectItemRelByItemIds" resultMap="BaseResultMap">
+		select * from sls_option_check_item_relate
+		where check_item_id in
+		<foreach collection="checkItemList" item="checkItemId" index="index" open="(" close=")" separator=",">
+			#{checkItemId}
+		</foreach>
+
+
+	</select>
+
+
+</mapper>

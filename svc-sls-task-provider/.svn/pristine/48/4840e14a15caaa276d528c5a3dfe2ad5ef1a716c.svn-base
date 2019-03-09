@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsRunTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.upsoft.sep.sls.task.entity.SlsRunTask" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="type_code" property="typeCode" jdbcType="VARCHAR" />
+    <result column="type_value" property="typeValue" jdbcType="VARCHAR" />
+    <result column="level_code" property="levelCode" jdbcType="VARCHAR" />
+    <result column="level_value" property="levelValue" jdbcType="VARCHAR" />
+    <result column="assignee_id" property="assigneeId" jdbcType="VARCHAR" />
+    <result column="assignee_name" property="assigneeName" jdbcType="VARCHAR" />
+    <result column="assistant_id" property="assistantId" jdbcType="VARCHAR" />
+    <result column="assistant_name" property="assistantName" jdbcType="VARCHAR" />
+    <result column="scheduler_id" property="schedulerId" jdbcType="VARCHAR" />
+    <result column="scheduler_name" property="schedulerName" jdbcType="VARCHAR" />
+    <result column="assign_time" property="assignTime" jdbcType="TIMESTAMP" />
+    <result column="deliverer_id" property="delivererId" jdbcType="VARCHAR" />
+    <result column="deliverer_name" property="delivererName" jdbcType="VARCHAR" />
+    <result column="supervisor_id" property="supervisorId" jdbcType="VARCHAR" />
+    <result column="supervisor_name" property="supervisorName" jdbcType="VARCHAR" />
+    <result column="deliver_note" property="deliverNote" jdbcType="VARCHAR" />
+    <result column="supervisory_note" property="supervisoryNote" jdbcType="VARCHAR" />
+    <result column="treatment_suggestion" property="treatmentSuggestion" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="process_time" property="processTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="attachment_task_add" property="attachmentTaskAdd" jdbcType="VARCHAR" />
+    <result column="attachment_task_close" property="attachmentTaskClose" jdbcType="VARCHAR" />
+    <result column="scheduled_task_period_code" property="scheduledTaskPeriodCode" jdbcType="VARCHAR" />
+    <result column="scheduled_task_period_name" property="scheduledTaskPeriodName" jdbcType="VARCHAR" />
+    <result column="scheduled_task_first_arrange" property="scheduledTaskFirstArrange" jdbcType="TIMESTAMP" />
+    <result column="task_execution_days" property="taskExecutionDays" jdbcType="SMALLINT" />
+    <result column="standby1" property="standby1" jdbcType="VARCHAR" />
+    <result column="standby2" property="standby2" jdbcType="VARCHAR" />
+    <result column="standby3" property="standby3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, type_code, type_value, level_code, level_value, assignee_id, assignee_name, 
+    assistant_id, assistant_name, scheduler_id, scheduler_name, assign_time, deliverer_id, 
+    deliverer_name, supervisor_id, supervisor_name, deliver_note, supervisory_note, treatment_suggestion, 
+    start_time, process_time, end_time, deadline, create_time, update_time, status, template_id, 
+    template_name, attachment_task_add, attachment_task_close, scheduled_task_period_code, 
+    scheduled_task_period_name, scheduled_task_first_arrange, task_execution_days, standby1, 
+    standby2, standby3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sls_run_task
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sls_run_task
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask" >
+    insert into sls_run_task (id, title, type_code, 
+      type_value, level_code, level_value, 
+      assignee_id, assignee_name, assistant_id, 
+      assistant_name, scheduler_id, scheduler_name, 
+      assign_time, deliverer_id, deliverer_name, 
+      supervisor_id, supervisor_name, deliver_note, 
+      supervisory_note, treatment_suggestion, start_time, 
+      process_time, end_time, deadline, 
+      create_time, update_time, status, 
+      template_id, template_name, attachment_task_add, 
+      attachment_task_close, scheduled_task_period_code, 
+      scheduled_task_period_name, scheduled_task_first_arrange, 
+      task_execution_days, standby1, standby2, 
+      standby3)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{typeCode,jdbcType=VARCHAR}, 
+      #{typeValue,jdbcType=VARCHAR}, #{levelCode,jdbcType=VARCHAR}, #{levelValue,jdbcType=VARCHAR}, 
+      #{assigneeId,jdbcType=VARCHAR}, #{assigneeName,jdbcType=VARCHAR}, #{assistantId,jdbcType=VARCHAR}, 
+      #{assistantName,jdbcType=VARCHAR}, #{schedulerId,jdbcType=VARCHAR}, #{schedulerName,jdbcType=VARCHAR}, 
+      #{assignTime,jdbcType=TIMESTAMP}, #{delivererId,jdbcType=VARCHAR}, #{delivererName,jdbcType=VARCHAR}, 
+      #{supervisorId,jdbcType=VARCHAR}, #{supervisorName,jdbcType=VARCHAR}, #{deliverNote,jdbcType=VARCHAR}, 
+      #{supervisoryNote,jdbcType=VARCHAR}, #{treatmentSuggestion,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{processTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{deadline,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{templateId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, #{attachmentTaskAdd,jdbcType=VARCHAR}, 
+      #{attachmentTaskClose,jdbcType=VARCHAR}, #{scheduledTaskPeriodCode,jdbcType=VARCHAR}, 
+      #{scheduledTaskPeriodName,jdbcType=VARCHAR}, #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP}, 
+      #{taskExecutionDays,jdbcType=SMALLINT}, #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, 
+      #{standby3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask" >
+    insert into sls_run_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="typeCode != null" >
+        type_code,
+      </if>
+      <if test="typeValue != null" >
+        type_value,
+      </if>
+      <if test="levelCode != null" >
+        level_code,
+      </if>
+      <if test="levelValue != null" >
+        level_value,
+      </if>
+      <if test="assigneeId != null" >
+        assignee_id,
+      </if>
+      <if test="assigneeName != null" >
+        assignee_name,
+      </if>
+      <if test="assistantId != null" >
+        assistant_id,
+      </if>
+      <if test="assistantName != null" >
+        assistant_name,
+      </if>
+      <if test="schedulerId != null" >
+        scheduler_id,
+      </if>
+      <if test="schedulerName != null" >
+        scheduler_name,
+      </if>
+      <if test="assignTime != null" >
+        assign_time,
+      </if>
+      <if test="delivererId != null" >
+        deliverer_id,
+      </if>
+      <if test="delivererName != null" >
+        deliverer_name,
+      </if>
+      <if test="supervisorId != null" >
+        supervisor_id,
+      </if>
+      <if test="supervisorName != null" >
+        supervisor_name,
+      </if>
+      <if test="deliverNote != null" >
+        deliver_note,
+      </if>
+      <if test="supervisoryNote != null" >
+        supervisory_note,
+      </if>
+      <if test="treatmentSuggestion != null" >
+        treatment_suggestion,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="processTime != null" >
+        process_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="deadline != null" >
+        deadline,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="attachmentTaskAdd != null" >
+        attachment_task_add,
+      </if>
+      <if test="attachmentTaskClose != null" >
+        attachment_task_close,
+      </if>
+      <if test="scheduledTaskPeriodCode != null" >
+        scheduled_task_period_code,
+      </if>
+      <if test="scheduledTaskPeriodName != null" >
+        scheduled_task_period_name,
+      </if>
+      <if test="scheduledTaskFirstArrange != null" >
+        scheduled_task_first_arrange,
+      </if>
+      <if test="taskExecutionDays != null" >
+        task_execution_days,
+      </if>
+      <if test="standby1 != null" >
+        standby1,
+      </if>
+      <if test="standby2 != null" >
+        standby2,
+      </if>
+      <if test="standby3 != null" >
+        standby3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeValue != null" >
+        #{typeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="levelCode != null" >
+        #{levelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="levelValue != null" >
+        #{levelValue,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeId != null" >
+        #{assigneeId,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeName != null" >
+        #{assigneeName,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantId != null" >
+        #{assistantId,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantName != null" >
+        #{assistantName,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulerId != null" >
+        #{schedulerId,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulerName != null" >
+        #{schedulerName,jdbcType=VARCHAR},
+      </if>
+      <if test="assignTime != null" >
+        #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivererId != null" >
+        #{delivererId,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererName != null" >
+        #{delivererName,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorId != null" >
+        #{supervisorId,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorName != null" >
+        #{supervisorName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverNote != null" >
+        #{deliverNote,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisoryNote != null" >
+        #{supervisoryNote,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentSuggestion != null" >
+        #{treatmentSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processTime != null" >
+        #{processTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentTaskAdd != null" >
+        #{attachmentTaskAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentTaskClose != null" >
+        #{attachmentTaskClose,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskPeriodCode != null" >
+        #{scheduledTaskPeriodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskPeriodName != null" >
+        #{scheduledTaskPeriodName,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskFirstArrange != null" >
+        #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskExecutionDays != null" >
+        #{taskExecutionDays,jdbcType=SMALLINT},
+      </if>
+      <if test="standby1 != null" >
+        #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        #{standby3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask" >
+    update sls_run_task
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null" >
+        type_code = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeValue != null" >
+        type_value = #{typeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="levelCode != null" >
+        level_code = #{levelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="levelValue != null" >
+        level_value = #{levelValue,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeId != null" >
+        assignee_id = #{assigneeId,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeName != null" >
+        assignee_name = #{assigneeName,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantId != null" >
+        assistant_id = #{assistantId,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantName != null" >
+        assistant_name = #{assistantName,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulerId != null" >
+        scheduler_id = #{schedulerId,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulerName != null" >
+        scheduler_name = #{schedulerName,jdbcType=VARCHAR},
+      </if>
+      <if test="assignTime != null" >
+        assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivererId != null" >
+        deliverer_id = #{delivererId,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererName != null" >
+        deliverer_name = #{delivererName,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorId != null" >
+        supervisor_id = #{supervisorId,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorName != null" >
+        supervisor_name = #{supervisorName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverNote != null" >
+        deliver_note = #{deliverNote,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisoryNote != null" >
+        supervisory_note = #{supervisoryNote,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentSuggestion != null" >
+        treatment_suggestion = #{treatmentSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processTime != null" >
+        process_time = #{processTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="templateId != null" >
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentTaskAdd != null" >
+        attachment_task_add = #{attachmentTaskAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentTaskClose != null" >
+        attachment_task_close = #{attachmentTaskClose,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskPeriodCode != null" >
+        scheduled_task_period_code = #{scheduledTaskPeriodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskPeriodName != null" >
+        scheduled_task_period_name = #{scheduledTaskPeriodName,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduledTaskFirstArrange != null" >
+        scheduled_task_first_arrange = #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskExecutionDays != null" >
+        task_execution_days = #{taskExecutionDays,jdbcType=SMALLINT},
+      </if>
+      <if test="standby1 != null" >
+        standby1 = #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        standby2 = #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        standby3 = #{standby3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask" >
+    update sls_run_task
+    set title = #{title,jdbcType=VARCHAR},
+      type_code = #{typeCode,jdbcType=VARCHAR},
+      type_value = #{typeValue,jdbcType=VARCHAR},
+      level_code = #{levelCode,jdbcType=VARCHAR},
+      level_value = #{levelValue,jdbcType=VARCHAR},
+      assignee_id = #{assigneeId,jdbcType=VARCHAR},
+      assignee_name = #{assigneeName,jdbcType=VARCHAR},
+      assistant_id = #{assistantId,jdbcType=VARCHAR},
+      assistant_name = #{assistantName,jdbcType=VARCHAR},
+      scheduler_id = #{schedulerId,jdbcType=VARCHAR},
+      scheduler_name = #{schedulerName,jdbcType=VARCHAR},
+      assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      deliverer_id = #{delivererId,jdbcType=VARCHAR},
+      deliverer_name = #{delivererName,jdbcType=VARCHAR},
+      supervisor_id = #{supervisorId,jdbcType=VARCHAR},
+      supervisor_name = #{supervisorName,jdbcType=VARCHAR},
+      deliver_note = #{deliverNote,jdbcType=VARCHAR},
+      supervisory_note = #{supervisoryNote,jdbcType=VARCHAR},
+      treatment_suggestion = #{treatmentSuggestion,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      process_time = #{processTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      template_id = #{templateId,jdbcType=VARCHAR},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      attachment_task_add = #{attachmentTaskAdd,jdbcType=VARCHAR},
+      attachment_task_close = #{attachmentTaskClose,jdbcType=VARCHAR},
+      scheduled_task_period_code = #{scheduledTaskPeriodCode,jdbcType=VARCHAR},
+      scheduled_task_period_name = #{scheduledTaskPeriodName,jdbcType=VARCHAR},
+      scheduled_task_first_arrange = #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP},
+      task_execution_days = #{taskExecutionDays,jdbcType=SMALLINT},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

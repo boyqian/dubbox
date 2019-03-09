@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.config.check.dao.CheckTemplateDao">
+	<resultMap id="BaseResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckTemplateEntity">
+		<id column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="CHECK_TEMPLATE_NAME" jdbcType="VARCHAR" property="checkTemplateName" />
+		<result column="LEVEL_CODE" jdbcType="VARCHAR" property="levelCode" />
+		<result column="LEVEL_NAME" jdbcType="VARCHAR" property="levelName" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="CREATER_ID" jdbcType="VARCHAR" property="createrId" />
+		<result column="CREATER_NAME" jdbcType="VARCHAR" property="createrName" />
+		<result column="CREATER_ORG_CODE" jdbcType="VARCHAR" property="createrOrgCode" />
+		<result column="CREATER_ORG_NAME" jdbcType="VARCHAR" property="createrOrgName" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="VERSION_TIME" jdbcType="TIMESTAMP" property="versionTime" />
+	</resultMap>
+
+	<resultMap id="EditResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckTemplateEditEntity">
+		<id column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="CHECK_TEMPLATE_NAME" jdbcType="VARCHAR" property="checkTemplateName" />
+		<result column="LEVEL_CODE" jdbcType="VARCHAR" property="levelCode" />
+		<result column="LEVEL_NAME" jdbcType="VARCHAR" property="levelName" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+	</resultMap>
+
+	<resultMap id="PageResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckTemplatePageEntity">
+		<id column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="CHECK_TEMPLATE_NAME" jdbcType="VARCHAR" property="checkTemplateName" />
+		<result column="LEVEL_NAME" jdbcType="VARCHAR" property="levelName" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="CREATER_ORG_NAME" jdbcType="VARCHAR" property="createrOrgName" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+	</resultMap>
+
+	<sql id="Page_Column_List">
+		CHECK_TEMPLATE_ID, CHECK_TEMPLATE_NAME, LEVEL_NAME, STATUS,REMARK,
+		CREATER_ORG_NAME,CREATE_TIME
+	</sql>
+
+	<sql id="Edit_Column_List">
+		CHECK_TEMPLATE_ID, CHECK_TEMPLATE_NAME, LEVEL_CODE,LEVEL_NAME, STATUS,REMARK
+	</sql>
+
+	<sql id="Base_Column_List">
+		CHECK_TEMPLATE_ID, CHECK_TEMPLATE_NAME, LEVEL_CODE,
+		LEVEL_NAME, REMARK, STATUS,
+		CREATER_ID,
+		CREATER_NAME, CREATER_ORG_CODE,
+		CREATER_ORG_NAME, CREATE_TIME, VERSION_TIME
+	</sql>
+	<select id="selectCheckTemplateInfoById" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckTemplateByIdParam" resultMap="EditResultMap">
+		select
+		<include refid="Edit_Column_List" />
+		from sls_check_template
+		where CHECK_TEMPLATE_ID =
+		#{checkTemplateId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectCheckTemplateByPage" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="PageResultMap">
+		select
+		<include refid="Page_Column_List" />
+		from sls_check_template
+		where status!='-1'
+		<if test="param.checkTemplateName != null and param.checkTemplateName != ''">
+			and CHECK_TEMPLATE_NAME like CONCAT(CONCAT('%',#{param.checkTemplateName}),'%')
+		</if>
+		<if test="param.status != null and param.status != ''">
+			and status = #{param.status}
+		</if>
+		<if test="param.levelCode != null and param.levelCode != ''">
+			and LEVEL_CODE = #{param.levelCode}
+		</if>
+
+		<if test="param.sortName != null and param.sortName != ''">
+			order by ${param.sortName} ${param.sortOrder}
+		</if>
+
+	</select>
+
+	<select id="selectCheckTemplateListByIds" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckTemplateListIdsParam" resultMap="EditResultMap">
+		select
+		<include refid="Edit_Column_List" />
+		from sls_check_template
+		where status != '-1'
+		<if test="checkTemplateIdList != null and checkTemplateIdList.size() != 0">
+			and CHECK_TEMPLATE_ID in
+			<foreach collection="checkTemplateIdList" item="checkTemplateId" index="index" open="(" close=")" separator=",">
+				#{checkTemplateId}
+			</foreach>
+		</if>
+	</select>
+
+	<insert id="insertCheckTemplateInfo" parameterType="com.upsoft.sep.sls.config.check.param.AddCheckTemplateParam">
+		insert into sls_check_template
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="checkTemplateId != null">
+				CHECK_TEMPLATE_ID,
+			</if>
+			<if test="checkTemplateName != null">
+				CHECK_TEMPLATE_NAME,
+			</if>
+			<if test="levelCode != null">
+				LEVEL_CODE,
+			</if>
+			<if test="levelName != null">
+				LEVEL_NAME,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createrId != null">
+				CREATER_ID,
+			</if>
+			<if test="createrName != null">
+				CREATER_NAME,
+			</if>
+			<if test="createrOrgCode != null">
+				CREATER_ORG_CODE,
+			</if>
+			<if test="createrOrgName != null">
+				CREATER_ORG_NAME,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="checkTemplateId != null">
+				#{checkTemplateId,jdbcType=VARCHAR},
+			</if>
+			<if test="checkTemplateName != null">
+				#{checkTemplateName,jdbcType=VARCHAR},
+			</if>
+			<if test="levelCode != null">
+				#{levelCode,jdbcType=VARCHAR},
+			</if>
+			<if test="levelName != null">
+				#{levelName,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null">
+				#{createrId,jdbcType=VARCHAR},
+			</if>
+			<if test="createrName != null">
+				#{createrName,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgCode != null">
+				#{createrOrgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgName != null">
+				#{createrOrgName,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="versionTime != null">
+				#{versionTime},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateCheckTemplateInfo" parameterType="com.upsoft.sep.sls.config.check.param.ModCheckTemplateParam">
+		update sls_check_template
+		<set>
+			<if test="checkTemplateName != null">
+				CHECK_TEMPLATE_NAME = #{checkTemplateName,jdbcType=VARCHAR},
+			</if>
+			<if test="levelCode != null">
+				LEVEL_CODE = #{levelCode,jdbcType=VARCHAR},
+			</if>
+			<if test="levelName != null">
+				LEVEL_NAME = #{levelName,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME = #{versionTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where CHECK_TEMPLATE_ID = #{checkTemplateId,jdbcType=VARCHAR}
+	</update>
+
+	<update id="deleteCheckTemplateInfoById" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckTemplateByIdParam">
+		update sls_check_template
+		set status = '-1'
+		where CHECK_TEMPLATE_ID =
+		#{checkTemplateId,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 获取所有检查模板 -->
+	<select id="getAllCheckTemplate" resultMap="PageResultMap">
+		select
+		<include refid="Page_Column_List" />
+		from sls_check_template
+		where status!='-1'
+	</select>
+
+</mapper>

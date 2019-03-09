@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.config.check.dao.CheckItemDao">
+	<resultMap id="BaseResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemEntity">
+		<id column="CHECK_ITEM_ID" property="checkItemId" jdbcType="VARCHAR" />
+		<result column="CHECK_ITEM_NAME" property="checkItemName" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_CODE" property="itemTypeCode" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+		<result column="MONITOR_TYPE_CODE" property="monitorTypeCode" jdbcType="VARCHAR" />
+		<result column="MONITOR_TYPE_NAME" property="monitorTypeName" jdbcType="VARCHAR" />
+		<result column="IS_MUST_CHECK" property="isMustCheck" jdbcType="VARCHAR" />
+		<result column="IS_PHOTO" property="isPhoto" jdbcType="VARCHAR" />
+		<result column="IS_CAMERA" property="isCamera" jdbcType="VARCHAR" />
+		<result column="IS_SIGNIN" property="isSignin" jdbcType="VARCHAR" />
+		<result column="OPTION_TYPE_CODE" property="optionTypeCode" jdbcType="VARCHAR" />
+		<result column="OPTION_TYPE_NAME" property="optionTypeName" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CREATER_ID" property="createrId" jdbcType="VARCHAR" />
+		<result column="CREATER_NAME" property="createrName" jdbcType="VARCHAR" />
+		<result column="CREATER_ORG_CODE" property="createrOrgCode" jdbcType="VARCHAR" />
+		<result column="CREATER_ORG_NAME" property="createrOrgName" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="VERSION_TIME" property="versionTime" jdbcType="TIMESTAMP" />
+		<result column="EVENT_LEVEL_CODE" property="eventLevelCode" jdbcType="VARCHAR" />
+		<result column="EVENT_LEVEL_NAME" property="eventLevelName" jdbcType="VARCHAR" />
+		<result column="HAND_PEROIOD_DATE" property="handPeroiodDate" jdbcType="VARCHAR" />
+		<result column="DAY" property="day" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="PageResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemPageEntity">
+		<id column="CHECK_ITEM_ID" property="checkItemId" jdbcType="VARCHAR" />
+		<result column="CHECK_ITEM_NAME" property="checkItemName" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_CODE" property="itemTypeCode" jdbcType="VARCHAR" />
+		<result column="OPTION_TYPE_NAME" property="optionTypeName" jdbcType="VARCHAR" />
+		<result column="OPTION_TYPE_CODE" property="optionTypeCode" jdbcType="VARCHAR" />
+		<result column="MONITOR_TYPE_NAME" property="monitorTypeName" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="VERSION_TIME" property="versionTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap id="EditResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemEditEntity">
+		<id column="CHECK_ITEM_ID" property="checkItemId" jdbcType="VARCHAR" />
+		<result column="CHECK_ITEM_NAME" property="checkItemName" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_CODE" property="itemTypeCode" jdbcType="VARCHAR" />
+		<result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+		<result column="OPTION_TYPE_CODE" property="optionTypeCode" jdbcType="VARCHAR" />
+		<result column="MONITOR_TYPE_CODE" property="monitorTypeCode" jdbcType="VARCHAR" />
+		<result column="MONITOR_TYPE_NAME" property="monitorTypeName" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CHECK_ITEM_ID, CHECK_ITEM_NAME, ITEM_TYPE_CODE, ITEM_TYPE_NAME, MONITOR_TYPE_CODE,
+		MONITOR_TYPE_NAME, IS_MUST_CHECK, IS_PHOTO, IS_CAMERA,
+		IS_SIGNIN,
+		OPTION_TYPE_CODE,
+		OPTION_TYPE_NAME, STATUS, CREATER_ID, CREATER_NAME, CREATER_ORG_CODE, CREATER_ORG_NAME,
+		CREATE_TIME, VERSION_TIME,
+		EVENT_LEVEL_CODE, EVENT_LEVEL_NAME,
+		HAND_PEROIOD_DATE,
+		DAY
+	</sql>
+	<select id="selectCheckItems" resultMap="PageResultMap" parameterType="com.upsoft.sep.bp.common.entity.RequestPage">
+		select
+		t.CHECK_ITEM_ID,t.CHECK_ITEM_NAME,t.ITEM_TYPE_NAME,t.ITEM_TYPE_CODE,t.MONITOR_TYPE_NAME,t.OPTION_TYPE_NAME,t.OPTION_TYPE_CODE,t.STATUS,t.VERSION_TIME
+		from sls_check_item t
+		where STATUS != '-1'
+		<if test="param.checkItemName != null and param.checkItemName != ''">
+			and CHECK_ITEM_NAME like
+			CONCAT(CONCAT('%',#{param.checkItemName}),'%')
+		</if>
+		<if test="param.itemTypeCode != null and param.itemTypeCode != ''">
+			and ITEM_TYPE_CODE = #{param.itemTypeCode}
+		</if>
+		<if test="param.optionTypeCode != null and param.optionTypeCode != ''">
+			and OPTION_TYPE_CODE = #{param.optionTypeCode}
+		</if>
+		<if test="param.status != null and param.status != ''">
+			and STATUS = #{param.status}
+		</if>
+		<if test="param.isValid == '0'.toString()">
+			and STATUS = '1001'
+		</if>
+		<if test="param.versionTimeDate != null and param.versionTimeDate != ''">
+	         and t.version_time <![CDATA[ >= #{param.versionTimeDate}  ]]>
+	    </if>
+
+		<if test="param.sortName != null and param.sortName != ''">
+			order by ${param.sortName} ${param.sortOrder}
+		</if>
+		<if test="param.sortName == '' ">
+		    order by  t.version_time desc
+		</if>
+	</select>
+
+	<select id="selectCheckItemList" resultMap="PageResultMap" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemByIdParam">
+		select
+		t.CHECK_ITEM_ID,t.CHECK_ITEM_NAME,t.ITEM_TYPE_NAME,t.MONITOR_TYPE_NAME,t.OPTION_TYPE_NAME,t.STATUS
+		from sls_check_item t
+		where STATUS = '1001'
+		<if test="checkItemId != null and checkItemId != ''">
+			and CHECK_ITEM_ID != #{checkItemId}
+		</if>
+	</select>
+
+	<select id="selectCheckItemById" resultMap="EditResultMap" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemByIdParam">
+		select
+		t.CHECK_ITEM_ID,t.CHECK_ITEM_NAME,t.ITEM_TYPE_CODE,t.ITEM_TYPE_NAME,t.MONITOR_TYPE_CODE,t.MONITOR_TYPE_NAME,t.OPTION_TYPE_CODE,t.STATUS
+		from
+		sls_check_item t
+		where STATUS !='-1'
+		<if test="checkItemId != null and checkItemId != ''">
+			and CHECK_ITEM_ID = #{checkItemId}
+		</if>
+	</select>
+	
+	<select id="selectCheckItemByIds" resultMap="BaseResultMap" parameterType="java.util.List">
+		select
+		t.CHECK_ITEM_ID,t.CHECK_ITEM_NAME,t.ITEM_TYPE_CODE,t.ITEM_TYPE_NAME,t.MONITOR_TYPE_CODE,t.MONITOR_TYPE_NAME,t.OPTION_TYPE_CODE,t.STATUS
+		from
+		sls_check_item t
+		where STATUS !='-1'
+		and CHECK_ITEM_ID in
+		<foreach collection="list" item="checkItemId" index="index" open="(" close=")" separator=",">
+			#{checkItemId}
+		</foreach>
+	</select>
+	
+
+	<select id="selectCheckItemCountByName" resultType="java.lang.Integer" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemByNameParam">
+		select
+		count(*)
+		from sls_check_item t
+		where STATUS !='-1'
+		<if test="checkItemName != null and checkItemName != ''">
+			and CHECK_ITEM_NAME = #{checkItemName}
+		</if>
+	</select>
+
+	<update id="deleteItemByIds" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckItemByIdsParam">
+		update sls_check_item
+		set STATUS='-1'
+		where CHECK_ITEM_ID in
+		<foreach collection="checkItemIdList" item="checkItemId" index="index" open="(" close=")" separator=",">
+			#{checkItemId}
+		</foreach>
+	</update>
+
+	<insert id="insertCheckItems" parameterType="com.upsoft.sep.sls.config.check.param.AddCheckItemParam">
+		insert into sls_check_item (CHECK_ITEM_ID, CHECK_ITEM_NAME,
+		OPTION_TYPE_CODE, OPTION_TYPE_NAME,
+		ITEM_TYPE_CODE, ITEM_TYPE_NAME, MONITOR_TYPE_CODE,
+		MONITOR_TYPE_NAME,
+		<if test="createrId != null">
+			CREATER_ID,
+		</if>
+		<if test="createrName != null">
+			CREATER_NAME,
+		</if>
+		<if test="createrOrgCode != null">
+			CREATER_ORG_CODE,
+		</if>
+		<if test="createrOrgName != null">
+			CREATER_ORG_NAME,
+		</if>
+		<if test="createTime != null">
+			CREATE_TIME,
+		</if>
+		<if test="versionTime != null">
+			VERSION_TIME,
+		</if>
+		STATUS)
+		values (#{checkItemId,jdbcType=VARCHAR}, #{checkItemName,jdbcType=VARCHAR},
+		#{optionTypeCode,jdbcType=VARCHAR},
+		#{optionTypeName,jdbcType=VARCHAR},
+		#{itemTypeCode,jdbcType=VARCHAR}, #{itemTypeName,jdbcType=VARCHAR},
+		#{monitorTypeCode,jdbcType=VARCHAR},
+		#{monitorTypeName,jdbcType=VARCHAR},
+		<if test="createrId != null">
+			#{createrId,jdbcType=VARCHAR},
+		</if>
+		<if test="createrName != null">
+			#{createrName,jdbcType=VARCHAR},
+		</if>
+		<if test="createrOrgCode != null">
+			#{createrOrgCode,jdbcType=VARCHAR},
+		</if>
+		<if test="createrOrgName != null">
+			#{createrOrgName,jdbcType=VARCHAR},
+		</if>
+		<if test="createTime != null">
+			#{createTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="versionTime != null">
+			#{versionTime,jdbcType=TIMESTAMP},
+		</if>
+		#{status,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.upsoft.sep.sls.config.check.entity.CheckItemEntity">
+		insert into sls_check_item
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="checkItemId != null">
+				CHECK_ITEM_ID,
+			</if>
+			<if test="checkItemName != null">
+				CHECK_ITEM_NAME,
+			</if>
+			<if test="itemTypeCode != null">
+				ITEM_TYPE_CODE,
+			</if>
+			<if test="itemTypeName != null">
+				ITEM_TYPE_NAME,
+			</if>
+			<if test="monitorTypeCode != null">
+				MONITOR_TYPE_CODE,
+			</if>
+			<if test="monitorTypeName != null">
+				MONITOR_TYPE_NAME,
+			</if>
+			<if test="isMustCheck != null">
+				IS_MUST_CHECK,
+			</if>
+			<if test="isPhoto != null">
+				IS_PHOTO,
+			</if>
+			<if test="isCamera != null">
+				IS_CAMERA,
+			</if>
+			<if test="isSignin != null">
+				IS_SIGNIN,
+			</if>
+			<if test="optionTypeCode != null">
+				OPTION_TYPE_CODE,
+			</if>
+			<if test="optionTypeName != null">
+				OPTION_TYPE_NAME,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createrId != null">
+				CREATER_ID,
+			</if>
+			<if test="createrName != null">
+				CREATER_NAME,
+			</if>
+			<if test="createrOrgCode != null">
+				CREATER_ORG_CODE,
+			</if>
+			<if test="createrOrgName != null">
+				CREATER_ORG_NAME,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME,
+			</if>
+			<if test="eventLevelCode != null">
+				EVENT_LEVEL_CODE,
+			</if>
+			<if test="eventLevelName != null">
+				EVENT_LEVEL_NAME,
+			</if>
+			<if test="handPeroiodDate != null">
+				HAND_PEROIOD_DATE,
+			</if>
+			<if test="day != null">
+				DAY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="checkItemId != null">
+				#{checkItemId,jdbcType=VARCHAR},
+			</if>
+			<if test="checkItemName != null">
+				#{checkItemName,jdbcType=VARCHAR},
+			</if>
+			<if test="itemTypeCode != null">
+				#{itemTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="itemTypeName != null">
+				#{itemTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTypeCode != null">
+				#{monitorTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTypeName != null">
+				#{monitorTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="isMustCheck != null">
+				#{isMustCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="isPhoto != null">
+				#{isPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="isCamera != null">
+				#{isCamera,jdbcType=VARCHAR},
+			</if>
+			<if test="isSignin != null">
+				#{isSignin,jdbcType=VARCHAR},
+			</if>
+			<if test="optionTypeCode != null">
+				#{optionTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="optionTypeName != null">
+				#{optionTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null">
+				#{createrId,jdbcType=VARCHAR},
+			</if>
+			<if test="createrName != null">
+				#{createrName,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgCode != null">
+				#{createrOrgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgName != null">
+				#{createrOrgName,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="versionTime != null">
+				#{versionTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="eventLevelCode != null">
+				#{eventLevelCode,jdbcType=VARCHAR},
+			</if>
+			<if test="eventLevelName != null">
+				#{eventLevelName,jdbcType=VARCHAR},
+			</if>
+			<if test="handPeroiodDate != null">
+				#{handPeroiodDate,jdbcType=VARCHAR},
+			</if>
+			<if test="day != null">
+				#{day,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateCheckItems" parameterType="com.upsoft.sep.sls.config.check.param.ModCheckItemParam">
+		update sls_check_item
+		<set>
+			<if test="checkItemName != null">
+				CHECK_ITEM_NAME = #{checkItemName,jdbcType=VARCHAR},
+			</if>
+			<if test="itemTypeCode != null">
+				ITEM_TYPE_CODE = #{itemTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="itemTypeName != null">
+				ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTypeCode != null">
+				MONITOR_TYPE_CODE = #{monitorTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTypeName != null">
+				MONITOR_TYPE_NAME = #{monitorTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="optionTypeCode != null">
+				OPTION_TYPE_CODE = #{optionTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="optionTypeName != null">
+				OPTION_TYPE_NAME = #{optionTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME = #{versionTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where CHECK_ITEM_ID = #{checkItemId,jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.upsoft.sep.sls.config.check.entity.CheckItemEntity">
+		update sls_check_item
+		set CHECK_ITEM_NAME = #{checkItemName,jdbcType=VARCHAR},
+		ITEM_TYPE_CODE =
+		#{itemTypeCode,jdbcType=VARCHAR},
+		ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+		MONITOR_TYPE_CODE = #{monitorTypeCode,jdbcType=VARCHAR},
+		MONITOR_TYPE_NAME = #{monitorTypeName,jdbcType=VARCHAR},
+		IS_MUST_CHECK = #{isMustCheck,jdbcType=VARCHAR},
+		IS_PHOTO = #{isPhoto,jdbcType=VARCHAR},
+		IS_CAMERA = #{isCamera,jdbcType=VARCHAR},
+		IS_SIGNIN = #{isSignin,jdbcType=VARCHAR},
+		OPTION_TYPE_CODE = #{optionTypeCode,jdbcType=VARCHAR},
+		OPTION_TYPE_NAME = #{optionTypeName,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=VARCHAR},
+		CREATER_ID = #{createrId,jdbcType=VARCHAR},
+		CREATER_NAME =
+		#{createrName,jdbcType=VARCHAR},
+		CREATER_ORG_CODE = #{createrOrgCode,jdbcType=VARCHAR},
+		CREATER_ORG_NAME = #{createrOrgName,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+		VERSION_TIME = #{versionTime,jdbcType=TIMESTAMP},
+		EVENT_LEVEL_CODE =
+		#{eventLevelCode,jdbcType=VARCHAR},
+
+		EVENT_LEVEL_NAME = #{eventLevelName,jdbcType=VARCHAR},
+		HAND_PEROIOD_DATE = #{handPeroiodDate,jdbcType=VARCHAR},
+		DAY = #{day,jdbcType=VARCHAR}
+		where CHECK_ITEM_ID =
+		#{checkItemId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="queryItemsByTemplateId" parameterType="com.upsoft.sep.sls.config.check.param.TemplateIdParam" resultMap="BaseResultMap">
+		select * from sls_check_item item
+		where item.check_item_id
+		in (
+		select check_item_id from sls_template_item_relation 
+		where
+		check_template_id =#{templateId,jdbcType=VARCHAR})
+	</select>
+</mapper>

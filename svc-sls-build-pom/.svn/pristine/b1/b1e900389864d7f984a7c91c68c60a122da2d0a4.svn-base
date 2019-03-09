@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.upsoft.sep</groupId>
+	<artifactId>svc-sls-build-pom</artifactId>
+	<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>sls-service Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+<!-- 		<distributionManagement> -->
+<!-- 		<repository> -->
+<!-- 			<id>nexus</id> -->
+<!-- 			<name>Releases</name> -->
+<!-- 			<url>http://172.16.18.3:8081/repository/maven-releases</url> -->
+<!-- 		</repository> -->
+<!-- 		<snapshotRepository> -->
+<!-- 			<id>nexus</id> -->
+<!-- 			<name>Snapshot</name> -->
+<!-- 			<url>http://172.16.18.3:8081/repository/maven-snapshots</url> -->
+<!-- 		</snapshotRepository> -->
+<!-- 	</distributionManagement> -->
+<!-- 	<repositories> -->
+<!-- 		<repository> -->
+<!-- 			<id>nexus</id> -->
+<!-- 			<name>Nexus</name> -->
+<!-- 			<url>http://172.16.18.3:8081/repository/maven-public</url> -->
+<!-- 		</repository> -->
+<!-- 	</repositories> -->
+	<dependencies>
+
+	</dependencies>
+
+	<modules>
+		<module>../svc-sls-issue-api</module>
+		<module>../svc-sls-config-api</module>
+		<module>../svc-sls-grid-api</module>
+		<module>../svc-sls-task-api</module>
+		<module>../svc-sls-issue-provider</module>
+		<module>../svc-sls-config-provider</module>
+		<module>../svc-sls-task-provider</module>
+		<module>../svc-sls-grid-provider</module>
+		<module>../svc-sls-common</module>
+		<module>../svc-sls-build</module>
+	</modules>
+</project>

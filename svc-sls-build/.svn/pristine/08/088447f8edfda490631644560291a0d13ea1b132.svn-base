@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="svc-sls-build">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="svc-sls-issue-provider-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-issue-provider/svc-sls-issue-provider">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-issue-api-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-issue-api/svc-sls-issue-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-grid-provider-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-grid-provider/svc-sls-grid-provider">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-grid-api-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-grid-api/svc-sls-grid-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-task-provider-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-task-provider/svc-sls-task-provider">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-task-api-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-task-api/svc-sls-task-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-config-provider-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-config-provider/svc-sls-config-provider">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-config-api-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-config-api/svc-sls-config-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="svc-sls-common-3.0.0-SC.CD.CKQ-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/svc-sls-common/svc-sls-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="svc-sls-build-3.0.0-SC.CD.WJ-SNAPSHOT-${svn_info.committedRevision}"/>
+        <property name="java-output-path" value="/svc-sls-build/target/classes"/>
+    </wb-module>
+</project-modules>

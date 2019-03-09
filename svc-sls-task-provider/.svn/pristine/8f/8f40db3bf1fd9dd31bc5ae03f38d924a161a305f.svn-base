@@ -1,0 +1,17 @@
+package com.upsoft.sep.sls.task.dao;
+
+import com.upsoft.sep.sls.task.entity.SlsDetailTask;
+
+public interface SlsDetailTaskMapper {
+    int deleteByPrimaryKey(String id);
+
+    int insert(SlsDetailTask record);
+
+    int insertSelective(SlsDetailTask record);
+
+    SlsDetailTask selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(SlsDetailTask record);
+
+    int updateByPrimaryKey(SlsDetailTask record);
+}

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+build-time: 
+SVN-path: 
+SVN-committedRevision: 
+SVN-Revision: 
+Build-Jdk: 1.7.0_80
+Built-By: Administrator
+SVN-mixedRevisions: 
+Created-By: Maven Integration for Eclipse
+version: 3.0.0-SC.CD.CKQ-SNAPSHOT
+

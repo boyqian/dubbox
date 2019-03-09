@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.issue.dao.ProblemDao">
+<insert id="addProblem" parameterType="com.upsoft.sep.sls.issue.entity.Problem">
+insert into sls_issue
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id!=null and id!=''">id,</if>
+<if test="parentSourceCode!=null and parentSourceCode!=''">parent_source_code,</if>
+<if test="parentSourceValue!=null and parentSourceValue!=''">parent_source_value,</if>
+<if test="sourceCode!=null and sourceCode!=''">source_code,</if>
+<if test="sourceValue!=null and sourceValue!=''">source_value,</if>
+<if test="title!=null and title!=''">title,</if>
+<if test="typeCode!=null and typeCode!=''">type_code,</if>
+<if test="typeValue!=null and typeValue!=''">type_value,</if>
+<if test="levelCode!=null and levelCode!=''">level_code,</if>
+<if test="levelValue!=null and levelValue!=''">level_value,</if>
+<if test="status!=null">status,</if>
+<if test="isFocused!=null">is_focused,</if>
+<if test="address!=null and address!=''">address,</if>
+<if test="detail!=null and detail!=''">detail,</if>
+<if test="discoveryTime!=null">discovery_time,</if>
+<if test="closeTime!=null">close_time,</if>
+<if test="closeReason!=null and closeReason!=''">close_reason,</if>
+<if test="enterpriseId!=null and enterpriseId!=''">enterprise_id,</if>
+<if test="enterpriseName!=null and enterpriseName!=''">enterprise_name,</if>
+<if test="constructionSiteId!=null and constructionSiteId!=''">construction_site_id,</if>
+<if test="constructionSiteName!=null and constructionSiteName!=''">construction_site_name,</if>
+<if test="gridId!=null and gridId!=''">grid_id,</if>
+<if test="gridName!=null and gridName!=''">grid_name,</if>
+<if test="longitude!=null and longitude!=''">longitude,</if>
+<if test="latitude!=null and latitude!=''">latitude,</if>
+<if test="assignTaskId!=null and assignTaskId!=''">assign_task_id,</if>
+<if test="assignTaskTime!=null">assign_task_time,</if>
+<if test="complaintId!=null and complaintId!=''">complaint_id,</if>
+<if test="discoveryUser!=null and discoveryUser!=''">discovery_user,</if>
+<if test="discoveryOrganization!=null and discoveryOrganization!=''">discovery_organization,</if>
+<if test="attachment!=null and attachment!=''">attachment,</if>
+<if test="createTime!=null">create_time,</if>
+<if test="updateTime!=null">update_time,</if>
+</trim>
+<trim prefix="values(" suffix=")" suffixOverrides=",">
+<if test="id!=null and id!=''">#{id},</if>
+<if test="parentSourceCode!=null and parentSourceCode!=''">#{parentSourceCode},</if>
+<if test="parentSourceValue!=null and parentSourceValue!=''">#{parentSourceValue},</if>
+<if test="sourceCode!=null and sourceCode!=''">#{sourceCode},</if>
+<if test="sourceValue!=null and sourceValue!=''">#{sourceValue},</if>
+<if test="title!=null and title!=''">#{title},</if>
+<if test="typeCode!=null and typeCode!=''">#{typeCode},</if>
+<if test="typeValue!=null and typeValue!=''">#{typeValue},</if>
+<if test="levelCode!=null and levelCode!=''">#{levelCode},</if>
+<if test="levelValue!=null and levelValue!=''">#{levelValue},</if>
+<if test="status!=null">#{status},</if>
+<if test="isFocused!=null">#{isFocused},</if>
+<if test="address!=null and address!=''">#{address},</if>
+<if test="detail!=null and detail!=''">#{detail},</if>
+<if test="discoveryTime!=null">#{discoveryTime},</if>
+<if test="closeTime!=null">#{closeTime},</if>
+<if test="closeReason!=null and closeReason!=''">#{closeReason},</if>
+<if test="enterpriseId!=null and enterpriseId!=''">#{enterpriseId},</if>
+<if test="enterpriseName!=null and enterpriseName!=''">#{enterpriseName},</if>
+<if test="constructionSiteId!=null and constructionSiteId!=''">#{constructionSiteId},</if>
+<if test="constructionSiteName!=null and constructionSiteName!=''">#{constructionSiteName},</if>
+<if test="gridId!=null and gridId!=''">#{gridId},</if>
+<if test="gridName!=null and gridName!=''">#{gridName},</if>
+<if test="longitude!=null and longitude!=''">#{longitude},</if>
+<if test="latitude!=null and latitude!=''">#{latitude},</if>
+<if test="assignTaskId!=null and assignTaskId!=''">#{assignTaskId},</if>
+<if test="assignTaskTime!=null">#{assignTaskTime},</if>
+<if test="complaintId!=null and complaintId!=''">#{complaintId},</if>
+<if test="discoveryUser!=null and discoveryUser!=''">#{discoveryUser},</if>
+<if test="discoveryOrganization!=null and discoveryOrganization!=''">#{discoveryOrganization},</if>
+<if test="attachment!=null and attachment!=''">#{attachment},</if>
+<if test="createTime!=null">#{createTime},</if>
+<if test="updateTime!=null">#{updateTime},</if>
+</trim>
+</insert>
+<update id="modProblem" parameterType="com.upsoft.sep.sls.issue.entity.Problem">
+update sls_issue
+<trim prefix="set" suffixOverrides="," suffix="where id=#{id,jdbcType=VARCHAR}">
+<if test="id!=null and id!=''">id=#{id},</if>
+<if test="parentSourceCode!=null and parentSourceCode!=''">parent_source_code=#{parentSourceCode},</if>
+<if test="parentSourceValue!=null and parentSourceValue!=''">parent_source_value=#{parentSourceValue},</if>
+<if test="sourceCode!=null and sourceCode!=''">source_code=#{sourceCode},</if>
+<if test="sourceValue!=null and sourceValue!=''">source_value=#{sourceValue},</if>
+<if test="title!=null and title!=''">title=#{title},</if>
+<if test="typeCode!=null and typeCode!=''">type_code=#{typeCode},</if>
+<if test="typeValue!=null and typeValue!=''">type_value=#{typeValue},</if>
+<if test="levelCode!=null and levelCode!=''">level_code=#{levelCode},</if>
+<if test="levelValue!=null and levelValue!=''">level_value=#{levelValue},</if>
+<if test="status!=null">status=#{status},</if>
+<if test="isFocused!=null">is_focused=#{isFocused},</if>
+<if test="address!=null and address!=''">address=#{address},</if>
+<if test="detail!=null and detail!=''">detail=#{detail},</if>
+<if test="discoveryTime!=null">discovery_time=#{discoveryTime},</if>
+<if test="closeTime!=null">close_time=#{closeTime},</if>
+<if test="closeReason!=null and closeReason!=''">close_reason=#{closeReason},</if>
+<if test="enterpriseId!=null and enterpriseId!=''">enterprise_id=#{enterpriseId},</if>
+<if test="enterpriseName!=null and enterpriseName!=''">enterprise_name=#{enterpriseName},</if>
+<if test="constructionSiteId!=null and constructionSiteId!=''">construction_site_id=#{constructionSiteId},</if>
+<if test="constructionSiteName!=null and constructionSiteName!=''">construction_site_name=#{constructionSiteName},</if>
+<if test="gridId!=null and gridId!=''">grid_id=#{gridId},</if>
+<if test="gridName!=null and gridName!=''">grid_name=#{gridName},</if>
+<if test="longitude!=null and longitude!=''">longitude=#{longitude},</if>
+<if test="latitude!=null and latitude!=''">latitude=#{latitude},</if>
+<if test="assignTaskId!=null and assignTaskId!=''">assign_task_id=#{assignTaskId},</if>
+<if test="assignTaskTime!=null">assign_task_time=#{assignTaskTime},</if>
+<if test="complaintId!=null and complaintId!=''">complaint_id=#{complaintId},</if>
+<if test="discoveryUser!=null and discoveryUser!=''">discovery_user=#{discoveryUser},</if>
+<if test="discoveryOrganization!=null and discoveryOrganization!=''">discovery_organization=#{discoveryOrganization},</if>
+<if test="attachment!=null and attachment!=''">attachment=#{attachment},</if>
+<if test="createTime!=null">create_time=#{createTime},</if>
+<if test="updateTime!=null">update_time=#{updateTime},</if>
+</trim>
+</update>
+<select id="selectProblemList" parameterType="com.upsoft.sep.sls.issue.param.ProblemListParam" 
+resultType="com.upsoft.sep.sls.issue.entity.ProblemList">
+select id,parent_source_code,parent_source_value,source_code,source_value,title,status,address,is_focused,type_code,type_value,level_code,level_value,discovery_time,enterprise_id,enterprise_name
+from sls_issue
+<where>
+status=0
+<if test="levelCode!=null and levelCode!=''">and level_code=#{levelCode}</if>
+<if test="sourceCode!=null and sourceCode!=''">and source_code=#{sourceCode}</if>
+<if test="typeCode!=null and typeCode!=''">and type_code=#{typeCode}</if>
+</where>
+<if test="(sortName==null and sortName=='') and (sortType==null and sortType=='')">
+  order by  discoveryTime desc
+</if>
+<if test="(sortName!=null and sortName!='') and (sortType!=null and sortType!='')">
+  order by ${sortName}  ${sortType}
+</if>
+</select>
+<select id="selectProblemPage" parameterType="com.upsoft.sep.sls.issue.param.ProblemPageParam"
+ resultType="com.upsoft.sep.sls.issue.entity.ProblemList">
+select id,parent_source_code,parent_source_value,source_code,source_value,title,status,address,is_focused,type_code,type_value,level_code,level_value,discovery_time,enterprise_id,enterprise_name
+from sls_issue
+<where>
+1=1
+<if test="levelCode!=null and levelCode!=''">and level_code=#{levelCode}</if>
+<if test="sourceCode!=null and sourceCode!=''">and source_code=#{sourceCode}</if>
+<if test="typeCode!=null and typeCode!=''">and type_code=#{typeCode}</if>
+</where>
+  order by  discoveryTime desc
+<if test="limit!=null and offset!=null">
+limit #{limit} offset #{offset}
+</if>
+</select>
+<update id="modProblemStatus" parameterType="com.upsoft.sep.sls.issue.param.ProblemStatusParam">
+update sls_issue
+<trim prefix="set" suffixOverrides="," suffix="where id=#{id,jdbcType=VARCHAR}">
+<if test="status!=null">status=#{status},</if>
+<if test="isFocused!=null">is_focused=#{isFocused},</if>
+<if test="closeTime!=null">close_time=#{closeTime},</if>
+<if test="closeReason!=null and closeReason!=''">close_Reason=#{closeReason},</if>
+</trim>
+</update>
+<select id="selectProblemSpread"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemSpread">
+select id,level_code,level_value,longitude,latitude,title
+from sls_issue
+</select>
+<delete id="delProblem" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdsParam">
+delete from sls_issue
+where id in
+<foreach collection="proIds" item="ids" index="index" open="(" close=")" separator=",">
+#{ids}
+</foreach>
+</delete>
+<select id="selectAlikeProblem" parameterType="com.upsoft.sep.sls.issue.param.ProblemAlikeParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemList">
+select id,parent_source_code,parent_source_value,source_code,source_value,title,status,address,is_focused,type_code,type_value,level_code,level_value,discovery_time,enterprise_id,enterprise_name,assign_task_id
+from sls_issue
+<where>
+1=1
+<if test="enterpriseId!=null and enterpriseId!=''">and enterprise_id=#{enterpriseId}</if>
+<if test="sourceCode!=null and sourceCode!=''">and source_code=#{sourceCode}</if>
+<if test="complaintId!=null and complaintId!=''">and complaint_id=#{complaintId}</if>
+<if test="discoveryTime!=null">and (DATEDIFF(discovery_time,#{discoveryTime})=0)</if>
+<if test="address!=null and  address!=''">and address like CONCAT('%',#{address},'%')</if>
+<if test="title!=null and title!=''">and title like CONCAT('%',#{title},'%')</if>
+</where>
+order by discovery_time desc
+</select>
+<select id="selectProblemExport" parameterType="java.util.List"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemList">
+select id,parent_source_code,parent_source_value,source_code,source_value,title,status,address,is_focused,type_code,type_value,level_code,level_value,discovery_time,enterprise_id,enterprise_name,assign_task_id
+from sls_issue
+<where>
+id in
+<foreach collection="list" item="ids" index="index" open="(" close=")" separator=",">
+#{ids.id}
+</foreach>
+</where>
+</select>
+<select id="selectProblemCount" resultType="com.upsoft.sep.sls.issue.entity.ProblemCount">
+select count(id) as proTotalCount,a.*,b.*
+from sls_issue,
+(
+select count(parent_source_code=1000 or null)as complaintCount,
+			 count(parent_source_code=1001 or null)as smartAnalysisCount,
+			 count(parent_source_code=1002 or null)as onSiteSuperCount
+from sls_issue
+)as a,
+(
+select count(type_code=1000 or null)as safetyCount,
+			 count(type_code=1001 or null)as envirtCount,
+			 count(type_code=1002 or null)as energyCount
+from sls_issue
+)as b
+</select>
+</mapper>

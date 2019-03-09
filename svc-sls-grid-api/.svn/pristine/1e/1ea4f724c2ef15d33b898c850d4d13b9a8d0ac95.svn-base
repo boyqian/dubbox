@@ -1,0 +1,284 @@
+package com.upsoft.sep.sls.grid.entity;
+
+import com.upsoft.sep.autocoder.client.libs.AutoCoderDataRule;
+import io.swagger.annotations.ApiModelProperty;
+import javax.persistence.Id;
+
+/**
+ * 网格和企业的关联表
+ * 
+ * sls_grid_enterprise
+ *
+ */
+public class GridEnterprise {
+    /**
+     * 主键ID
+     *
+     * sls_grid_enterprise.id
+     *
+     */
+    @Id
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "false")
+    @ApiModelProperty(value = "主键ID", required = false)
+    private String id;
+
+    /**
+     * 企业ID
+     *
+     * sls_grid_enterprise.enterprise_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "false")
+    @ApiModelProperty(value = "企业ID", required = false)
+    private String enterpriseId;
+
+    /**
+     * 企业名称
+     *
+     * sls_grid_enterprise.enterprise_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "false")
+    @ApiModelProperty(value = "企业名称", required = false)
+    private String enterpriseName;
+
+    /**
+     * 企业地址
+     *
+     * sls_grid_enterprise.enterprise_address
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "300",minLen = "0",require = "false")
+    @ApiModelProperty(value = "企业地址", required = false)
+    private String enterpriseAddress;
+
+    /**
+     * 监管类型编码
+     *
+     * sls_grid_enterprise.supervision_type_code
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "监管类型编码", required = true)
+    private String supervisionTypeCode;
+
+    /**
+     * 监管类型名称
+     *
+     * sls_grid_enterprise.supervision_type_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "监管类型名称", required = true)
+    private String supervisionTypeName;
+
+    /**
+     * 企业类型编码
+     *
+     * sls_grid_enterprise.enterprise_type_code
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "企业类型编码", required = true)
+    private String enterpriseTypeCode;
+
+    /**
+     * 企业类型名称
+     *
+     * sls_grid_enterprise.enterprise_type_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "企业类型名称", required = true)
+    private String enterpriseTypeName;
+
+    /**
+     * 巡查人员ID
+     *
+     * sls_grid_enterprise.inspection_staff_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "巡查人员ID", required = true)
+    private String inspectionStaffId;
+
+    /**
+     * 巡查人员姓名
+     *
+     * sls_grid_enterprise.inspection_staff_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "巡查人员姓名", required = true)
+    private String inspectionStaffName;
+
+    /**
+     * 所属网格ID
+     *
+     * sls_grid_enterprise.grid_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "false")
+    @ApiModelProperty(value = "所属网格ID", required = false)
+    private String gridId;
+
+    /**
+     * 所属网格名称
+     *
+     * sls_grid_enterprise.grid_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "100",minLen = "0",require = "false")
+    @ApiModelProperty(value = "所属网格名称", required = false)
+    private String gridName;
+
+    /**
+     * 备用字段1
+     *
+     * sls_grid_enterprise.standby1
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段1", required = true)
+    private String standby1;
+
+    /**
+     * 备用字段2
+     *
+     * sls_grid_enterprise.standby2
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段2", required = true)
+    private String standby2;
+
+    /**
+     * 备用字段3
+     *
+     * sls_grid_enterprise.standby3
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段3", required = true)
+    private String standby3;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(String enterpriseId) {
+        this.enterpriseId = enterpriseId;
+    }
+
+    public String getEnterpriseName() {
+        return enterpriseName;
+    }
+
+    public void setEnterpriseName(String enterpriseName) {
+        this.enterpriseName = enterpriseName;
+    }
+
+    public String getEnterpriseAddress() {
+        return enterpriseAddress;
+    }
+
+    public void setEnterpriseAddress(String enterpriseAddress) {
+        this.enterpriseAddress = enterpriseAddress;
+    }
+
+    public String getSupervisionTypeCode() {
+        return supervisionTypeCode;
+    }
+
+    public void setSupervisionTypeCode(String supervisionTypeCode) {
+        this.supervisionTypeCode = supervisionTypeCode;
+    }
+
+    public String getSupervisionTypeName() {
+        return supervisionTypeName;
+    }
+
+    public void setSupervisionTypeName(String supervisionTypeName) {
+        this.supervisionTypeName = supervisionTypeName;
+    }
+
+    public String getEnterpriseTypeCode() {
+        return enterpriseTypeCode;
+    }
+
+    public void setEnterpriseTypeCode(String enterpriseTypeCode) {
+        this.enterpriseTypeCode = enterpriseTypeCode;
+    }
+
+    public String getEnterpriseTypeName() {
+        return enterpriseTypeName;
+    }
+
+    public void setEnterpriseTypeName(String enterpriseTypeName) {
+        this.enterpriseTypeName = enterpriseTypeName;
+    }
+
+    public String getInspectionStaffId() {
+        return inspectionStaffId;
+    }
+
+    public void setInspectionStaffId(String inspectionStaffId) {
+        this.inspectionStaffId = inspectionStaffId;
+    }
+
+    public String getInspectionStaffName() {
+        return inspectionStaffName;
+    }
+
+    public void setInspectionStaffName(String inspectionStaffName) {
+        this.inspectionStaffName = inspectionStaffName;
+    }
+
+    public String getGridId() {
+        return gridId;
+    }
+
+    public void setGridId(String gridId) {
+        this.gridId = gridId;
+    }
+
+    public String getGridName() {
+        return gridName;
+    }
+
+    public void setGridName(String gridName) {
+        this.gridName = gridName;
+    }
+
+    public String getStandby1() {
+        return standby1;
+    }
+
+    public void setStandby1(String standby1) {
+        this.standby1 = standby1;
+    }
+
+    public String getStandby2() {
+        return standby2;
+    }
+
+    public void setStandby2(String standby2) {
+        this.standby2 = standby2;
+    }
+
+    public String getStandby3() {
+        return standby3;
+    }
+
+    public void setStandby3(String standby3) {
+        this.standby3 = standby3;
+    }
+}

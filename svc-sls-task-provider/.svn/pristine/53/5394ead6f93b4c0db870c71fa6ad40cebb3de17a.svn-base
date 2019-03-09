@@ -1,0 +1,17 @@
+package com.upsoft.sep.sls.task.dao;
+
+import com.upsoft.sep.sls.task.entity.SlsRunTask;
+
+public interface SlsRunTaskMapper {
+    int deleteByPrimaryKey(String id);
+
+    int insert(SlsRunTask record);
+
+    int insertSelective(SlsRunTask record);
+
+    SlsRunTask selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(SlsRunTask record);
+
+    int updateByPrimaryKey(SlsRunTask record);
+}

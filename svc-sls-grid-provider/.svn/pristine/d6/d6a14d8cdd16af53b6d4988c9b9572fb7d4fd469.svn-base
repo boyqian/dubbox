@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.grid.dao.SlsGridDao">
+  <resultMap id="SlsGridResult" type="com.upsoft.sep.sls.grid.entity.SlsGrid">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="level_code" jdbcType="VARCHAR" property="levelCode" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="grid_layer" jdbcType="VARCHAR" property="gridLayer" />
+    <result column="duty_unit_id" jdbcType="VARCHAR" property="dutyUnitId" />
+    <result column="duty_unit_name" jdbcType="VARCHAR" property="dutyUnitName" />
+    <result column="division_leader_id" jdbcType="VARCHAR" property="divisionLeaderId" />
+    <result column="division_leader_name" jdbcType="VARCHAR" property="divisionLeaderName" />
+    <result column="grid_manager_id" jdbcType="VARCHAR" property="gridManagerId" />
+    <result column="grid_manager_name" jdbcType="VARCHAR" property="gridManagerName" />
+    <result column="grid_manager_phone" jdbcType="VARCHAR" property="gridManagerPhone" />
+    <result column="standby1" jdbcType="VARCHAR" property="standby1" />
+    <result column="standby2" jdbcType="VARCHAR" property="standby2" />
+    <result column="standby3" jdbcType="VARCHAR" property="standby3" />
+  </resultMap>
+  <sql id="Table_Name">
+    <![CDATA[
+    sls_grid
+    ]]>
+  </sql>
+  <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+    id, `name`, level_code, level_name, parent_id, grid_layer, duty_unit_id, duty_unit_name, 
+    division_leader_id, division_leader_name, grid_manager_id, grid_manager_name, grid_manager_phone, 
+    standby1, standby2, standby3
+    ]]>
+  </sql>
+  <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{levelCode,jdbcType=VARCHAR}, 
+    #{levelName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{gridLayer,jdbcType=VARCHAR}, 
+    #{dutyUnitId,jdbcType=VARCHAR}, #{dutyUnitName,jdbcType=VARCHAR}, #{divisionLeaderId,jdbcType=VARCHAR}, 
+    #{divisionLeaderName,jdbcType=VARCHAR}, #{gridManagerId,jdbcType=VARCHAR}, #{gridManagerName,jdbcType=VARCHAR}, 
+    #{gridManagerPhone,jdbcType=VARCHAR}, #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, 
+    #{standby3,jdbcType=VARCHAR}
+  </sql>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.grid.entity.SlsGrid">
+    insert into
+    <include refid="Table_Name" />
+    (
+    <include refid="Select_or_Insert_Columns" />
+     )
+     VALUES
+     ( 
+    <include refid="Insert_Column_Value" />
+     )
+  </insert>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <update id="update" parameterType="com.upsoft.sep.sls.grid.entity.SlsGrid">
+    update 
+    <include refid="Table_Name" />
+    set 
+    `name` = #{name,jdbcType=VARCHAR},
+      level_code = #{levelCode,jdbcType=VARCHAR},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      grid_layer = #{gridLayer,jdbcType=VARCHAR},
+      duty_unit_id = #{dutyUnitId,jdbcType=VARCHAR},
+      duty_unit_name = #{dutyUnitName,jdbcType=VARCHAR},
+      division_leader_id = #{divisionLeaderId,jdbcType=VARCHAR},
+      division_leader_name = #{divisionLeaderName,jdbcType=VARCHAR},
+      grid_manager_id = #{gridManagerId,jdbcType=VARCHAR},
+      grid_manager_name = #{gridManagerName,jdbcType=VARCHAR},
+      grid_manager_phone = #{gridManagerPhone,jdbcType=VARCHAR},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getSlsGrid" parameterType="java.lang.String" resultMap="SlsGridResult">
+    select 
+    
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getPageSlsGrid" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="SlsGridResult">
+    select 
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where 1=1
+    <if test="param!=null and param.name != null and param.name !='' ">
+      and name like CONCAT(CONCAT('%',#{param.name}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.name != null and param.name !='' ">
+      and `name` = #{name,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.levelCode != null and param.levelCode !='' ">
+      and level_code like CONCAT(CONCAT('%',#{param.levelCode}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.levelCode != null and param.levelCode !='' ">
+      and level_code = #{levelCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.levelName != null and param.levelName !='' ">
+      and level_name like CONCAT(CONCAT('%',#{param.levelName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.levelName != null and param.levelName !='' ">
+      and level_name = #{levelName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.parentId != null and param.parentId !='' ">
+      and parent_id like CONCAT(CONCAT('%',#{param.parentId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.parentId != null and param.parentId !='' ">
+      and parent_id = #{parentId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.gridLayer != null and param.gridLayer !='' ">
+      and grid_layer like CONCAT(CONCAT('%',#{param.gridLayer}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.gridLayer != null and param.gridLayer !='' ">
+      and grid_layer = #{gridLayer,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dutyUnitId != null and param.dutyUnitId !='' ">
+      and duty_unit_id like CONCAT(CONCAT('%',#{param.dutyUnitId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dutyUnitId != null and param.dutyUnitId !='' ">
+      and duty_unit_id = #{dutyUnitId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.dutyUnitName != null and param.dutyUnitName !='' ">
+      and duty_unit_name like CONCAT(CONCAT('%',#{param.dutyUnitName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.dutyUnitName != null and param.dutyUnitName !='' ">
+      and duty_unit_name = #{dutyUnitName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.divisionLeaderId != null and param.divisionLeaderId !='' ">
+      and division_leader_id like CONCAT(CONCAT('%',#{param.divisionLeaderId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.divisionLeaderId != null and param.divisionLeaderId !='' ">
+      and division_leader_id = #{divisionLeaderId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.divisionLeaderName != null and param.divisionLeaderName !='' ">
+      and division_leader_name like CONCAT(CONCAT('%',#{param.divisionLeaderName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.divisionLeaderName != null and param.divisionLeaderName !='' ">
+      and division_leader_name = #{divisionLeaderName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.gridManagerId != null and param.gridManagerId !='' ">
+      and grid_manager_id like CONCAT(CONCAT('%',#{param.gridManagerId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.gridManagerId != null and param.gridManagerId !='' ">
+      and grid_manager_id = #{gridManagerId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.gridManagerName != null and param.gridManagerName !='' ">
+      and grid_manager_name like CONCAT(CONCAT('%',#{param.gridManagerName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.gridManagerName != null and param.gridManagerName !='' ">
+      and grid_manager_name = #{gridManagerName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.gridManagerPhone != null and param.gridManagerPhone !='' ">
+      and grid_manager_phone like CONCAT(CONCAT('%',#{param.gridManagerPhone}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.gridManagerPhone != null and param.gridManagerPhone !='' ">
+      and grid_manager_phone = #{gridManagerPhone,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 = #{standby1,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 = #{standby2,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 like CONCAT(CONCAT('%',#{param.standby3}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 = #{standby3,jdbcType=VARCHAR}
+    </if>
+     -->
+  </select>
+</mapper>

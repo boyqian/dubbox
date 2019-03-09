@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsDetailTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.upsoft.sep.sls.task.entity.SlsDetailTask" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="task_title" property="taskTitle" jdbcType="VARCHAR" />
+    <result column="daily_enterprise_id" property="dailyEnterpriseId" jdbcType="VARCHAR" />
+    <result column="daily_enterprise_name" property="dailyEnterpriseName" jdbcType="VARCHAR" />
+    <result column="daily_grid_id" property="dailyGridId" jdbcType="VARCHAR" />
+    <result column="daily_grid_name" property="dailyGridName" jdbcType="VARCHAR" />
+    <result column="daily_enterprise_address" property="dailyEnterpriseAddress" jdbcType="VARCHAR" />
+    <result column="daily_construction_id" property="dailyConstructionId" jdbcType="VARCHAR" />
+    <result column="daily_construction_address" property="dailyConstructionAddress" jdbcType="VARCHAR" />
+    <result column="daily_construction_unit" property="dailyConstructionUnit" jdbcType="VARCHAR" />
+    <result column="daily_construction_name" property="dailyConstructionName" jdbcType="VARCHAR" />
+    <result column="daily_construction_implement" property="dailyConstructionImplement" jdbcType="VARCHAR" />
+    <result column="daily_inspection_content" property="dailyInspectionContent" jdbcType="VARCHAR" />
+    <result column="daily_note" property="dailyNote" jdbcType="VARCHAR" />
+    <result column="special_initiate_unit" property="specialInitiateUnit" jdbcType="VARCHAR" />
+    <result column="special_start_time" property="specialStartTime" jdbcType="TIMESTAMP" />
+    <result column="special_note" property="specialNote" jdbcType="VARCHAR" />
+    <result column="special_enterprise_id" property="specialEnterpriseId" jdbcType="VARCHAR" />
+    <result column="special_enterprise_name" property="specialEnterpriseName" jdbcType="VARCHAR" />
+    <result column="special_construction_id" property="specialConstructionId" jdbcType="VARCHAR" />
+    <result column="special_construction_name" property="specialConstructionName" jdbcType="VARCHAR" />
+    <result column="special_end_time" property="specialEndTime" jdbcType="TIMESTAMP" />
+    <result column="special_action_content" property="specialActionContent" jdbcType="VARCHAR" />
+    <result column="special_action_name" property="specialActionName" jdbcType="VARCHAR" />
+    <result column="temporary_task_content" property="temporaryTaskContent" jdbcType="VARCHAR" />
+    <result column="standby1" property="standby1" jdbcType="VARCHAR" />
+    <result column="standby2" property="standby2" jdbcType="VARCHAR" />
+    <result column="standby3" property="standby3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, task_id, task_title, daily_enterprise_id, daily_enterprise_name, daily_grid_id, 
+    daily_grid_name, daily_enterprise_address, daily_construction_id, daily_construction_address, 
+    daily_construction_unit, daily_construction_name, daily_construction_implement, daily_inspection_content, 
+    daily_note, special_initiate_unit, special_start_time, special_note, special_enterprise_id, 
+    special_enterprise_name, special_construction_id, special_construction_name, special_end_time, 
+    special_action_content, special_action_name, temporary_task_content, standby1, standby2, 
+    standby3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sls_detail_task
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sls_detail_task
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask" >
+    insert into sls_detail_task (id, task_id, task_title, 
+      daily_enterprise_id, daily_enterprise_name, 
+      daily_grid_id, daily_grid_name, daily_enterprise_address, 
+      daily_construction_id, daily_construction_address, 
+      daily_construction_unit, daily_construction_name, 
+      daily_construction_implement, daily_inspection_content, 
+      daily_note, special_initiate_unit, special_start_time, 
+      special_note, special_enterprise_id, special_enterprise_name, 
+      special_construction_id, special_construction_name, 
+      special_end_time, special_action_content, 
+      special_action_name, temporary_task_content, 
+      standby1, standby2, standby3
+      )
+    values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, 
+      #{dailyEnterpriseId,jdbcType=VARCHAR}, #{dailyEnterpriseName,jdbcType=VARCHAR}, 
+      #{dailyGridId,jdbcType=VARCHAR}, #{dailyGridName,jdbcType=VARCHAR}, #{dailyEnterpriseAddress,jdbcType=VARCHAR}, 
+      #{dailyConstructionId,jdbcType=VARCHAR}, #{dailyConstructionAddress,jdbcType=VARCHAR}, 
+      #{dailyConstructionUnit,jdbcType=VARCHAR}, #{dailyConstructionName,jdbcType=VARCHAR}, 
+      #{dailyConstructionImplement,jdbcType=VARCHAR}, #{dailyInspectionContent,jdbcType=VARCHAR}, 
+      #{dailyNote,jdbcType=VARCHAR}, #{specialInitiateUnit,jdbcType=VARCHAR}, #{specialStartTime,jdbcType=TIMESTAMP}, 
+      #{specialNote,jdbcType=VARCHAR}, #{specialEnterpriseId,jdbcType=VARCHAR}, #{specialEnterpriseName,jdbcType=VARCHAR}, 
+      #{specialConstructionId,jdbcType=VARCHAR}, #{specialConstructionName,jdbcType=VARCHAR}, 
+      #{specialEndTime,jdbcType=TIMESTAMP}, #{specialActionContent,jdbcType=VARCHAR}, 
+      #{specialActionName,jdbcType=VARCHAR}, #{temporaryTaskContent,jdbcType=VARCHAR}, 
+      #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask" >
+    insert into sls_detail_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskTitle != null" >
+        task_title,
+      </if>
+      <if test="dailyEnterpriseId != null" >
+        daily_enterprise_id,
+      </if>
+      <if test="dailyEnterpriseName != null" >
+        daily_enterprise_name,
+      </if>
+      <if test="dailyGridId != null" >
+        daily_grid_id,
+      </if>
+      <if test="dailyGridName != null" >
+        daily_grid_name,
+      </if>
+      <if test="dailyEnterpriseAddress != null" >
+        daily_enterprise_address,
+      </if>
+      <if test="dailyConstructionId != null" >
+        daily_construction_id,
+      </if>
+      <if test="dailyConstructionAddress != null" >
+        daily_construction_address,
+      </if>
+      <if test="dailyConstructionUnit != null" >
+        daily_construction_unit,
+      </if>
+      <if test="dailyConstructionName != null" >
+        daily_construction_name,
+      </if>
+      <if test="dailyConstructionImplement != null" >
+        daily_construction_implement,
+      </if>
+      <if test="dailyInspectionContent != null" >
+        daily_inspection_content,
+      </if>
+      <if test="dailyNote != null" >
+        daily_note,
+      </if>
+      <if test="specialInitiateUnit != null" >
+        special_initiate_unit,
+      </if>
+      <if test="specialStartTime != null" >
+        special_start_time,
+      </if>
+      <if test="specialNote != null" >
+        special_note,
+      </if>
+      <if test="specialEnterpriseId != null" >
+        special_enterprise_id,
+      </if>
+      <if test="specialEnterpriseName != null" >
+        special_enterprise_name,
+      </if>
+      <if test="specialConstructionId != null" >
+        special_construction_id,
+      </if>
+      <if test="specialConstructionName != null" >
+        special_construction_name,
+      </if>
+      <if test="specialEndTime != null" >
+        special_end_time,
+      </if>
+      <if test="specialActionContent != null" >
+        special_action_content,
+      </if>
+      <if test="specialActionName != null" >
+        special_action_name,
+      </if>
+      <if test="temporaryTaskContent != null" >
+        temporary_task_content,
+      </if>
+      <if test="standby1 != null" >
+        standby1,
+      </if>
+      <if test="standby2 != null" >
+        standby2,
+      </if>
+      <if test="standby3 != null" >
+        standby3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseId != null" >
+        #{dailyEnterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseName != null" >
+        #{dailyEnterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGridId != null" >
+        #{dailyGridId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGridName != null" >
+        #{dailyGridName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseAddress != null" >
+        #{dailyEnterpriseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionId != null" >
+        #{dailyConstructionId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionAddress != null" >
+        #{dailyConstructionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionUnit != null" >
+        #{dailyConstructionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionName != null" >
+        #{dailyConstructionName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionImplement != null" >
+        #{dailyConstructionImplement,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyInspectionContent != null" >
+        #{dailyInspectionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyNote != null" >
+        #{dailyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="specialInitiateUnit != null" >
+        #{specialInitiateUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="specialStartTime != null" >
+        #{specialStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialNote != null" >
+        #{specialNote,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEnterpriseId != null" >
+        #{specialEnterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEnterpriseName != null" >
+        #{specialEnterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialConstructionId != null" >
+        #{specialConstructionId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialConstructionName != null" >
+        #{specialConstructionName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEndTime != null" >
+        #{specialEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialActionContent != null" >
+        #{specialActionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="specialActionName != null" >
+        #{specialActionName,jdbcType=VARCHAR},
+      </if>
+      <if test="temporaryTaskContent != null" >
+        #{temporaryTaskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="standby1 != null" >
+        #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        #{standby3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask" >
+    update sls_detail_task
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        task_title = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseId != null" >
+        daily_enterprise_id = #{dailyEnterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseName != null" >
+        daily_enterprise_name = #{dailyEnterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGridId != null" >
+        daily_grid_id = #{dailyGridId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGridName != null" >
+        daily_grid_name = #{dailyGridName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyEnterpriseAddress != null" >
+        daily_enterprise_address = #{dailyEnterpriseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionId != null" >
+        daily_construction_id = #{dailyConstructionId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionAddress != null" >
+        daily_construction_address = #{dailyConstructionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionUnit != null" >
+        daily_construction_unit = #{dailyConstructionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionName != null" >
+        daily_construction_name = #{dailyConstructionName,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyConstructionImplement != null" >
+        daily_construction_implement = #{dailyConstructionImplement,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyInspectionContent != null" >
+        daily_inspection_content = #{dailyInspectionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyNote != null" >
+        daily_note = #{dailyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="specialInitiateUnit != null" >
+        special_initiate_unit = #{specialInitiateUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="specialStartTime != null" >
+        special_start_time = #{specialStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialNote != null" >
+        special_note = #{specialNote,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEnterpriseId != null" >
+        special_enterprise_id = #{specialEnterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEnterpriseName != null" >
+        special_enterprise_name = #{specialEnterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialConstructionId != null" >
+        special_construction_id = #{specialConstructionId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialConstructionName != null" >
+        special_construction_name = #{specialConstructionName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEndTime != null" >
+        special_end_time = #{specialEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialActionContent != null" >
+        special_action_content = #{specialActionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="specialActionName != null" >
+        special_action_name = #{specialActionName,jdbcType=VARCHAR},
+      </if>
+      <if test="temporaryTaskContent != null" >
+        temporary_task_content = #{temporaryTaskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="standby1 != null" >
+        standby1 = #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        standby2 = #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        standby3 = #{standby3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.upsoft.sep.sls.task.entity.SlsDetailTask" >
+    update sls_detail_task
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=VARCHAR},
+      daily_enterprise_id = #{dailyEnterpriseId,jdbcType=VARCHAR},
+      daily_enterprise_name = #{dailyEnterpriseName,jdbcType=VARCHAR},
+      daily_grid_id = #{dailyGridId,jdbcType=VARCHAR},
+      daily_grid_name = #{dailyGridName,jdbcType=VARCHAR},
+      daily_enterprise_address = #{dailyEnterpriseAddress,jdbcType=VARCHAR},
+      daily_construction_id = #{dailyConstructionId,jdbcType=VARCHAR},
+      daily_construction_address = #{dailyConstructionAddress,jdbcType=VARCHAR},
+      daily_construction_unit = #{dailyConstructionUnit,jdbcType=VARCHAR},
+      daily_construction_name = #{dailyConstructionName,jdbcType=VARCHAR},
+      daily_construction_implement = #{dailyConstructionImplement,jdbcType=VARCHAR},
+      daily_inspection_content = #{dailyInspectionContent,jdbcType=VARCHAR},
+      daily_note = #{dailyNote,jdbcType=VARCHAR},
+      special_initiate_unit = #{specialInitiateUnit,jdbcType=VARCHAR},
+      special_start_time = #{specialStartTime,jdbcType=TIMESTAMP},
+      special_note = #{specialNote,jdbcType=VARCHAR},
+      special_enterprise_id = #{specialEnterpriseId,jdbcType=VARCHAR},
+      special_enterprise_name = #{specialEnterpriseName,jdbcType=VARCHAR},
+      special_construction_id = #{specialConstructionId,jdbcType=VARCHAR},
+      special_construction_name = #{specialConstructionName,jdbcType=VARCHAR},
+      special_end_time = #{specialEndTime,jdbcType=TIMESTAMP},
+      special_action_content = #{specialActionContent,jdbcType=VARCHAR},
+      special_action_name = #{specialActionName,jdbcType=VARCHAR},
+      temporary_task_content = #{temporaryTaskContent,jdbcType=VARCHAR},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

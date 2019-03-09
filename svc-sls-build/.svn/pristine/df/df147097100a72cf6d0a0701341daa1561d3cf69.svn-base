@@ -1,0 +1,36 @@
+# default JDBC Config
+jdbc.default.poolSize=1
+jdbc.default.minPoolSize=1
+jdbc.default.maxPoolSize=5
+jdbc.default.borrowConnectionTimeout=360
+jdbc.default.reapTimeout=320
+jdbc.default.maxIdleTime=1
+jdbc.default.maintenanceInterval=60
+jdbc.default.loginTimeout=60
+jdbc.default.logWriter=60
+jdbc.default.maxLifetime=60
+
+# 问题数据库
+jdbc.sls.issue.driverClassName=com.mysql.jdbc.Driver
+jdbc.sls.issue.url=jdbc:mysql://172.16.20.118:3306/ck_sls_issue?useUnicode=true&&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.issue.username=root
+jdbc.sls.issue.password=123456
+
+# 任务数据库
+jdbc.sls.task.driverClassName=com.mysql.jdbc.Driver
+jdbc.sls.task.url=jdbc:mysql://172.16.20.118:3306/ck_sls_task?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.task.username=root
+jdbc.sls.task.password=123456
+
+# 网格管理数据库
+jdbc.sls.grid.driverClassName=com.mysql.jdbc.Driver
+jdbc.sls.grid.url=jdbc:mysql://172.16.20.118:3306/ck_sls_grid?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.grid.username=root
+jdbc.sls.grid.password=123456
+
+# 配置管理数据库
+jdbc.sls.config.driverClassName=com.mysql.jdbc.Driver
+#jdbc.sls.config.url=jdbc:mysql://172.16.20.118:3306/ck_sls_config?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.config.url=jdbc:mysql://172.16.20.118:3306/sls_conf?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull
+jdbc.sls.config.username=root
+jdbc.sls.config.password=123456

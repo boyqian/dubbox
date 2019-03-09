@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.upsoft.sep</groupId>
+	<artifactId>svc-sls-config-api</artifactId>
+	<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-depend-api</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-auth-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.8</version>
+		</dependency>
+
+		<!-- 代码生成器附带 -->
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-autocoder-client</artifactId>
+			<version>3.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+		</dependency>
+
+		<!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.41</version>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<url>http://maven.apache.org</url>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://172.16.18.3:8081/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://172.16.18.3:8081/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

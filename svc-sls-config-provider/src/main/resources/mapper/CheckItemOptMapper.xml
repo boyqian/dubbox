@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.config.check.dao.CheckItemOptDao">
+	<resultMap id="BaseResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemOptEntity">
+		<id column="CHECK_OPT_ID" jdbcType="VARCHAR" property="checkOptId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="CHECK_OPT_NAME" jdbcType="VARCHAR" property="checkOptName" />
+		<result column="IS_VALUE_VALID" jdbcType="VARCHAR" property="isValueValid" />
+		<result column="CHECK_OPT_VALUE" jdbcType="VARCHAR" property="checkOptValue" />
+		<result column="IS_MARK" jdbcType="VARCHAR" property="isMark" />
+		<result column="OPTIINPUT_TYPE_CODE" jdbcType="VARCHAR" property="optiInputTypeCode" />
+		<result column="OPTIINPUT_TYPE_NAME" jdbcType="VARCHAR" property="optiInputTypeName" />
+		<result column="ORDER_NUMBER" jdbcType="DECIMAL" property="orderNumber" />
+		<result column="TIPS" jdbcType="VARCHAR" property="tips" />
+		<result column="SUMMARY" jdbcType="VARCHAR" property="summary" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="CREATER_ID" jdbcType="VARCHAR" property="createrId" />
+		<result column="CREATER_NAME" jdbcType="VARCHAR" property="createrName" />
+		<result column="CREATER_ORG_CODE" jdbcType="VARCHAR" property="createrOrgCode" />
+		<result column="CREATER_ORG_NAME" jdbcType="VARCHAR" property="createrOrgName" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="VERSION_TIME" jdbcType="TIMESTAMP" property="versionTime" />
+		<result column="DATE_UNIT" jdbcType="VARCHAR" property="dateUnit" />
+		<result column="EVENT_LEVEL_CODE" jdbcType="VARCHAR" property="eventLevelCode" />
+		<result column="EVENT_LEVEL_NAME" jdbcType="VARCHAR" property="eventLevelName" />
+		<result column="HAND_PEROIOD_DATE" jdbcType="VARCHAR" property="handPeroiodDate" />
+	</resultMap>
+
+	<resultMap id="ReturnResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemOptReturnEntity">
+		<id column="CHECK_OPT_ID" jdbcType="VARCHAR" property="checkOptId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="CHECK_OPT_NAME" jdbcType="VARCHAR" property="checkOptName" />
+		<result column="IS_VALUE_VALID" jdbcType="VARCHAR" property="isValueValid" />
+		<result column="CHECK_OPT_VALUE" jdbcType="VARCHAR" property="checkOptValue" />
+		<result column="IS_MARK" jdbcType="VARCHAR" property="isMark" />
+		<result column="OPTIINPUT_TYPE_CODE" jdbcType="VARCHAR" property="optiInputTypeCode" />
+		<result column="OPTIINPUT_TYPE_NAME" jdbcType="VARCHAR" property="optiInputTypeName" />
+		<result column="ORDER_NUMBER" jdbcType="DECIMAL" property="orderNumber" />
+		<result column="TIPS" jdbcType="VARCHAR" property="tips" />
+		<result column="SUMMARY" jdbcType="VARCHAR" property="summary" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="DATE_UNIT" jdbcType="VARCHAR" property="dateUnit" />
+		<result column="EVENT_LEVEL_CODE" jdbcType="VARCHAR" property="eventLevelCode" />
+		<result column="EVENT_LEVEL_NAME" jdbcType="VARCHAR" property="eventLevelName" />
+		<result column="HAND_PEROIOD_DATE" jdbcType="VARCHAR" property="handPeroiodDate" />
+	</resultMap>
+
+
+	<resultMap id="ListResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckItemOptPageEntity">
+		<id column="CHECK_OPT_ID" jdbcType="VARCHAR" property="checkOptId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="CHECK_OPT_NAME" jdbcType="VARCHAR" property="checkOptName" />
+		<result column="IS_VALUE_VALID" jdbcType="VARCHAR" property="isValueValid" />
+		<result column="OPTIINPUT_TYPE_NAME" jdbcType="VARCHAR" property="optiInputTypeName" />
+		<result column="OPTIINPUT_TYPE_CODE" jdbcType="VARCHAR" property="optiInputTypeCode" />
+		<result column="TIPS" jdbcType="VARCHAR" property="tips" />
+		<result column="DATE_UNIT" jdbcType="VARCHAR" property="dateUnit" />
+		<result column="EVENT_LEVEL_NAME" jdbcType="VARCHAR" property="eventLevelName" />
+		<result column="EVENT_LEVEL_CODE" jdbcType="VARCHAR" property="eventLevelCode" />
+		<result column="HAND_PEROIOD_DATE" jdbcType="VARCHAR" property="handPeroiodDate" />
+		<result column="VERSION_TIME" jdbcType="TIMESTAMP" property="versionTime" />
+	</resultMap>
+
+	<resultMap id="EditResultMap" type="com.upsoft.sep.sls.config.check.entity.CheckOptEditEntity">
+		<result column="CHECK_OPT_NAME" jdbcType="VARCHAR" property="checkOptName" />
+		<result column="IS_VALUE_VALID" jdbcType="VARCHAR" property="isValueValid" />
+		<result column="OPTIINPUT_TYPE_CODE" jdbcType="VARCHAR" property="optiInputTypeCode" />
+		<result column="ORDER_NUMBER" jdbcType="DECIMAL" property="orderNumber" />
+		<result column="TIPS" jdbcType="VARCHAR" property="tips" />
+		<result column="DATE_UNIT" jdbcType="VARCHAR" property="dateUnit" />
+		<result column="EVENT_LEVEL_CODE" jdbcType="VARCHAR" property="eventLevelCode" />
+		<result column="HAND_PEROIOD_DATE" jdbcType="VARCHAR" property="handPeroiodDate" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CHECK_OPT_ID, CHECK_ITEM_ID, CHECK_OPT_NAME,
+		IS_VALUE_VALID, CHECK_OPT_VALUE,
+		IS_MARK,
+		OPTIINPUT_TYPE_CODE,
+		OPTIINPUT_TYPE_NAME,
+		ORDER_NUMBER, TIPS, SUMMARY, STATUS, CREATER_ID,
+		CREATER_NAME, CREATER_ORG_CODE, CREATER_ORG_NAME, CREATE_TIME,
+		VERSION_TIME, DATE_UNIT,
+		EVENT_LEVEL_CODE, EVENT_LEVEL_NAME,
+		HAND_PEROIOD_DATE
+	</sql>
+	<sql id="Return_Column_List">
+		CHECK_OPT_ID, CHECK_ITEM_ID, CHECK_OPT_NAME,
+		IS_VALUE_VALID, CHECK_OPT_VALUE,
+		IS_MARK,
+		OPTIINPUT_TYPE_CODE,
+		OPTIINPUT_TYPE_NAME,
+		ORDER_NUMBER, TIPS, SUMMARY, STATUS,DATE_UNIT,
+		EVENT_LEVEL_CODE, EVENT_LEVEL_NAME,
+		HAND_PEROIOD_DATE
+	</sql>
+	<sql id="List_Column_List">
+		CHECK_OPT_ID, CHECK_ITEM_ID, CHECK_OPT_NAME,
+		IS_VALUE_VALID, OPTIINPUT_TYPE_NAME,OPTIINPUT_TYPE_CODE,
+		TIPS,
+		DATE_UNIT, EVENT_LEVEL_NAME,EVENT_LEVEL_CODE,
+		HAND_PEROIOD_DATE,
+		VERSION_TIME
+	</sql>
+
+	<select id="selectCheckItemOptInfo" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemOptByIdAndNameParam" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sls_check_item_opt
+		where STATUS='1'
+		<if test="checkItemId != '' and checkItemId != null">
+			and CHECK_ITEM_ID = #{checkItemId}
+		</if>
+		<if test="checkOptName != '' and checkOptName != null">
+			and CHECK_OPT_NAME = #{checkOptName}
+		</if>
+	</select>
+
+	<select id="selectCheckItemOptById" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemOptByIdParam" resultMap="EditResultMap">
+		select
+		t.CHECK_OPT_NAME,t.IS_VALUE_VALID,t.OPTIINPUT_TYPE_CODE,t.TIPS,t.DATE_UNIT,
+		t.EVENT_LEVEL_CODE,t.HAND_PEROIOD_DATE,t.ORDER_NUMBER
+		from
+		sls_check_item_opt t
+		where STATUS='1'
+		<if test="checkOptId != '' and checkOptId != null">
+			and CHECK_OPT_ID = #{checkOptId}
+		</if>
+	</select>
+
+	<select id="selectcheckOptList" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemOptByIdsParam" resultMap="ListResultMap">
+		select
+		<include refid="List_Column_List" />
+		from sls_check_item_opt
+		where STATUS='1'
+		and CHECK_ITEM_ID = #{checkItemId}
+		<if test="versionTimeDate != '' and versionTimeDate != null">
+			and VERSION_TIME <![CDATA[ >= #{versionTimeDate}  ]]>
+		</if>
+		order by ORDER_NUMBER ASC
+	</select>
+	
+	<select id="selectcheckOptsList" resultMap="ListResultMap">
+		select
+		<include refid="List_Column_List" />
+		from sls_check_item_opt
+		where STATUS='1'
+		and CHECK_ITEM_ID in 
+		<foreach collection="itemIdList" item="itemId" index="index" open="(" close=")" separator=",">
+			#{itemId}
+		</foreach>
+		order by ORDER_NUMBER ASC
+	</select>
+	
+	<select id="selectcheckOptListApp" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemOptByIdsParam" resultMap="ListResultMap">
+		select
+		<include refid="List_Column_List" />
+		from sls_check_item_opt
+		where STATUS='1'
+		<if test="checkItemId != '' and checkItemId != null">
+			and CHECK_ITEM_ID = #{checkItemId}
+		</if>
+		<if test="versionTimeDate != '' and versionTimeDate != null">
+			and VERSION_TIME <![CDATA[ >= #{versionTimeDate}  ]]>
+		</if>
+		order by VERSION_TIME DESC
+	</select>
+	<select id="selectCheckOptListByItemId" resultMap="ReturnResultMap" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckItemByIdParam">
+		select
+		<include refid="Return_Column_List" />
+		from sls_check_item_opt
+		where STATUS='1'
+		<if test="checkItemId != '' and checkItemId != null">
+			and CHECK_ITEM_ID = #{checkItemId}
+		</if>
+		order by ORDER_NUMBER ASC
+	</select>
+
+	<update id="deleteCheckOptByIdList" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckItemOptParam">
+		update sls_check_item_opt
+		set STATUS='-1'
+		where CHECK_OPT_ID in
+		<foreach collection="optIdList" item="checkOptId" index="index" open="(" close=")" separator=",">
+			#{checkOptId}
+		</foreach>
+	</update>
+
+	<insert id="insertCheckItemOpt" parameterType="com.upsoft.sep.sls.config.check.param.AddCheckItemOptParam">
+		insert into sls_check_item_opt
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="checkOptId != null">
+				CHECK_OPT_ID,
+			</if>
+			<if test="checkItemId != null">
+				CHECK_ITEM_ID,
+			</if>
+			<if test="checkOptName != null">
+				CHECK_OPT_NAME,
+			</if>
+			<if test="isValueValid != null">
+				IS_VALUE_VALID,
+			</if>
+			<if test="optiInputTypeCode != null">
+				OPTIINPUT_TYPE_CODE,
+			</if>
+			<if test="optiInputTypeName != null">
+				OPTIINPUT_TYPE_NAME,
+			</if>
+			<if test="orderNumber != null">
+				ORDER_NUMBER,
+			</if>
+			<if test="tips != null">
+				TIPS,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createrId != null">
+				CREATER_ID,
+			</if>
+			<if test="createrName != null">
+				CREATER_NAME,
+			</if>
+			<if test="createrOrgCode != null">
+				CREATER_ORG_CODE,
+			</if>
+			<if test="createrOrgName != null">
+				CREATER_ORG_NAME,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME,
+			</if>
+			<if test="dateUnit != null">
+				DATE_UNIT,
+			</if>
+			<if test="eventLevelCode != null">
+				EVENT_LEVEL_CODE,
+			</if>
+			<if test="eventLevelName != null">
+				EVENT_LEVEL_NAME,
+			</if>
+			<if test="handPeroiodDate != null">
+				HAND_PEROIOD_DATE,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="checkOptId != null">
+				#{checkOptId,jdbcType=VARCHAR},
+			</if>
+			<if test="checkItemId != null">
+				#{checkItemId,jdbcType=VARCHAR},
+			</if>
+			<if test="checkOptName != null">
+				#{checkOptName,jdbcType=VARCHAR},
+			</if>
+			<if test="isValueValid != null">
+				#{isValueValid,jdbcType=VARCHAR},
+			</if>
+			<if test="optiInputTypeCode != null">
+				#{optiInputTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="optiInputTypeName != null">
+				#{optiInputTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="orderNumber != null">
+				#{orderNumber,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tips != null">
+				#{tips,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null">
+				#{createrId,jdbcType=VARCHAR},
+			</if>
+			<if test="createrName != null">
+				#{createrName,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgCode != null">
+				#{createrOrgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="createrOrgName != null">
+				#{createrOrgName,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="versionTime != null">
+				#{versionTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dateUnit != null">
+				#{dateUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="eventLevelCode != null">
+				#{eventLevelCode,jdbcType=VARCHAR},
+			</if>
+			<if test="eventLevelName != null">
+				#{eventLevelName,jdbcType=VARCHAR},
+			</if>
+			<if test="handPeroiodDate != null">
+				#{handPeroiodDate,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateCheckItemOpt" parameterType="com.upsoft.sep.sls.config.check.param.ModCheckItemOptParam">
+		update sls_check_item_opt
+		<set>
+			<if test="checkItemId != null">
+				CHECK_ITEM_ID = #{checkItemId,jdbcType=VARCHAR},
+			</if>
+			<if test="checkOptName != null">
+				CHECK_OPT_NAME = #{checkOptName,jdbcType=VARCHAR},
+			</if>
+			<if test="isValueValid != null">
+				IS_VALUE_VALID = #{isValueValid,jdbcType=VARCHAR},
+			</if>
+			<if test="optiInputTypeCode != null">
+				OPTIINPUT_TYPE_CODE =
+				#{optiInputTypeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="optiInputTypeName != null">
+				OPTIINPUT_TYPE_NAME =
+				#{optiInputTypeName,jdbcType=VARCHAR},
+			</if>
+			<if test="orderNumber != null">
+				ORDER_NUMBER = #{orderNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="tips != null">
+				TIPS = #{tips,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="dateUnit != null">
+				DATE_UNIT= #{dateUnit,jdbcType=TIMESTAMP},
+			</if>
+			<if test="eventLevelCode != null">
+				EVENT_LEVEL_CODE = #{eventLevelCode,jdbcType=TIMESTAMP},
+			</if>
+			<if test="eventLevelName != null">
+				EVENT_LEVEL_NAME= #{eventLevelName,jdbcType=TIMESTAMP},
+			</if>
+			<if test="handPeroiodDate != null">
+				HAND_PEROIOD_DATE= #{handPeroiodDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="versionTime != null">
+				VERSION_TIME = #{versionTime,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		where CHECK_OPT_ID = #{checkOptId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.upsoft.sep.sls.config.check.entity.CheckItemOptEntity">
+		update
+		sls_check_item_opt
+		set CHECK_ITEM_ID = #{checkItemId,jdbcType=VARCHAR},
+		CHECK_OPT_NAME =
+		#{checkOptName,jdbcType=VARCHAR},
+		IS_VALUE_VALID =
+		#{isValueValid,jdbcType=VARCHAR},
+		CHECK_OPT_VALUE =
+		#{checkOptValue,jdbcType=VARCHAR},
+		IS_MARK =
+		#{isMark,jdbcType=VARCHAR},
+		OPTIINPUT_TYPE_CODE =
+		#{optiInputTypeCode,jdbcType=VARCHAR},
+		OPTIINPUT_TYPE_NAME =
+		#{optiInputTypeName,jdbcType=VARCHAR},
+		ORDER_NUMBER =
+		#{orderNumber,jdbcType=DECIMAL},
+		TIPS = #{tips,jdbcType=VARCHAR},
+		SUMMARY = #{summary,jdbcType=VARCHAR},
+		STATUS =
+		#{status,jdbcType=VARCHAR},
+		CREATER_ID = #{createrId,jdbcType=VARCHAR},
+		CREATER_NAME = #{createrName,jdbcType=VARCHAR},
+		CREATER_ORG_CODE =
+		#{createrOrgCode,jdbcType=VARCHAR},
+		CREATER_ORG_NAME =
+		#{createrOrgName,jdbcType=VARCHAR},
+		CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP},
+		VERSION_TIME =
+		#{versionTime,jdbcType=TIMESTAMP}
+		where CHECK_OPT_ID =
+		#{checkOptId,jdbcType=VARCHAR}
+	</update>
+</mapper>

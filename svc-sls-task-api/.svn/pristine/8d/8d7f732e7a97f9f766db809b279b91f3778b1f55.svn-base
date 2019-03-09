@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.upsoft.sep</groupId>
+	<artifactId>svc-sls-task-api</artifactId>
+	<version>3.0.0-SC.CD.CKQ-SNAPSHOT</version>
+	<name>svc-sls-task-api</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-depend-api</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-auth-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-dict-api</artifactId>
+			<version>3.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.upsoft.sep</groupId>
+			<artifactId>svc-bp-user-api</artifactId>
+			<version>3.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.8</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin><!-- 要将源码放上去，需要加入这个插件 -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<url>http://maven.apache.org</url>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://172.16.18.3:8081/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://172.16.18.3:8081/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+</project>

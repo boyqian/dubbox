@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsRunTaskDao">
+  <resultMap id="SlsRunTaskResult" type="com.upsoft.sep.sls.task.entity.SlsRunTask">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+    <result column="type_value" jdbcType="VARCHAR" property="typeValue" />
+    <result column="level_code" jdbcType="VARCHAR" property="levelCode" />
+    <result column="level_value" jdbcType="VARCHAR" property="levelValue" />
+    <result column="assignee_id" jdbcType="VARCHAR" property="assigneeId" />
+    <result column="assignee_name" jdbcType="VARCHAR" property="assigneeName" />
+    <result column="assistant_id" jdbcType="VARCHAR" property="assistantId" />
+    <result column="assistant_name" jdbcType="VARCHAR" property="assistantName" />
+    <result column="scheduler_id" jdbcType="VARCHAR" property="schedulerId" />
+    <result column="scheduler_name" jdbcType="VARCHAR" property="schedulerName" />
+    <result column="assign_time" jdbcType="TIMESTAMP" property="assignTime" />
+    <result column="deliverer_id" jdbcType="VARCHAR" property="delivererId" />
+    <result column="deliverer_name" jdbcType="VARCHAR" property="delivererName" />
+    <result column="supervisor_id" jdbcType="VARCHAR" property="supervisorId" />
+    <result column="supervisor_name" jdbcType="VARCHAR" property="supervisorName" />
+    <result column="deliver_note" jdbcType="VARCHAR" property="deliverNote" />
+    <result column="supervisory_note" jdbcType="VARCHAR" property="supervisoryNote" />
+    <result column="treatment_suggestion" jdbcType="VARCHAR" property="treatmentSuggestion" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="process_time" jdbcType="TIMESTAMP" property="processTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="template_id" jdbcType="VARCHAR" property="templateId" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="attachment_task_add" jdbcType="VARCHAR" property="attachmentTaskAdd" />
+    <result column="attachment_task_close" jdbcType="VARCHAR" property="attachmentTaskClose" />
+    <result column="scheduled_task_period_code" jdbcType="VARCHAR" property="scheduledTaskPeriodCode" />
+    <result column="scheduled_task_period_name" jdbcType="VARCHAR" property="scheduledTaskPeriodName" />
+    <result column="scheduled_task_first_arrange" jdbcType="TIMESTAMP" property="scheduledTaskFirstArrange" />
+    <result column="task_execution_days" jdbcType="SMALLINT" property="taskExecutionDays" />
+    <result column="standby1" jdbcType="VARCHAR" property="standby1" />
+    <result column="standby2" jdbcType="VARCHAR" property="standby2" />
+    <result column="standby3" jdbcType="VARCHAR" property="standby3" />
+  </resultMap>
+  <sql id="Table_Name">
+    <![CDATA[
+    sls_run_task
+    ]]>
+  </sql>
+  <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+    id, title, type_code, type_value, level_code, level_value, assignee_id, assignee_name, 
+    assistant_id, assistant_name, scheduler_id, scheduler_name, assign_time, deliverer_id, 
+    deliverer_name, supervisor_id, supervisor_name, deliver_note, supervisory_note, treatment_suggestion, 
+    detail, start_time, process_time, end_time, deadline, create_time, update_time, `status`, 
+    template_id, template_name, attachment_task_add, attachment_task_close, scheduled_task_period_code, 
+    scheduled_task_period_name, scheduled_task_first_arrange, task_execution_days, standby1, 
+    standby2, standby3
+    ]]>
+  </sql>
+  <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{typeCode,jdbcType=VARCHAR}, 
+    #{typeValue,jdbcType=VARCHAR}, #{levelCode,jdbcType=VARCHAR}, #{levelValue,jdbcType=VARCHAR}, 
+    #{assigneeId,jdbcType=VARCHAR}, #{assigneeName,jdbcType=VARCHAR}, #{assistantId,jdbcType=VARCHAR}, 
+    #{assistantName,jdbcType=VARCHAR}, #{schedulerId,jdbcType=VARCHAR}, #{schedulerName,jdbcType=VARCHAR}, 
+    #{assignTime,jdbcType=TIMESTAMP}, #{delivererId,jdbcType=VARCHAR}, #{delivererName,jdbcType=VARCHAR}, 
+    #{supervisorId,jdbcType=VARCHAR}, #{supervisorName,jdbcType=VARCHAR}, #{deliverNote,jdbcType=VARCHAR}, 
+    #{supervisoryNote,jdbcType=VARCHAR}, #{treatmentSuggestion,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+    #{startTime,jdbcType=TIMESTAMP}, #{processTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+    #{deadline,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+    #{status,jdbcType=TINYINT}, #{templateId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, 
+    #{attachmentTaskAdd,jdbcType=VARCHAR}, #{attachmentTaskClose,jdbcType=VARCHAR}, #{scheduledTaskPeriodCode,jdbcType=VARCHAR}, 
+    #{scheduledTaskPeriodName,jdbcType=VARCHAR}, #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP}, 
+    #{taskExecutionDays,jdbcType=SMALLINT}, #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, 
+    #{standby3,jdbcType=VARCHAR}
+  </sql>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask">
+    insert into
+    <include refid="Table_Name" />
+    (
+    <include refid="Select_or_Insert_Columns" />
+     )
+     VALUES
+     ( 
+    <include refid="Insert_Column_Value" />
+     )
+  </insert>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <update id="update" parameterType="com.upsoft.sep.sls.task.entity.SlsRunTask">
+    update 
+    <include refid="Table_Name" />
+    set 
+    title = #{title,jdbcType=VARCHAR},
+      type_code = #{typeCode,jdbcType=VARCHAR},
+      type_value = #{typeValue,jdbcType=VARCHAR},
+      level_code = #{levelCode,jdbcType=VARCHAR},
+      level_value = #{levelValue,jdbcType=VARCHAR},
+      assignee_id = #{assigneeId,jdbcType=VARCHAR},
+      assignee_name = #{assigneeName,jdbcType=VARCHAR},
+      assistant_id = #{assistantId,jdbcType=VARCHAR},
+      assistant_name = #{assistantName,jdbcType=VARCHAR},
+      scheduler_id = #{schedulerId,jdbcType=VARCHAR},
+      scheduler_name = #{schedulerName,jdbcType=VARCHAR},
+      assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      deliverer_id = #{delivererId,jdbcType=VARCHAR},
+      deliverer_name = #{delivererName,jdbcType=VARCHAR},
+      supervisor_id = #{supervisorId,jdbcType=VARCHAR},
+      supervisor_name = #{supervisorName,jdbcType=VARCHAR},
+      deliver_note = #{deliverNote,jdbcType=VARCHAR},
+      supervisory_note = #{supervisoryNote,jdbcType=VARCHAR},
+      treatment_suggestion = #{treatmentSuggestion,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      process_time = #{processTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=TINYINT},
+      template_id = #{templateId,jdbcType=VARCHAR},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      attachment_task_add = #{attachmentTaskAdd,jdbcType=VARCHAR},
+      attachment_task_close = #{attachmentTaskClose,jdbcType=VARCHAR},
+      scheduled_task_period_code = #{scheduledTaskPeriodCode,jdbcType=VARCHAR},
+      scheduled_task_period_name = #{scheduledTaskPeriodName,jdbcType=VARCHAR},
+      scheduled_task_first_arrange = #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP},
+      task_execution_days = #{taskExecutionDays,jdbcType=SMALLINT},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getSlsRunTask" parameterType="java.lang.String" resultMap="SlsRunTaskResult">
+    select 
+    
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getPageSlsRunTask" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="SlsRunTaskResult">
+    select 
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where 1=1
+    <if test="param!=null and param.title != null and param.title !='' ">
+      and title like CONCAT(CONCAT('%',#{param.title}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.title != null and param.title !='' ">
+      and title = #{title,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.typeCode != null and param.typeCode !='' ">
+      and type_code like CONCAT(CONCAT('%',#{param.typeCode}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.typeCode != null and param.typeCode !='' ">
+      and type_code = #{typeCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.typeValue != null and param.typeValue !='' ">
+      and type_value like CONCAT(CONCAT('%',#{param.typeValue}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.typeValue != null and param.typeValue !='' ">
+      and type_value = #{typeValue,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.levelCode != null and param.levelCode !='' ">
+      and level_code like CONCAT(CONCAT('%',#{param.levelCode}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.levelCode != null and param.levelCode !='' ">
+      and level_code = #{levelCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.levelValue != null and param.levelValue !='' ">
+      and level_value like CONCAT(CONCAT('%',#{param.levelValue}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.levelValue != null and param.levelValue !='' ">
+      and level_value = #{levelValue,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.assigneeId != null and param.assigneeId !='' ">
+      and assignee_id like CONCAT(CONCAT('%',#{param.assigneeId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.assigneeId != null and param.assigneeId !='' ">
+      and assignee_id = #{assigneeId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.assigneeName != null and param.assigneeName !='' ">
+      and assignee_name like CONCAT(CONCAT('%',#{param.assigneeName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.assigneeName != null and param.assigneeName !='' ">
+      and assignee_name = #{assigneeName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.assistantId != null and param.assistantId !='' ">
+      and assistant_id like CONCAT(CONCAT('%',#{param.assistantId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.assistantId != null and param.assistantId !='' ">
+      and assistant_id = #{assistantId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.assistantName != null and param.assistantName !='' ">
+      and assistant_name like CONCAT(CONCAT('%',#{param.assistantName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.assistantName != null and param.assistantName !='' ">
+      and assistant_name = #{assistantName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.schedulerId != null and param.schedulerId !='' ">
+      and scheduler_id like CONCAT(CONCAT('%',#{param.schedulerId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.schedulerId != null and param.schedulerId !='' ">
+      and scheduler_id = #{schedulerId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.schedulerName != null and param.schedulerName !='' ">
+      and scheduler_name like CONCAT(CONCAT('%',#{param.schedulerName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.schedulerName != null and param.schedulerName !='' ">
+      and scheduler_name = #{schedulerName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.assignTime != null and param.assignTime !='' ">
+      and assign_time like CONCAT(CONCAT('%',#{param.assignTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.assignTime != null and param.assignTime !='' ">
+      and assign_time = #{assignTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.delivererId != null and param.delivererId !='' ">
+      and deliverer_id like CONCAT(CONCAT('%',#{param.delivererId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.delivererId != null and param.delivererId !='' ">
+      and deliverer_id = #{delivererId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.delivererName != null and param.delivererName !='' ">
+      and deliverer_name like CONCAT(CONCAT('%',#{param.delivererName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.delivererName != null and param.delivererName !='' ">
+      and deliverer_name = #{delivererName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.supervisorId != null and param.supervisorId !='' ">
+      and supervisor_id like CONCAT(CONCAT('%',#{param.supervisorId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.supervisorId != null and param.supervisorId !='' ">
+      and supervisor_id = #{supervisorId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.supervisorName != null and param.supervisorName !='' ">
+      and supervisor_name like CONCAT(CONCAT('%',#{param.supervisorName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.supervisorName != null and param.supervisorName !='' ">
+      and supervisor_name = #{supervisorName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.deliverNote != null and param.deliverNote !='' ">
+      and deliver_note like CONCAT(CONCAT('%',#{param.deliverNote}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.deliverNote != null and param.deliverNote !='' ">
+      and deliver_note = #{deliverNote,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.supervisoryNote != null and param.supervisoryNote !='' ">
+      and supervisory_note like CONCAT(CONCAT('%',#{param.supervisoryNote}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.supervisoryNote != null and param.supervisoryNote !='' ">
+      and supervisory_note = #{supervisoryNote,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.treatmentSuggestion != null and param.treatmentSuggestion !='' ">
+      and treatment_suggestion like CONCAT(CONCAT('%',#{param.treatmentSuggestion}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.treatmentSuggestion != null and param.treatmentSuggestion !='' ">
+      and treatment_suggestion = #{treatmentSuggestion,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.detail != null and param.detail !='' ">
+      and detail like CONCAT(CONCAT('%',#{param.detail}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.detail != null and param.detail !='' ">
+      and detail = #{detail,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.startTime != null and param.startTime !='' ">
+      and start_time like CONCAT(CONCAT('%',#{param.startTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.startTime != null and param.startTime !='' ">
+      and start_time = #{startTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.processTime != null and param.processTime !='' ">
+      and process_time like CONCAT(CONCAT('%',#{param.processTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.processTime != null and param.processTime !='' ">
+      and process_time = #{processTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.endTime != null and param.endTime !='' ">
+      and end_time like CONCAT(CONCAT('%',#{param.endTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.endTime != null and param.endTime !='' ">
+      and end_time = #{endTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.deadline != null and param.deadline !='' ">
+      and deadline like CONCAT(CONCAT('%',#{param.deadline}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.deadline != null and param.deadline !='' ">
+      and deadline = #{deadline,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.createTime != null and param.createTime !='' ">
+      and create_time like CONCAT(CONCAT('%',#{param.createTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.createTime != null and param.createTime !='' ">
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.updateTime != null and param.updateTime !='' ">
+      and update_time like CONCAT(CONCAT('%',#{param.updateTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.updateTime != null and param.updateTime !='' ">
+      and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.status != null and param.status !='' ">
+      and status like CONCAT(CONCAT('%',#{param.status}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.status != null and param.status !='' ">
+      and `status` = #{status,jdbcType=TINYINT}
+    </if>
+     -->
+    
+    <if test="param!=null and param.templateId != null and param.templateId !='' ">
+      and template_id like CONCAT(CONCAT('%',#{param.templateId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.templateId != null and param.templateId !='' ">
+      and template_id = #{templateId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.templateName != null and param.templateName !='' ">
+      and template_name like CONCAT(CONCAT('%',#{param.templateName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.templateName != null and param.templateName !='' ">
+      and template_name = #{templateName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.attachmentTaskAdd != null and param.attachmentTaskAdd !='' ">
+      and attachment_task_add like CONCAT(CONCAT('%',#{param.attachmentTaskAdd}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.attachmentTaskAdd != null and param.attachmentTaskAdd !='' ">
+      and attachment_task_add = #{attachmentTaskAdd,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.attachmentTaskClose != null and param.attachmentTaskClose !='' ">
+      and attachment_task_close like CONCAT(CONCAT('%',#{param.attachmentTaskClose}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.attachmentTaskClose != null and param.attachmentTaskClose !='' ">
+      and attachment_task_close = #{attachmentTaskClose,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.scheduledTaskPeriodCode != null and param.scheduledTaskPeriodCode !='' ">
+      and scheduled_task_period_code like CONCAT(CONCAT('%',#{param.scheduledTaskPeriodCode}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.scheduledTaskPeriodCode != null and param.scheduledTaskPeriodCode !='' ">
+      and scheduled_task_period_code = #{scheduledTaskPeriodCode,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.scheduledTaskPeriodName != null and param.scheduledTaskPeriodName !='' ">
+      and scheduled_task_period_name like CONCAT(CONCAT('%',#{param.scheduledTaskPeriodName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.scheduledTaskPeriodName != null and param.scheduledTaskPeriodName !='' ">
+      and scheduled_task_period_name = #{scheduledTaskPeriodName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.scheduledTaskFirstArrange != null and param.scheduledTaskFirstArrange !='' ">
+      and scheduled_task_first_arrange like CONCAT(CONCAT('%',#{param.scheduledTaskFirstArrange}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.scheduledTaskFirstArrange != null and param.scheduledTaskFirstArrange !='' ">
+      and scheduled_task_first_arrange = #{scheduledTaskFirstArrange,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.taskExecutionDays != null and param.taskExecutionDays !='' ">
+      and task_execution_days like CONCAT(CONCAT('%',#{param.taskExecutionDays}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskExecutionDays != null and param.taskExecutionDays !='' ">
+      and task_execution_days = #{taskExecutionDays,jdbcType=SMALLINT}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 = #{standby1,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 = #{standby2,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 like CONCAT(CONCAT('%',#{param.standby3}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 = #{standby3,jdbcType=VARCHAR}
+    </if>
+     -->
+  </select>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsHistoryTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.upsoft.sep.sls.task.entity.SlsHistoryTask" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="task_title" property="taskTitle" jdbcType="VARCHAR" />
+    <result column="task_action_code" property="taskActionCode" jdbcType="TINYINT" />
+    <result column="task_action_name" property="taskActionName" jdbcType="VARCHAR" />
+    <result column="executor_id" property="executorId" jdbcType="VARCHAR" />
+    <result column="executor_name" property="executorName" jdbcType="VARCHAR" />
+    <result column="execution_time" property="executionTime" jdbcType="TIMESTAMP" />
+    <result column="standby1" property="standby1" jdbcType="VARCHAR" />
+    <result column="standby2" property="standby2" jdbcType="VARCHAR" />
+    <result column="standby3" property="standby3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, task_id, task_title, task_action_code, task_action_name, executor_id, executor_name, 
+    execution_time, standby1, standby2, standby3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sls_history_task
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sls_history_task
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask" >
+    insert into sls_history_task (id, task_id, task_title, 
+      task_action_code, task_action_name, executor_id, 
+      executor_name, execution_time, standby1, 
+      standby2, standby3)
+    values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, 
+      #{taskActionCode,jdbcType=TINYINT}, #{taskActionName,jdbcType=VARCHAR}, #{executorId,jdbcType=VARCHAR}, 
+      #{executorName,jdbcType=VARCHAR}, #{executionTime,jdbcType=TIMESTAMP}, #{standby1,jdbcType=VARCHAR}, 
+      #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask" >
+    insert into sls_history_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskTitle != null" >
+        task_title,
+      </if>
+      <if test="taskActionCode != null" >
+        task_action_code,
+      </if>
+      <if test="taskActionName != null" >
+        task_action_name,
+      </if>
+      <if test="executorId != null" >
+        executor_id,
+      </if>
+      <if test="executorName != null" >
+        executor_name,
+      </if>
+      <if test="executionTime != null" >
+        execution_time,
+      </if>
+      <if test="standby1 != null" >
+        standby1,
+      </if>
+      <if test="standby2 != null" >
+        standby2,
+      </if>
+      <if test="standby3 != null" >
+        standby3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskActionCode != null" >
+        #{taskActionCode,jdbcType=TINYINT},
+      </if>
+      <if test="taskActionName != null" >
+        #{taskActionName,jdbcType=VARCHAR},
+      </if>
+      <if test="executorId != null" >
+        #{executorId,jdbcType=VARCHAR},
+      </if>
+      <if test="executorName != null" >
+        #{executorName,jdbcType=VARCHAR},
+      </if>
+      <if test="executionTime != null" >
+        #{executionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standby1 != null" >
+        #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        #{standby3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask" >
+    update sls_history_task
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        task_title = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskActionCode != null" >
+        task_action_code = #{taskActionCode,jdbcType=TINYINT},
+      </if>
+      <if test="taskActionName != null" >
+        task_action_name = #{taskActionName,jdbcType=VARCHAR},
+      </if>
+      <if test="executorId != null" >
+        executor_id = #{executorId,jdbcType=VARCHAR},
+      </if>
+      <if test="executorName != null" >
+        executor_name = #{executorName,jdbcType=VARCHAR},
+      </if>
+      <if test="executionTime != null" >
+        execution_time = #{executionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standby1 != null" >
+        standby1 = #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        standby2 = #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        standby3 = #{standby3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask" >
+    update sls_history_task
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=VARCHAR},
+      task_action_code = #{taskActionCode,jdbcType=TINYINT},
+      task_action_name = #{taskActionName,jdbcType=VARCHAR},
+      executor_id = #{executorId,jdbcType=VARCHAR},
+      executor_name = #{executorName,jdbcType=VARCHAR},
+      execution_time = #{executionTime,jdbcType=TIMESTAMP},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

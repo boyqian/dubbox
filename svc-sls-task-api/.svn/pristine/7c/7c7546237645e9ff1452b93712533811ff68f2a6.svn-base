@@ -1,0 +1,385 @@
+package com.upsoft.sep.sls.task.entity;
+
+import java.util.Date;
+
+public class SlsRunTask {
+    private String id;
+
+    private String title;
+
+    private String typeCode;
+
+    private String typeValue;
+
+    private String levelCode;
+
+    private String levelValue;
+
+    private String assigneeId;
+
+    private String assigneeName;
+
+    private String assistantId;
+
+    private String assistantName;
+
+    private String schedulerId;
+
+    private String schedulerName;
+
+    private Date assignTime;
+
+    private String delivererId;
+
+    private String delivererName;
+
+    private String supervisorId;
+
+    private String supervisorName;
+
+    private String deliverNote;
+
+    private String supervisoryNote;
+
+    private String treatmentSuggestion;
+
+    private Date startTime;
+
+    private Date processTime;
+
+    private Date endTime;
+
+    private Date deadline;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Byte status;
+
+    private String templateId;
+
+    private String templateName;
+
+    private String attachmentTaskAdd;
+
+    private String attachmentTaskClose;
+
+    private String scheduledTaskPeriodCode;
+
+    private String scheduledTaskPeriodName;
+
+    private Date scheduledTaskFirstArrange;
+
+    private Short taskExecutionDays;
+
+    private String standby1;
+
+    private String standby2;
+
+    private String standby3;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode == null ? null : typeCode.trim();
+    }
+
+    public String getTypeValue() {
+        return typeValue;
+    }
+
+    public void setTypeValue(String typeValue) {
+        this.typeValue = typeValue == null ? null : typeValue.trim();
+    }
+
+    public String getLevelCode() {
+        return levelCode;
+    }
+
+    public void setLevelCode(String levelCode) {
+        this.levelCode = levelCode == null ? null : levelCode.trim();
+    }
+
+    public String getLevelValue() {
+        return levelValue;
+    }
+
+    public void setLevelValue(String levelValue) {
+        this.levelValue = levelValue == null ? null : levelValue.trim();
+    }
+
+    public String getAssigneeId() {
+        return assigneeId;
+    }
+
+    public void setAssigneeId(String assigneeId) {
+        this.assigneeId = assigneeId == null ? null : assigneeId.trim();
+    }
+
+    public String getAssigneeName() {
+        return assigneeName;
+    }
+
+    public void setAssigneeName(String assigneeName) {
+        this.assigneeName = assigneeName == null ? null : assigneeName.trim();
+    }
+
+    public String getAssistantId() {
+        return assistantId;
+    }
+
+    public void setAssistantId(String assistantId) {
+        this.assistantId = assistantId == null ? null : assistantId.trim();
+    }
+
+    public String getAssistantName() {
+        return assistantName;
+    }
+
+    public void setAssistantName(String assistantName) {
+        this.assistantName = assistantName == null ? null : assistantName.trim();
+    }
+
+    public String getSchedulerId() {
+        return schedulerId;
+    }
+
+    public void setSchedulerId(String schedulerId) {
+        this.schedulerId = schedulerId == null ? null : schedulerId.trim();
+    }
+
+    public String getSchedulerName() {
+        return schedulerName;
+    }
+
+    public void setSchedulerName(String schedulerName) {
+        this.schedulerName = schedulerName == null ? null : schedulerName.trim();
+    }
+
+    public Date getAssignTime() {
+        return assignTime;
+    }
+
+    public void setAssignTime(Date assignTime) {
+        this.assignTime = assignTime;
+    }
+
+    public String getDelivererId() {
+        return delivererId;
+    }
+
+    public void setDelivererId(String delivererId) {
+        this.delivererId = delivererId == null ? null : delivererId.trim();
+    }
+
+    public String getDelivererName() {
+        return delivererName;
+    }
+
+    public void setDelivererName(String delivererName) {
+        this.delivererName = delivererName == null ? null : delivererName.trim();
+    }
+
+    public String getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(String supervisorId) {
+        this.supervisorId = supervisorId == null ? null : supervisorId.trim();
+    }
+
+    public String getSupervisorName() {
+        return supervisorName;
+    }
+
+    public void setSupervisorName(String supervisorName) {
+        this.supervisorName = supervisorName == null ? null : supervisorName.trim();
+    }
+
+    public String getDeliverNote() {
+        return deliverNote;
+    }
+
+    public void setDeliverNote(String deliverNote) {
+        this.deliverNote = deliverNote == null ? null : deliverNote.trim();
+    }
+
+    public String getSupervisoryNote() {
+        return supervisoryNote;
+    }
+
+    public void setSupervisoryNote(String supervisoryNote) {
+        this.supervisoryNote = supervisoryNote == null ? null : supervisoryNote.trim();
+    }
+
+    public String getTreatmentSuggestion() {
+        return treatmentSuggestion;
+    }
+
+    public void setTreatmentSuggestion(String treatmentSuggestion) {
+        this.treatmentSuggestion = treatmentSuggestion == null ? null : treatmentSuggestion.trim();
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getProcessTime() {
+        return processTime;
+    }
+
+    public void setProcessTime(Date processTime) {
+        this.processTime = processTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId == null ? null : templateId.trim();
+    }
+
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName == null ? null : templateName.trim();
+    }
+
+    public String getAttachmentTaskAdd() {
+        return attachmentTaskAdd;
+    }
+
+    public void setAttachmentTaskAdd(String attachmentTaskAdd) {
+        this.attachmentTaskAdd = attachmentTaskAdd == null ? null : attachmentTaskAdd.trim();
+    }
+
+    public String getAttachmentTaskClose() {
+        return attachmentTaskClose;
+    }
+
+    public void setAttachmentTaskClose(String attachmentTaskClose) {
+        this.attachmentTaskClose = attachmentTaskClose == null ? null : attachmentTaskClose.trim();
+    }
+
+    public String getScheduledTaskPeriodCode() {
+        return scheduledTaskPeriodCode;
+    }
+
+    public void setScheduledTaskPeriodCode(String scheduledTaskPeriodCode) {
+        this.scheduledTaskPeriodCode = scheduledTaskPeriodCode == null ? null : scheduledTaskPeriodCode.trim();
+    }
+
+    public String getScheduledTaskPeriodName() {
+        return scheduledTaskPeriodName;
+    }
+
+    public void setScheduledTaskPeriodName(String scheduledTaskPeriodName) {
+        this.scheduledTaskPeriodName = scheduledTaskPeriodName == null ? null : scheduledTaskPeriodName.trim();
+    }
+
+    public Date getScheduledTaskFirstArrange() {
+        return scheduledTaskFirstArrange;
+    }
+
+    public void setScheduledTaskFirstArrange(Date scheduledTaskFirstArrange) {
+        this.scheduledTaskFirstArrange = scheduledTaskFirstArrange;
+    }
+
+    public Short getTaskExecutionDays() {
+        return taskExecutionDays;
+    }
+
+    public void setTaskExecutionDays(Short taskExecutionDays) {
+        this.taskExecutionDays = taskExecutionDays;
+    }
+
+    public String getStandby1() {
+        return standby1;
+    }
+
+    public void setStandby1(String standby1) {
+        this.standby1 = standby1 == null ? null : standby1.trim();
+    }
+
+    public String getStandby2() {
+        return standby2;
+    }
+
+    public void setStandby2(String standby2) {
+        this.standby2 = standby2 == null ? null : standby2.trim();
+    }
+
+    public String getStandby3() {
+        return standby3;
+    }
+
+    public void setStandby3(String standby3) {
+        this.standby3 = standby3 == null ? null : standby3.trim();
+    }
+}

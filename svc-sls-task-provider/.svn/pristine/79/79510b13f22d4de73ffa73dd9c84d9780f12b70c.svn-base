@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.task.dao.SlsHistoryTaskDao">
+  <resultMap id="SlsHistoryTaskResult" type="com.upsoft.sep.sls.task.entity.SlsHistoryTask">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="task_action_code" jdbcType="TINYINT" property="taskActionCode" />
+    <result column="task_action_name" jdbcType="VARCHAR" property="taskActionName" />
+    <result column="executor_id" jdbcType="VARCHAR" property="executorId" />
+    <result column="executor_name" jdbcType="VARCHAR" property="executorName" />
+    <result column="execution_time" jdbcType="TIMESTAMP" property="executionTime" />
+    <result column="standby1" jdbcType="VARCHAR" property="standby1" />
+    <result column="standby2" jdbcType="VARCHAR" property="standby2" />
+    <result column="standby3" jdbcType="VARCHAR" property="standby3" />
+  </resultMap>
+  <sql id="Table_Name">
+    <![CDATA[
+    sls_history_task
+    ]]>
+  </sql>
+  <sql id="Select_or_Insert_Columns">
+    <![CDATA[
+    id, task_id, task_title, task_action_code, task_action_name, executor_id, executor_name, 
+    execution_time, standby1, standby2, standby3
+    ]]>
+  </sql>
+  <sql id="Insert_Column_Value">
+    #{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, 
+    #{taskActionCode,jdbcType=TINYINT}, #{taskActionName,jdbcType=VARCHAR}, #{executorId,jdbcType=VARCHAR}, 
+    #{executorName,jdbcType=VARCHAR}, #{executionTime,jdbcType=TIMESTAMP}, #{standby1,jdbcType=VARCHAR}, 
+    #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR}
+  </sql>
+  <insert id="insert" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask">
+    insert into
+    <include refid="Table_Name" />
+    (
+    <include refid="Select_or_Insert_Columns" />
+     )
+     VALUES
+     ( 
+    <include refid="Insert_Column_Value" />
+     )
+  </insert>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <update id="update" parameterType="com.upsoft.sep.sls.task.entity.SlsHistoryTask">
+    update 
+    <include refid="Table_Name" />
+    set 
+    task_id = #{taskId,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=VARCHAR},
+      task_action_code = #{taskActionCode,jdbcType=TINYINT},
+      task_action_name = #{taskActionName,jdbcType=VARCHAR},
+      executor_id = #{executorId,jdbcType=VARCHAR},
+      executor_name = #{executorName,jdbcType=VARCHAR},
+      execution_time = #{executionTime,jdbcType=TIMESTAMP},
+      standby1 = #{standby1,jdbcType=VARCHAR},
+      standby2 = #{standby2,jdbcType=VARCHAR},
+      standby3 = #{standby3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getSlsHistoryTask" parameterType="java.lang.String" resultMap="SlsHistoryTaskResult">
+    select 
+    
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getPageSlsHistoryTask" parameterType="com.upsoft.sep.bp.common.entity.RequestPage" resultMap="SlsHistoryTaskResult">
+    select 
+    <include refid="Select_or_Insert_Columns" />
+     from 
+    <include refid="Table_Name" />
+    where 1=1
+    <if test="param!=null and param.taskId != null and param.taskId !='' ">
+      and task_id like CONCAT(CONCAT('%',#{param.taskId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskId != null and param.taskId !='' ">
+      and task_id = #{taskId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.taskTitle != null and param.taskTitle !='' ">
+      and task_title like CONCAT(CONCAT('%',#{param.taskTitle}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskTitle != null and param.taskTitle !='' ">
+      and task_title = #{taskTitle,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.taskActionCode != null and param.taskActionCode !='' ">
+      and task_action_code like CONCAT(CONCAT('%',#{param.taskActionCode}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskActionCode != null and param.taskActionCode !='' ">
+      and task_action_code = #{taskActionCode,jdbcType=TINYINT}
+    </if>
+     -->
+    
+    <if test="param!=null and param.taskActionName != null and param.taskActionName !='' ">
+      and task_action_name like CONCAT(CONCAT('%',#{param.taskActionName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.taskActionName != null and param.taskActionName !='' ">
+      and task_action_name = #{taskActionName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.executorId != null and param.executorId !='' ">
+      and executor_id like CONCAT(CONCAT('%',#{param.executorId}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.executorId != null and param.executorId !='' ">
+      and executor_id = #{executorId,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.executorName != null and param.executorName !='' ">
+      and executor_name like CONCAT(CONCAT('%',#{param.executorName}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.executorName != null and param.executorName !='' ">
+      and executor_name = #{executorName,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.executionTime != null and param.executionTime !='' ">
+      and execution_time like CONCAT(CONCAT('%',#{param.executionTime}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.executionTime != null and param.executionTime !='' ">
+      and execution_time = #{executionTime,jdbcType=TIMESTAMP}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 like CONCAT(CONCAT('%',#{param.standby1}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby1 != null and param.standby1 !='' ">
+      and standby1 = #{standby1,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 like CONCAT(CONCAT('%',#{param.standby2}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby2 != null and param.standby2 !='' ">
+      and standby2 = #{standby2,jdbcType=VARCHAR}
+    </if>
+     -->
+    
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 like CONCAT(CONCAT('%',#{param.standby3}),'%')
+    </if>
+    <!-- 
+    <if test="param!=null and param.standby3 != null and param.standby3 !='' ">
+      and standby3 = #{standby3,jdbcType=VARCHAR}
+    </if>
+     -->
+  </select>
+</mapper>

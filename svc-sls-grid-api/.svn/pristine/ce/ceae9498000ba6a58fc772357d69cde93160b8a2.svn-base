@@ -1,0 +1,185 @@
+package com.upsoft.sep.sls.grid.param.gridenterprise;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.persistence.Id;
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+
+	        	
+	        	
+/**
+ * 删除gridenterprise的参数类
+ * @author autoCoder
+ */
+public class GridEnterpriseDelParam {
+	
+        @Id
+        @ApiModelProperty(value = "id", required = true)
+        private String id;
+	    
+        @ApiModelProperty(value = "enterpriseId", required = false)
+        private String enterpriseId;
+	    
+        @ApiModelProperty(value = "enterpriseName", required = false)
+        private String enterpriseName;
+	    
+        @ApiModelProperty(value = "enterpriseAddress", required = false)
+        private String enterpriseAddress;
+	    
+        @ApiModelProperty(value = "supervisionTypeCode", required = false)
+        private String supervisionTypeCode;
+	    
+        @ApiModelProperty(value = "supervisionTypeName", required = false)
+        private String supervisionTypeName;
+	    
+        @ApiModelProperty(value = "enterpriseTypeCode", required = false)
+        private String enterpriseTypeCode;
+	    
+        @ApiModelProperty(value = "enterpriseTypeName", required = false)
+        private String enterpriseTypeName;
+	    
+        @ApiModelProperty(value = "gridId", required = true)
+        private String gridId;
+	    
+        @ApiModelProperty(value = "gridName", required = true)
+        private String gridName;
+	    
+        @ApiModelProperty(value = "standby1", required = false)
+        private String standby1;
+	    
+        @ApiModelProperty(value = "standby2", required = false)
+        private String standby2;
+	    
+        @ApiModelProperty(value = "standby3", required = false)
+        private String standby3;
+	    
+	
+	     public String getId() {
+			 return id;
+			   
+		   }
+	     public void setId(String id) {
+			 
+			   this.id=id;
+		   }
+	     public String getGridId() {
+			 return gridId;
+			   
+		   }
+	     public void setGridId(String gridId) {
+			 
+			   this.gridId=gridId;
+		   }
+	     public String getGridName() {
+			 return gridName;
+			   
+		   }
+	     public void setGridName(String gridName) {
+			 
+			   this.gridName=gridName;
+		   }
+	     public String getStandby1() {
+			 return standby1;
+			   
+		   }
+	     public void setStandby1(String standby1) {
+			 
+			   this.standby1=standby1;
+		   }
+	     public String getStandby2() {
+			 return standby2;
+			   
+		   }
+	     public void setStandby2(String standby2) {
+			 
+			   this.standby2=standby2;
+		   }
+	     public String getStandby3() {
+			 return standby3;
+			   
+		   }
+	     public void setStandby3(String standby3) {
+			 
+			   this.standby3=standby3;
+		   }
+	     public String getEnterpriseAddress() {
+			 return enterpriseAddress;
+			   
+		   }
+	     public void setEnterpriseAddress(String enterpriseAddress) {
+			 
+			   this.enterpriseAddress=enterpriseAddress;
+		   }
+	     public String getSupervisionTypeCode() {
+			 return supervisionTypeCode;
+			   
+		   }
+	     public void setSupervisionTypeCode(String supervisionTypeCode) {
+			 
+			   this.supervisionTypeCode=supervisionTypeCode;
+		   }
+	     public String getSupervisionTypeName() {
+			 return supervisionTypeName;
+			   
+		   }
+	     public void setSupervisionTypeName(String supervisionTypeName) {
+			 
+			   this.supervisionTypeName=supervisionTypeName;
+		   }
+	     public String getEnterpriseTypeCode() {
+			 return enterpriseTypeCode;
+			   
+		   }
+	     public void setEnterpriseTypeCode(String enterpriseTypeCode) {
+			 
+			   this.enterpriseTypeCode=enterpriseTypeCode;
+		   }
+	     public String getEnterpriseTypeName() {
+			 return enterpriseTypeName;
+			   
+		   }
+	     public void setEnterpriseTypeName(String enterpriseTypeName) {
+			 
+			   this.enterpriseTypeName=enterpriseTypeName;
+		   }
+	     public String getEnterpriseId() {
+			 return enterpriseId;
+			   
+		   }
+	     public void setEnterpriseId(String enterpriseId) {
+			 
+			   this.enterpriseId=enterpriseId;
+		   }
+	     public String getEnterpriseName() {
+			 return enterpriseName;
+			   
+		   }
+	     public void setEnterpriseName(String enterpriseName) {
+			 
+			   this.enterpriseName=enterpriseName;
+		   }
+	
+}

@@ -1,0 +1,537 @@
+package com.upsoft.sep.sls.task.entity;
+
+import com.upsoft.sep.autocoder.client.libs.AutoCoderDataRule;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
+import javax.persistence.Id;
+
+/**
+ * 任务详情指不同任务类型所包含的具体任务信息, 如日常任务的具体信息有企业和网格信息, 专项行动有行动名称和发起单位等。
+ * 
+ * sls_detail_task
+ *
+ */
+public class SlsDetailTask {
+    /**
+     * 主键ID
+     *
+     * sls_detail_task.id
+     *
+     */
+    @Id
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "false")
+    @ApiModelProperty(value = "主键ID", required = false)
+    private String id;
+
+    /**
+     * 任务ID
+     *
+     * sls_detail_task.task_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "false")
+    @ApiModelProperty(value = "任务ID", required = false)
+    private String taskId;
+
+    /**
+     * 任务标题
+     *
+     * sls_detail_task.task_title
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "任务标题", required = true)
+    private String taskTitle;
+
+    /**
+     * 日常任务-企业ID
+     *
+     * sls_detail_task.daily_enterprise_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-企业ID", required = true)
+    private String dailyEnterpriseId;
+
+    /**
+     * 日常任务-企业名称
+     *
+     * sls_detail_task.daily_enterprise_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-企业名称", required = true)
+    private String dailyEnterpriseName;
+
+    /**
+     * 日常任务-企业所属网格ID
+     *
+     * sls_detail_task.daily_grid_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-企业所属网格ID", required = true)
+    private String dailyGridId;
+
+    /**
+     * 日常任务-企业所属网格名称
+     *
+     * sls_detail_task.daily_grid_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "100",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-企业所属网格名称", required = true)
+    private String dailyGridName;
+
+    /**
+     * 日常任务-企业详细地址
+     *
+     * sls_detail_task.daily_enterprise_address
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-企业详细地址", required = true)
+    private String dailyEnterpriseAddress;
+
+    /**
+     * 日常任务-在建工地ID
+     *
+     * sls_detail_task.daily_construction_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-在建工地ID", required = true)
+    private String dailyConstructionId;
+
+    /**
+     * 日常任务-在建工地建设位置
+     *
+     * sls_detail_task.daily_construction_address
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-在建工地建设位置", required = true)
+    private String dailyConstructionAddress;
+
+    /**
+     * 日常任务-在建工地建设单位
+     *
+     * sls_detail_task.daily_construction_unit
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-在建工地建设单位", required = true)
+    private String dailyConstructionUnit;
+
+    /**
+     * 日常任务-在建工地项目名称
+     *
+     * sls_detail_task.daily_construction_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-在建工地项目名称", required = true)
+    private String dailyConstructionName;
+
+    /**
+     * 日常任务-在建工地施工单位
+     *
+     * sls_detail_task.daily_construction_implement
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-在建工地施工单位", required = true)
+    private String dailyConstructionImplement;
+
+    /**
+     * 日常任务-巡查内容重点
+     *
+     * sls_detail_task.daily_inspection_content
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-巡查内容重点", required = true)
+    private String dailyInspectionContent;
+
+    /**
+     * 日常任务-注意事项
+     *
+     * sls_detail_task.daily_note
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "日常任务-注意事项", required = true)
+    private String dailyNote;
+
+    /**
+     * 专项行动-发起单位
+     *
+     * sls_detail_task.special_initiate_unit
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-发起单位", required = true)
+    private String specialInitiateUnit;
+
+    /**
+     * 专项行动-开始时间
+     *
+     * sls_detail_task.special_start_time
+     *
+     */
+    @AutoCoderDataRule(type = "Date", maxLen = "19",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-开始时间", required = true)
+    private Date specialStartTime;
+
+    /**
+     * 专项行动-注意事项
+     *
+     * sls_detail_task.special_note
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-注意事项", required = true)
+    private String specialNote;
+
+    /**
+     * 专项行动-相关企业ID列表
+     *
+     * sls_detail_task.special_enterprise_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-相关企业ID列表", required = true)
+    private String specialEnterpriseId;
+
+    /**
+     * 专项行动-相关企业名称列表
+     *
+     * sls_detail_task.special_enterprise_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-相关企业名称列表", required = true)
+    private String specialEnterpriseName;
+
+    /**
+     * 专项行动-相关在建工地ID列表
+     *
+     * sls_detail_task.special_construction_id
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-相关在建工地ID列表", required = true)
+    private String specialConstructionId;
+
+    /**
+     * 专项行动-相关在建工地项目名称列表
+     *
+     * sls_detail_task.special_construction_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-相关在建工地项目名称列表", required = true)
+    private String specialConstructionName;
+
+    /**
+     * 专项行动-结束时间
+     *
+     * sls_detail_task.special_end_time
+     *
+     */
+    @AutoCoderDataRule(type = "Date", maxLen = "19",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-结束时间", required = true)
+    private Date specialEndTime;
+
+    /**
+     * 专项行动-行动内容
+     *
+     * sls_detail_task.special_action_content
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-行动内容", required = true)
+    private String specialActionContent;
+
+    /**
+     * 专项行动-行动名称
+     *
+     * sls_detail_task.special_action_name
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "200",minLen = "0",require = "true")
+    @ApiModelProperty(value = "专项行动-行动名称", required = true)
+    private String specialActionName;
+
+    /**
+     * 临时任务-任务详情
+     *
+     * sls_detail_task.temporary_task_content
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "500",minLen = "0",require = "true")
+    @ApiModelProperty(value = "临时任务-任务详情", required = true)
+    private String temporaryTaskContent;
+
+    /**
+     * 备用字段1
+     *
+     * sls_detail_task.standby1
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段1", required = true)
+    private String standby1;
+
+    /**
+     * 备用字段2
+     *
+     * sls_detail_task.standby2
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段2", required = true)
+    private String standby2;
+
+    /**
+     * 备用字段3
+     *
+     * sls_detail_task.standby3
+     *
+     */
+    @AutoCoderDataRule(type = "String", maxLen = "50",minLen = "0",require = "true")
+    @ApiModelProperty(value = "备用字段3", required = true)
+    private String standby3;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
+    }
+
+    public String getDailyEnterpriseId() {
+        return dailyEnterpriseId;
+    }
+
+    public void setDailyEnterpriseId(String dailyEnterpriseId) {
+        this.dailyEnterpriseId = dailyEnterpriseId;
+    }
+
+    public String getDailyEnterpriseName() {
+        return dailyEnterpriseName;
+    }
+
+    public void setDailyEnterpriseName(String dailyEnterpriseName) {
+        this.dailyEnterpriseName = dailyEnterpriseName;
+    }
+
+    public String getDailyGridId() {
+        return dailyGridId;
+    }
+
+    public void setDailyGridId(String dailyGridId) {
+        this.dailyGridId = dailyGridId;
+    }
+
+    public String getDailyGridName() {
+        return dailyGridName;
+    }
+
+    public void setDailyGridName(String dailyGridName) {
+        this.dailyGridName = dailyGridName;
+    }
+
+    public String getDailyEnterpriseAddress() {
+        return dailyEnterpriseAddress;
+    }
+
+    public void setDailyEnterpriseAddress(String dailyEnterpriseAddress) {
+        this.dailyEnterpriseAddress = dailyEnterpriseAddress;
+    }
+
+    public String getDailyConstructionId() {
+        return dailyConstructionId;
+    }
+
+    public void setDailyConstructionId(String dailyConstructionId) {
+        this.dailyConstructionId = dailyConstructionId;
+    }
+
+    public String getDailyConstructionAddress() {
+        return dailyConstructionAddress;
+    }
+
+    public void setDailyConstructionAddress(String dailyConstructionAddress) {
+        this.dailyConstructionAddress = dailyConstructionAddress;
+    }
+
+    public String getDailyConstructionUnit() {
+        return dailyConstructionUnit;
+    }
+
+    public void setDailyConstructionUnit(String dailyConstructionUnit) {
+        this.dailyConstructionUnit = dailyConstructionUnit;
+    }
+
+    public String getDailyConstructionName() {
+        return dailyConstructionName;
+    }
+
+    public void setDailyConstructionName(String dailyConstructionName) {
+        this.dailyConstructionName = dailyConstructionName;
+    }
+
+    public String getDailyConstructionImplement() {
+        return dailyConstructionImplement;
+    }
+
+    public void setDailyConstructionImplement(String dailyConstructionImplement) {
+        this.dailyConstructionImplement = dailyConstructionImplement;
+    }
+
+    public String getDailyInspectionContent() {
+        return dailyInspectionContent;
+    }
+
+    public void setDailyInspectionContent(String dailyInspectionContent) {
+        this.dailyInspectionContent = dailyInspectionContent;
+    }
+
+    public String getDailyNote() {
+        return dailyNote;
+    }
+
+    public void setDailyNote(String dailyNote) {
+        this.dailyNote = dailyNote;
+    }
+
+    public String getSpecialInitiateUnit() {
+        return specialInitiateUnit;
+    }
+
+    public void setSpecialInitiateUnit(String specialInitiateUnit) {
+        this.specialInitiateUnit = specialInitiateUnit;
+    }
+
+    public Date getSpecialStartTime() {
+        return specialStartTime;
+    }
+
+    public void setSpecialStartTime(Date specialStartTime) {
+        this.specialStartTime = specialStartTime;
+    }
+
+    public String getSpecialNote() {
+        return specialNote;
+    }
+
+    public void setSpecialNote(String specialNote) {
+        this.specialNote = specialNote;
+    }
+
+    public String getSpecialEnterpriseId() {
+        return specialEnterpriseId;
+    }
+
+    public void setSpecialEnterpriseId(String specialEnterpriseId) {
+        this.specialEnterpriseId = specialEnterpriseId;
+    }
+
+    public String getSpecialEnterpriseName() {
+        return specialEnterpriseName;
+    }
+
+    public void setSpecialEnterpriseName(String specialEnterpriseName) {
+        this.specialEnterpriseName = specialEnterpriseName;
+    }
+
+    public String getSpecialConstructionId() {
+        return specialConstructionId;
+    }
+
+    public void setSpecialConstructionId(String specialConstructionId) {
+        this.specialConstructionId = specialConstructionId;
+    }
+
+    public String getSpecialConstructionName() {
+        return specialConstructionName;
+    }
+
+    public void setSpecialConstructionName(String specialConstructionName) {
+        this.specialConstructionName = specialConstructionName;
+    }
+
+    public Date getSpecialEndTime() {
+        return specialEndTime;
+    }
+
+    public void setSpecialEndTime(Date specialEndTime) {
+        this.specialEndTime = specialEndTime;
+    }
+
+    public String getSpecialActionContent() {
+        return specialActionContent;
+    }
+
+    public void setSpecialActionContent(String specialActionContent) {
+        this.specialActionContent = specialActionContent;
+    }
+
+    public String getSpecialActionName() {
+        return specialActionName;
+    }
+
+    public void setSpecialActionName(String specialActionName) {
+        this.specialActionName = specialActionName;
+    }
+
+    public String getTemporaryTaskContent() {
+        return temporaryTaskContent;
+    }
+
+    public void setTemporaryTaskContent(String temporaryTaskContent) {
+        this.temporaryTaskContent = temporaryTaskContent;
+    }
+
+    public String getStandby1() {
+        return standby1;
+    }
+
+    public void setStandby1(String standby1) {
+        this.standby1 = standby1;
+    }
+
+    public String getStandby2() {
+        return standby2;
+    }
+
+    public void setStandby2(String standby2) {
+        this.standby2 = standby2;
+    }
+
+    public String getStandby3() {
+        return standby3;
+    }
+
+    public void setStandby3(String standby3) {
+        this.standby3 = standby3;
+    }
+}

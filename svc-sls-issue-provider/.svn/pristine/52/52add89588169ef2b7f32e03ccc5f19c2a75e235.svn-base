@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.sls.issue.dao.ProblemBaseDao">
+<select id="getProBaseById" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemBaseInfo">
+select parent_source_code,parent_source_value,source_code,source_value,title,type_code,type_value,level_code,level_value,address,detail,discovery_time
+from sls_issue
+where id=#{id}
+</select>
+<select id="getProPollInfo" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemPollInfo">
+select sge.enterprise_id,sge.enterprise_name,sge.enterprise_address,sge.inspection_staff_id,sge.inspection_staff_name,sge.supervision_type_code,sge.supervision_type_name
+from  sls_grid_enterprise sge join sls_issue si
+where sge.enterprise_id=si.enterprise_id
+and si.id=#{id}
+</select>
+<select id="getProComplaintInfo" parameterType="com.upsoft.sep.sls.issue.param.ProblemIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemComplaintInfo">
+<if test="id!=null and id!=''">
+
+</if>
+<if test="id==null and id==''">
+
+</if>
+</select>
+<select id="getProParentSource" parameterType="com.upsoft.sep.sls.issue.param.EnterpriseIdParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemParentSource">
+select parent_source_code,parent_source_value,count(id) as parentProCount
+from sls_issue
+where discovery_time>= DATE_SUB(CURDATE(), INTERVAL 365 DAY) 
+and enterprise_id=#{enterpriseId}
+group by parent_source_code,parent_source_value;
+</select>
+<select id="getProSource" parameterType="com.upsoft.sep.sls.issue.param.ProbelmSourceParam"
+resultType="com.upsoft.sep.sls.issue.entity.ProblemSource">
+select source_code,source_value,count(id) as proCount
+from sls_issue
+where discovery_time>= DATE_SUB(CURDATE(), INTERVAL 365 DAY) 
+and enterprise_id=#{enterpriseId}
+and parent_source_code=#{parentSourceCode}
+or parent_source_value=#{parentSourceValue} 
+group by source_code,source_value
+</select>
+</mapper>

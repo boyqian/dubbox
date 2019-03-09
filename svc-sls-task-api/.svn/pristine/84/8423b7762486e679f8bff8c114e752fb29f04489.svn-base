@@ -1,0 +1,115 @@
+package com.upsoft.sep.sls.task.entity;
+
+import java.util.Date;
+
+public class SlsHistoryTask {
+    private String id;
+
+    private String taskId;
+
+    private String taskTitle;
+
+    private Byte taskActionCode;
+
+    private String taskActionName;
+
+    private String executorId;
+
+    private String executorName;
+
+    private Date executionTime;
+
+    private String standby1;
+
+    private String standby2;
+
+    private String standby3;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId == null ? null : taskId.trim();
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle == null ? null : taskTitle.trim();
+    }
+
+    public Byte getTaskActionCode() {
+        return taskActionCode;
+    }
+
+    public void setTaskActionCode(Byte taskActionCode) {
+        this.taskActionCode = taskActionCode;
+    }
+
+    public String getTaskActionName() {
+        return taskActionName;
+    }
+
+    public void setTaskActionName(String taskActionName) {
+        this.taskActionName = taskActionName == null ? null : taskActionName.trim();
+    }
+
+    public String getExecutorId() {
+        return executorId;
+    }
+
+    public void setExecutorId(String executorId) {
+        this.executorId = executorId == null ? null : executorId.trim();
+    }
+
+    public String getExecutorName() {
+        return executorName;
+    }
+
+    public void setExecutorName(String executorName) {
+        this.executorName = executorName == null ? null : executorName.trim();
+    }
+
+    public Date getExecutionTime() {
+        return executionTime;
+    }
+
+    public void setExecutionTime(Date executionTime) {
+        this.executionTime = executionTime;
+    }
+
+    public String getStandby1() {
+        return standby1;
+    }
+
+    public void setStandby1(String standby1) {
+        this.standby1 = standby1 == null ? null : standby1.trim();
+    }
+
+    public String getStandby2() {
+        return standby2;
+    }
+
+    public void setStandby2(String standby2) {
+        this.standby2 = standby2 == null ? null : standby2.trim();
+    }
+
+    public String getStandby3() {
+        return standby3;
+    }
+
+    public void setStandby3(String standby3) {
+        this.standby3 = standby3 == null ? null : standby3.trim();
+    }
+}

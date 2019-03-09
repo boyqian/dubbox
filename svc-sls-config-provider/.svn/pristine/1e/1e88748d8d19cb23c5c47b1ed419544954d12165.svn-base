@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.upsoft.sep.sls.config.check.dao.TemplateItemRelDao">
+	<resultMap id="BaseResultMap" type="com.upsoft.sep.sls.config.check.entity.TemplateItemRelEntity">
+		<id column="ITEM_FORM_ID" jdbcType="VARCHAR" property="itemFormId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum" />
+		<result column="VERSION_TIME" jdbcType="DECIMAL" property="versionTime" />
+	</resultMap>
+	<resultMap id="TemplateItemRelMap" type="com.upsoft.sep.sls.config.check.entity.TemplateItemRelPageEntity">
+		<id column="ITEM_FORM_ID" jdbcType="VARCHAR" property="itemFormId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="CHECK_ITEM_NAME" jdbcType="VARCHAR" property="checkItemName" />
+	</resultMap>
+	<resultMap id="PageResultMap" type="com.upsoft.sep.sls.config.check.entity.TemplateItemRelEntity">
+		<id column="CHECK_TEMPLATE_ID" jdbcType="VARCHAR" property="checkTemplateId" />
+		<result column="CHECK_ITEM_ID" jdbcType="VARCHAR" property="checkItemId" />
+		<result column="ORDER_NUM" jdbcType="VARCHAR" property="orderNum" />
+		<result column="VERSION_TIME" jdbcType="VARCHAR" property="versionTime" />
+	</resultMap>
+	
+	
+
+	<sql id="Base_Column_List">
+		ITEM_FORM_ID, CHECK_ITEM_ID, CHECK_TEMPLATE_ID, ORDER_NUM, VERSION_TIME
+	</sql>
+	<insert id="insertTemplateItemRel" parameterType="com.upsoft.sep.sls.config.check.param.AddTemplateItemRelParam">
+		insert into sls_template_item_relation
+		(ITEM_FORM_ID, CHECK_ITEM_ID,
+		CHECK_TEMPLATE_ID,ORDER_NUM, VERSION_TIME)
+		values (#{itemFormId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=VARCHAR},
+		#{checkTemplateId,jdbcType=VARCHAR},
+		#{orderNum,jdbcType=DECIMAL}, #{versionTime,jdbcType=DECIMAL})
+	</insert>
+
+	<select id="selectTemplateItemRelByTmpId" resultMap="TemplateItemRelMap" parameterType="com.upsoft.sep.sls.config.check.param.QueryCheckTemplateByIdParam">
+		select t.check_template_id,t.item_form_id,o.check_item_id,o.check_item_name
+		from
+		sls_template_item_relation t,sls_check_item o
+		where o.status = '1001' and
+		t.check_item_id =o.check_item_id
+		<if test="checkTemplateId != null and checkTemplateId != ''">
+			and t.check_template_id=#{checkTemplateId}
+		</if>
+		order by t.order_num asc
+	</select>
+
+	<select id="selectByCheckItemIds"  resultMap="PageResultMap">
+		select * from sls_template_item_relation 
+		where check_item_id  in 
+		<foreach collection="checkItemIdList" item="checkItemId" index="index" open="(" close=")" separator=",">
+			#{checkItemId}
+		</foreach>
+	</select>
+
+	<delete id="deleteTemplateItemRel" parameterType="java.lang.String">
+		delete from sls_template_item_relation 
+		where check_template_id=#{templateId}
+	</delete>
+
+	<delete id="deleteRelByCheckItemIds" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckItemByIdsParam">
+		delete from sls_template_item_relation
+		where CHECK_ITEM_ID in
+		<foreach collection="checkItemIdList" item="checkItemId" index="index" open="(" close=")" separator=",">
+			#{checkItemId}
+		</foreach>
+		and check_template_id=#{checktemplateId}
+	</delete>
+
+	<delete id="deleteRelByTemplateId" parameterType="com.upsoft.sep.sls.config.check.param.DelCheckTemplateByIdParam">
+		delete from sls_template_item_relation
+		where check_template_id=#{checkTemplateId}
+	</delete>
+	<select id="page" resultMap="PageResultMap" parameterType="com.upsoft.sep.bp.common.entity.RequestPage">
+		select * from sls_template_item_relation t where 1=1
+		<if test="param.versionTimeDate != null and param.versionTimeDate != ''">
+	          and t.version_time <![CDATA[ >= #{param.versionTimeDate}  ]]>
+	    </if>
+	    order by  t.version_time desc
+		
+	</select>
+	
+</mapper>

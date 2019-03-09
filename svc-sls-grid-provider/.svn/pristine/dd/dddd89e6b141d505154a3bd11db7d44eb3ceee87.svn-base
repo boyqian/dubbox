@@ -1,0 +1,23 @@
+package com.upsoft.sep.sls.grid.dao;
+
+import com.upsoft.sep.bp.common.entity.RequestPage;
+import com.upsoft.sep.sls.grid.IDCGridMarker;
+import com.upsoft.sep.sls.grid.entity.GridEnterprise;
+import com.upsoft.sep.sls.grid.entity.SlsGrid;
+import com.upsoft.sep.sls.grid.param.gridenterprise.GridEnterpriseQueryParam;
+import java.util.List;
+
+public interface GridEnterpriseDao extends IDCGridMarker {
+    int insert(GridEnterprise gridenterprise);
+
+    int deleteByGridId(String id);
+
+    int update(GridEnterprise gridenterprise);
+
+    int insertCodeBatch(List<GridEnterprise> gridEnterpriseList);
+
+    GridEnterprise getGridEnterprise(String id);
+
+    List<GridEnterprise> getPageGridEnterprise(RequestPage<GridEnterpriseQueryParam> pageQuery);
+
+}

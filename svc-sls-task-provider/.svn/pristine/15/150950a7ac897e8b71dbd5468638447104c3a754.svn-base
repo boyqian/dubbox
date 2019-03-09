@@ -1,0 +1,17 @@
+package com.upsoft.sep.sls.task.dao;
+
+import com.upsoft.sep.sls.task.entity.SlsHistoryTask;
+
+public interface SlsHistoryTaskMapper {
+    int deleteByPrimaryKey(String id);
+
+    int insert(SlsHistoryTask record);
+
+    int insertSelective(SlsHistoryTask record);
+
+    SlsHistoryTask selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(SlsHistoryTask record);
+
+    int updateByPrimaryKey(SlsHistoryTask record);
+}
